@@ -1,0 +1,69 @@
+$date
+   Fri Mar 28 13:53:41 2025
+$end
+
+$version
+  2024.2.2
+  $dumpfile ("regs.vcd") 
+$end
+
+$timescale
+  1ps
+$end
+
+$scope module tb $end
+$var reg 16 ! op_1 [15:0] $end
+$var reg 16 " op_2 [15:0] $end
+$var reg 16 # result [15:0] $end
+$var reg 32 $ idx [31:0] $end
+$var reg 1 % clock $end
+$var reg 32 & optype [31:0] $end
+$scope module ra $end
+$var reg 16 ! incomingData [15:0] $end
+$var reg 32 $ index [31:0] $end
+$var reg 32 & accessType [31:0] $end
+$var wire 1 ' clk $end
+$var reg 16 # outgoingData [15:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+
+#0
+$dumpvars
+b10110011 !
+b0 "
+b10110011 #
+b11 $
+1%
+b1 &
+1'
+$end
+
+#1000
+0%
+b0 &
+0'
+
+#2000
+b0xxxx01000011 !
+b100 $
+
+#3000
+b0xxxx0000 #
+1%
+b11 &
+1'
+
+#4000
+0%
+0'
+
+#5000
+bx #
+1%
+b0 &
+1'
+
+#6000
+0%
+0'
