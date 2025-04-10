@@ -1,5 +1,5 @@
-module Control_tb;
-
+module Control_tb();
+  
     reg [5:0] opcode;
     reg clock = 0;
     reg reset = 1;

@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+// `timescale 1ns/1ps
 
 /*
 * ALU CONTROL UNIT OUTPUT TO ALU *
@@ -37,7 +37,7 @@ jmp  (J): X
 (jmp)   xx xxxx -> xxx -> xxxxxxx
 */
 
-// ALU Control Module
+// ALU Control Unit
 module alu_control(
     input  logic [1:0] alu_op,
     input  logic [3:0] func,
@@ -47,23 +47,21 @@ module alu_control(
     assign alu_control_inp = {alu_op, func};
     always_comb begin
         casez (alu_control_inp)
-          	
-            //ALU CONTROL UNIT OUTPUT TO ALU
-            6'b100000: alu_control_var = 3'b010; //add
-            6'b100001: alu_control_var = 3'b110; //sub
-            6'b100010: alu_control_var = 3'b011; //sll
-            6'b100011: alu_control_var = 3'b000; //and
-          
-            //Not used 
-          
-          	// I-type instructions (lw, sw, addi) with alu_op = 00:
-            6'b00????: alu_control_var = 3'b010; // ADD
+          //ALU CONTROL UNIT OUTPUT TO ALU
+          // R-type instruction (add, sub, sll, and) with alu_op = 10:
+          6'b100000: alu_control_var = 3'b010; // ADD
+          6'b100001: alu_control_var = 3'b110; // SUB
+          6'b100010: alu_control_var = 3'b011; // SLL
+          6'b100011: alu_control_var = 3'b000; // AND
 
-            // I-type branch instructions (beq, bne) with alu_op = 01:
-            6'b01????: alu_control_var = 3'b110; // SUB
-			
-            // Jump
-            default:   alu_control_var = 3'b000;
+          // I-type instructions (lw, sw, addi) with alu_op = 00:
+          6'b00????: alu_control_var = 3'b010; // ADD
+
+          // I-type branch instructions (beq, bne) with alu_op = 01:
+          6'b01????: alu_control_var = 3'b110; // SUB
+
+          // Jump
+          default:   alu_control_var = 3'b000;
         endcase
     end
 endmodule
