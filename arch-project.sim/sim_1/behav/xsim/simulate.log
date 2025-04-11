@@ -1,0 +1,16 @@
+Time resolution is 1 ps
+WARNING: Data truncated while reading Datafile: memory.mem, while loading at index: 0
+WARNING: Data truncated while reading Datafile: memory.mem, while loading at index: 2
+[PC MODULE @ 1000] pc_current=00000000, nextAddr=00000002, fullInstr=0000, signExtImm=00000000, branchAddr=00000002, pcSrc = 00000002, jumpAddr=00000000, flag_jump=0, pc_next=00000002
+WARNING: Data truncated while reading Datafile: memory.mem, while loading at index: 0
+WARNING: Data truncated while reading Datafile: memory.mem, while loading at index: 2
+[PC MODULE @ 3000] pc_current=00000000, nextAddr=00000002, fullInstr=1020, signExtImm=00000000, branchAddr=00000002, pcSrc = 00000002, jumpAddr=00000040, flag_jump=0, pc_next=00000002
+$stop called at time : 4 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 220
+Stopped at time : 4 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 122
+WARNING: Data truncated while reading Datafile: memory.mem, while loading at index: 0
+WARNING: Data truncated while reading Datafile: memory.mem, while loading at index: 2
+[PC MODULE @ 5000] pc_current=00000000, nextAddr=00000002, fullInstr=1020, signExtImm=00000000, branchAddr=00000002, pcSrc = 00000002, jumpAddr=00000040, flag_jump=0, pc_next=00000002
+WARNING: Data truncated while reading Datafile: memory.mem, while loading at index: 0
+WARNING: Data truncated while reading Datafile: memory.mem, while loading at index: 2
+[PC MODULE @ 7000] pc_current=00000000, nextAddr=00000002, fullInstr=1020, signExtImm=00000000, branchAddr=00000002, pcSrc = 00000002, jumpAddr=00000040, flag_jump=0, pc_next=00000002
+$stop called at time : 8 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 220

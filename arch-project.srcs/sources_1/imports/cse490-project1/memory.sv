@@ -1,6 +1,5 @@
-`include "defines.sv"
 // `define dbg
-
+`include "defines.sv"
 module memory(
     input reg clock, // read or write
     input reg [15:0] inWord, // word to write

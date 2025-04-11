@@ -1,22 +1,22 @@
 // IMPORTANT: read section 5.4.3 – Detailed Instruction Information
 module ProgramCounter(
   input logic clock,				    // input clock 
-  input logic [15:0] pc_current,	    // previous pc, needs to be incremented by 2
+  input int pc_current,	    // previous pc, needs to be incremented by 2
   input logic flag_branch,			    // branch flag from control unit
   input logic flag_branch_select,       // Extra control code to select between BNE or BEQ logic. If branch_select is 0, select BEQ logic. If 1, select BNE logic
   input logic aluZero,				    // zero output from ALU
   input logic flag_jump, 			    // jump flag from control unit
   input logic [15:0] fullInstr,		    // 16-bit decoded instruction from instruction memory Used for the branch offset and jump address calculations.
-  output logic [15:0] pc_next		    // next address to send to the instruction memory on next clock cycle
+  output int pc_next		    // next address to send to the instruction memory on next clock cycle
 );
   
   // Declare all variables outside of always block
-  logic [15:0] nextAddr;
-  logic [15:0] branchAddr;
-  logic signed [15:0] signExtImm;
+  int nextAddr;
+  int branchAddr;
+  int signExtImm;
   logic beq_logic, bne_logic, branchMux;
-  logic [15:0] pcSrc;
-  logic [15:0] jumpAddr;
+  int pcSrc;
+  int jumpAddr;
   
   
   always @(posedge clock) begin
