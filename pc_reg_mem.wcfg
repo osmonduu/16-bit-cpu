@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="16.310 ns"></ZoomStartTime>
+      <ZoomEndTime time="22.311 ns"></ZoomEndTime>
+      <Cursor1Time time="20.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="263"></NameColumnWidth>
+      <ValueColumnWidth column_width="125"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="17" />
+   <wvobject type="array" fp_name="/tb/reg_write">
+      <obj_property name="ElementShortName">reg_write[15:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_write[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/mem_write">
+      <obj_property name="ElementShortName">mem_write[15:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_write[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/reg_result">
+      <obj_property name="ElementShortName">reg_result[15:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_result[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/mem_result">
+      <obj_property name="ElementShortName">mem_result[15:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_result[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/idx">
+      <obj_property name="ElementShortName">idx[31:0]</obj_property>
+      <obj_property name="ObjectShortName">idx[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/clock">
+      <obj_property name="ElementShortName">clock</obj_property>
+      <obj_property name="ObjectShortName">clock</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/reg_operation_type">
+      <obj_property name="ElementShortName">reg_operation_type[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_operation_type[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/mem_operation_type">
+      <obj_property name="ElementShortName">mem_operation_type[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_operation_type[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/addr">
+      <obj_property name="ElementShortName">addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/current_address">
+      <obj_property name="ElementShortName">current_address[31:0]</obj_property>
+      <obj_property name="ObjectShortName">current_address[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/next_address">
+      <obj_property name="ElementShortName">next_address[31:0]</obj_property>
+      <obj_property name="ObjectShortName">next_address[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/instruction">
+      <obj_property name="ElementShortName">instruction[15:0]</obj_property>
+      <obj_property name="ObjectShortName">instruction[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/branch_flag">
+      <obj_property name="ElementShortName">branch_flag</obj_property>
+      <obj_property name="ObjectShortName">branch_flag</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/branch_select_flag">
+      <obj_property name="ElementShortName">branch_select_flag</obj_property>
+      <obj_property name="ObjectShortName">branch_select_flag</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/alu_zero_flag">
+      <obj_property name="ElementShortName">alu_zero_flag</obj_property>
+      <obj_property name="ObjectShortName">alu_zero_flag</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/jump_flag">
+      <obj_property name="ElementShortName">jump_flag</obj_property>
+      <obj_property name="ObjectShortName">jump_flag</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/ra/registers">
+      <obj_property name="ElementShortName">registers[0:16][15:0]</obj_property>
+      <obj_property name="ObjectShortName">registers[0:16][15:0]</obj_property>
+      <wvobject type="array" fp_name="/tb/ra/registers[0]">
+         <obj_property name="ElementShortName">[0][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[0][15:0]</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb/ra/registers[1]">
+         <obj_property name="ElementShortName">[1][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[1][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb/ra/registers[2]">
+         <obj_property name="ElementShortName">[2][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[2][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb/ra/registers[3]">
+         <obj_property name="ElementShortName">[3][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[3][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb/ra/registers[4]">
+         <obj_property name="ElementShortName">[4][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[4][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb/ra/registers[5]">
+         <obj_property name="ElementShortName">[5][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[5][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb/ra/registers[6]">
+         <obj_property name="ElementShortName">[6][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[6][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb/ra/registers[7]">
+         <obj_property name="ElementShortName">[7][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[7][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb/ra/registers[8]">
+         <obj_property name="ElementShortName">[8][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[8][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb/ra/registers[9]">
+         <obj_property name="ElementShortName">[9][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[9][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb/ra/registers[10]">
+         <obj_property name="ElementShortName">[10][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[10][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb/ra/registers[11]">
+         <obj_property name="ElementShortName">[11][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[11][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb/ra/registers[12]">
+         <obj_property name="ElementShortName">[12][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[12][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb/ra/registers[13]">
+         <obj_property name="ElementShortName">[13][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[13][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb/ra/registers[14]">
+         <obj_property name="ElementShortName">[14][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[14][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb/ra/registers[15]">
+         <obj_property name="ElementShortName">[15][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[15][15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb/ra/registers[16]">
+         <obj_property name="ElementShortName">[16][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[16][15:0]</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

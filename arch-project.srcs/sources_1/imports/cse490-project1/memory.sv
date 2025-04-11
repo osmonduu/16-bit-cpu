@@ -1,5 +1,5 @@
-// `define dbg
 `include "defines.sv"
+
 module memory(
     input reg clock, // read or write
     input reg [15:0] inWord, // word to write
@@ -7,23 +7,53 @@ module memory(
     output reg [15:0] outWord // read word
 );
 
-    reg [7:0] memoryArray [127:0]; // array containing the ROM and data memory
+reg [7:0] memoryArray [0:127] = '{ 
+    'h01, 'h20, 'h30, 'h35, 'h60, 'h05, 'h31, 'h40, 'h00, 'h21,
+    'h0000, 'h0000, 'h0000, 'h0000, 'h0000,
+    'h0000, 'h0000, 'h0000, 'h0000, 'h0000,
+    'h0000, 'h0000, 'h0000, 'h0000, 'h0000,
+    'h0000, 'h0000, 'h0000, 'h0000, 'h0000,
+    'h0000, 'h0000, 'h0000, 'h0000, 'h0000,
+    'h0000, 'h0000, 'h0000, 'h0000, 'h0000,
+    'h0000, 'h0000, 'h0000, 'h0000, 'h0000,
+    'h0000, 'h0000, 'h0000, 'h0000, 'h0000,
+    'h0000, 'h0000, 'h0000, 'h0000, 'h0000,
+    'h0000, 'h0000, 'h0000, 'h0000, 'h0000,
+    'h0000, 'h0000, 'h0000, 'h0000, 'h0000,
+    'h0000, 'h0000, 'h0000, 'h0000, 'h0000,
+    'h0000, 'h0000, 'h0000, 'h0000, 'h0000,
+    'h0000, 'h0000, 'h0000, 'h0000, 'h0000,
+    'h0000, 'h0000, 'h0000, 'h0000, 'h0000,
+    'h0000, 'h0000, 'h0000, 'h0000, 'h0000,
+    'h0000, 'h0000, 'h0000, 'h0000, 'h0000,
+    'h0000, 'h0000, 'h0000, 'h0000, 'h0000,
+    'h0000, 'h0000, 'h0000, 'h0000, 'h0000,
+    'h0000, 'h0000, 'h0000, 'h0000, 'h0000,
+    'h0000, 'h0000, 'h0000, 'h0000, 'h0000,
+    'h0000, 'h0000, 'h0000, 'h0000, 'h0000,
+    'h0000, 'h0000, 'h0000, 'h0000, 'h0000,
+    'h0000, 'h0000, 'h0000
+};
+
+
     `ifdef dbg
-    reg [7:0] temp1;
-    reg [7:0] temp2;
+    reg [7:0] temp1 ='h0;
+    reg [7:0] temp2 ='h0;
     `endif
 
-    always@(posedge clock) begin
-        $readmemb("memory.mem", memoryArray, 0, 127); // initialize memory into array
-
+    always_comb begin
+//        $readmemh("memory.mem", memoryArray, 0, 127); // initialize memory into array
+//        $stop();
         if (optype == `READ) begin
           `ifdef dbg
           $display("[debug:memory] operation is READ, time=%1d", $time);
+          temp1 = memoryArray[addr];
+          temp2 = memoryArray[addr+1];
           `endif
-          outWord[7:0]  <= memoryArray[addr]; // don't need to validate reading, read lower word
-          outWord[15:8] <= memoryArray[addr+1];
+          outWord[7:0]  = memoryArray[addr+1]; // don't need to validate reading, read lower word
+          outWord[15:8] = memoryArray[addr];
           `ifdef dbg
-            $strobe("[debug:memory] outWord = %4h", outWord);
+            $display("[debug:memory] outWord = %4h", outWord);
           `endif
         end 
         
@@ -40,7 +70,7 @@ module memory(
               temp2 = memoryArray[addr+1];
               $display("[debug:memory] addr=0x%2h, addr+1=0x%2h, temp1=0x%2h, temp2=0x%2h", addr, addr+1, temp1, temp2);
               `endif
-              $writememb("memory.mem", memoryArray, 0, 127); // can only write entire contents of memory, not individual bytes
+              $writememh("memory.mem", memoryArray, 0, 127); // can only write entire contents of memory, not individual bytes
               // return input word as output
               outWord = inWord;
             end else begin

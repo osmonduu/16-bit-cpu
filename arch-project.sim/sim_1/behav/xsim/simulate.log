@@ -1,16 +1,91 @@
 Time resolution is 1 ps
-WARNING: Data truncated while reading Datafile: memory.mem, while loading at index: 0
-WARNING: Data truncated while reading Datafile: memory.mem, while loading at index: 2
+$stop called at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 75
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 76
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 77
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 78
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 79
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 62
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 63
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 64
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 70
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 71
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 76
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 77
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/reg.sv" Line 14
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/reg.sv" Line 16
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/reg.sv" Line 17
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/reg.sv" Line 13
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/memory.sv" Line 47
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/memory.sv" Line 49
+[debug:memory] operation is READ, time=0
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/memory.sv" Line 50
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/memory.sv" Line 51
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/memory.sv" Line 53
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/memory.sv" Line 54
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/memory.sv" Line 56
+[debug:memory] outWord = 0120
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/memory.sv" Line 60
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/memory.sv" Line 44
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 56
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 58
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 57
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 59
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 72
+Stopped at time : 0 fs : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 57
+Stopped at time : 1 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 79
+Stopped at time : 1 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 80
+Stopped at time : 1 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" Line 24
+Stopped at time : 1 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" Line 27
+Stopped at time : 1 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" Line 28
+Stopped at time : 1 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" Line 31
+Stopped at time : 1 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" Line 32
+Stopped at time : 1 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" Line 33
+Stopped at time : 1 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" Line 34
+Stopped at time : 1 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" Line 38
+Stopped at time : 1 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" Line 42
+Stopped at time : 1 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" Line 46
 [PC MODULE @ 1000] pc_current=00000000, nextAddr=00000002, fullInstr=0000, signExtImm=00000000, branchAddr=00000002, pcSrc = 00000002, jumpAddr=00000000, flag_jump=0, pc_next=00000002
-WARNING: Data truncated while reading Datafile: memory.mem, while loading at index: 0
-WARNING: Data truncated while reading Datafile: memory.mem, while loading at index: 2
-[PC MODULE @ 3000] pc_current=00000000, nextAddr=00000002, fullInstr=1020, signExtImm=00000000, branchAddr=00000002, pcSrc = 00000002, jumpAddr=00000040, flag_jump=0, pc_next=00000002
-$stop called at time : 4 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 220
-Stopped at time : 4 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 122
-WARNING: Data truncated while reading Datafile: memory.mem, while loading at index: 0
-WARNING: Data truncated while reading Datafile: memory.mem, while loading at index: 2
-[PC MODULE @ 5000] pc_current=00000000, nextAddr=00000002, fullInstr=1020, signExtImm=00000000, branchAddr=00000002, pcSrc = 00000002, jumpAddr=00000040, flag_jump=0, pc_next=00000002
-WARNING: Data truncated while reading Datafile: memory.mem, while loading at index: 0
-WARNING: Data truncated while reading Datafile: memory.mem, while loading at index: 2
-[PC MODULE @ 7000] pc_current=00000000, nextAddr=00000002, fullInstr=1020, signExtImm=00000000, branchAddr=00000002, pcSrc = 00000002, jumpAddr=00000040, flag_jump=0, pc_next=00000002
-$stop called at time : 8 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 220
+Stopped at time : 1 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" Line 22
+Stopped at time : 2 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 80
+Stopped at time : 2 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 81
+Stopped at time : 2 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 84
+Stopped at time : 2 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 85
+Stopped at time : 2 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 86
+Stopped at time : 2 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 87
+Stopped at time : 2 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 75
+$stop called at time : 2 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 75
+Stopped at time : 2 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/reg.sv" Line 14
+Stopped at time : 3 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" Line 24
+[PC MODULE @ 3000] pc_current=00000000, nextAddr=00000002, fullInstr=0120, signExtImm=00000000, branchAddr=00000002, pcSrc = 00000002, jumpAddr=00000240, flag_jump=0, pc_next=00000002
+$stop called at time : 4 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 75
+Stopped at time : 4 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/reg.sv" Line 14
+Stopped at time : 4 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/memory.sv" Line 47
+[debug:memory] operation is READ, time=4
+[debug:memory] outWord = 3035
+Stopped at time : 5 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" Line 24
+[PC MODULE @ 5000] pc_current=00000002, nextAddr=00000004, fullInstr=0120, signExtImm=00000000, branchAddr=00000004, pcSrc = 00000004, jumpAddr=00000240, flag_jump=0, pc_next=00000004
+$stop called at time : 6 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 75
+[PC MODULE @ 7000] pc_current=00000002, nextAddr=00000004, fullInstr=3035, signExtImm=00000005, branchAddr=0000000e, pcSrc = 00000004, jumpAddr=0000006a, flag_jump=0, pc_next=00000004
+$stop called at time : 8 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 75
+[debug:memory] operation is READ, time=8
+[debug:memory] outWord = 6005
+[PC MODULE @ 9000] pc_current=00000004, nextAddr=00000006, fullInstr=3035, signExtImm=00000005, branchAddr=00000010, pcSrc = 00000006, jumpAddr=0000006a, flag_jump=0, pc_next=00000006
+$stop called at time : 10 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 75
+[PC MODULE @ 11000] pc_current=00000004, nextAddr=00000006, fullInstr=6005, signExtImm=00000005, branchAddr=00000010, pcSrc = 00000006, jumpAddr=0000000a, flag_jump=0, pc_next=00000006
+$stop called at time : 12 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 75
+[debug:memory] operation is READ, time=12
+[debug:memory] outWord = 3140
+[PC MODULE @ 13000] pc_current=00000006, nextAddr=00000008, fullInstr=6005, signExtImm=00000005, branchAddr=00000012, pcSrc = 00000008, jumpAddr=0000000a, flag_jump=0, pc_next=00000008
+$stop called at time : 14 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 75
+[PC MODULE @ 15000] pc_current=00000006, nextAddr=00000008, fullInstr=3140, signExtImm=00000000, branchAddr=00000008, pcSrc = 00000008, jumpAddr=00000280, flag_jump=0, pc_next=00000008
+$stop called at time : 16 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 75
+[debug:memory] operation is READ, time=16
+[debug:memory] outWord = 0021
+[PC MODULE @ 17000] pc_current=00000008, nextAddr=0000000a, fullInstr=3140, signExtImm=00000000, branchAddr=0000000a, pcSrc = 0000000a, jumpAddr=00000280, flag_jump=0, pc_next=0000000a
+$stop called at time : 18 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 75
+[PC MODULE @ 19000] pc_current=00000008, nextAddr=0000000a, fullInstr=0021, signExtImm=00000001, branchAddr=0000000c, pcSrc = 0000000a, jumpAddr=00000042, flag_jump=0, pc_next=0000000a
+$stop called at time : 20 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 75
+[debug:memory] operation is READ, time=20
+[debug:memory] outWord = 0000
+[PC MODULE @ 21000] pc_current=0000000a, nextAddr=0000000c, fullInstr=0021, signExtImm=00000001, branchAddr=0000000e, pcSrc = 0000000c, jumpAddr=00000042, flag_jump=0, pc_next=0000000c
+$stop called at time : 22 ns : File "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sim_1/new/testbench.sv" Line 75

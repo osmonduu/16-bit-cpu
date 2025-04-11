@@ -1,74 +1,92 @@
+`include "defines.sv"
 `timescale 1ns/1ns
-`define WRITE 1
-`define READ 0
-`define REGTEST
-
 // testbench to run everything, make sure that things make sense
 module tb;
-    parameter N = 16;
-    reg [N-1:0] op_1 = 'hBEEF; // stands for operand 1 and 2 repsectively
-    reg [N-1:0] op_2 = 'h0000; // default to null
+    reg [15:0] reg_write = 'h0000; // write to register
+    reg [15:0] mem_write = 'h0000; // the thing to write to memory
 
-    logic [N-1:0] result; // result of the tested operation
+    logic [15:0] reg_result = 'h0; // result of the tested operation
+    logic [15:0] mem_result = 'h0;
 
-
-    int idx = 3; // index value
+    int idx = 3; // index value of the registers
     logic clock = 0; // clock
-    int optype = `WRITE; // type of operation
-    int addr = 'h5C;
+    int reg_operation_type = `WRITE; // type of operation for registers
+    int mem_operation_type = `READ; // type of operation for memory
+    int addr = 'h0;
+    
+    int current_address = 0;
+    int next_address = 0;
+    logic [15:0] instruction = 'h0;
+    logic branch_flag = 0;
+    logic branch_select_flag = 0;
+    logic alu_zero_flag = 0;
+    logic jump_flag = 0;
+    
+    
 
+    ProgramCounter pc
+    (
+        .clock(clock),
+        .pc_current(current_address),
+        .flag_branch(branch_flag),
+        .flag_branch_select(branch_select_flag),
+        .aluZero(alu_zero_flag),
+        .flag_jump(jump_flag),
+        .pc_next(next_address),
+        .fullInstr(instruction)
+    );
 
     register ra
     (
         .index(idx),
-        .accessType(optype),
+        .accessType(reg_operation_type),
         .clk(clock),
-        .incomingData(op_1),
-        .outgoingData(result)
+        .incomingData(reg_write),
+        .outgoingData(reg_result)
     );
 
-    // memory mem(
-    //
-    //   .clock(clock),
-    //   .inWord(op_1),
-    //   .outWord(result),
-    //   .addr(addr),
-    //   .optype(optype)
-    // );
-    //
+     memory mem(
+    
+       .clock(clock),
+       .inWord(mem_write),
+       .outWord(mem_result),
+       .addr(addr),
+       .optype(mem_operation_type)
+     );
+    
+    
 
     initial begin
 
         $dumpfile("tb.vcd");
-        $dumpvars(); // dumpvars   
-        #24 $finish();
+        $dumpvars(1); // dumpvars  
+//        $monitor("reg_write = %4h, mem_write = %4h, reg idx = %2d, current_address = %2d, next_address = %2d, addr = %2d, time = %2d", reg_write, mem_write, idx, current_address, next_address, addr, $time);
+        #120 $finish();
     end   
 
-    // register testbench
+    // pc testbench, integrated with register and memory
     always begin
+        /*
+         steps: grab address (current_address) 0 from memory and read it, giving it to pc
+         this will be the first instruction read 
+         then, starting at current_address 0 it should increment the address by 2
+         and store it in the register file
+        */
+        $stop(); // stop at the beginning of every cycle
+        idx = `PCR; // PC register index
+        reg_operation_type = `WRITE;
+        instruction = mem_result;
+        #1 clock = 1;
+        #1 clock = 0;
+        reg_write = next_address; // update program counter 
+        // commmits the write to the pcr
+        // now read it
+        reg_operation_type = `READ;
+        current_address = reg_result; // update program counter's address
+        addr = current_address; // get next word
+        instruction = mem_result
         
-        #1  clock = 1; // posedge - no delay so this posedge should occur on tick 0
-        #1  clock = 0; // nededge
-        // now during 0 tick, change index and operation type
-        optype = `WRITE; // write to index 4
-        op_1 = 'hDEAD; // change op 1 to be something different
-        idx = 4; // change index to be not 3
-        // tick clock
-        #1  clock = 1; // posedge
-        // result should be equal to 0xDEAD right now
-        #1  clock = 0; // nededge
-        // now see what is in index 3
-        optype = `READ;
-        idx = 3;
-        // result should be 0xBEEF right now, since that's what was stored
-        #1  clock = 1;
-        #1  clock = 0;
-        op_1 = 'hBEEF; // change back to 0xBEEF since its not 0xDEAD
-        idx = 4;
-        // now check index 4 to see if index 4 properly stored 0xDEAD
-        #1  clock = 1; // posedge
-        #1  clock = 0; // negedge
-        idx = 3; // reset idx to index 3
+;
     end
 
 

@@ -8,24 +8,25 @@ module register (
 );
 
 // outgoing data on write will just be the data given
-reg [15:0] registers [17] = {default: 'h0}; // 17 registers, r16 is pc
+reg [15:0] registers [17] = '{default: 'h0}; // 17 registers, r16 is pc
 
-always@(posedge clk) begin
+always_comb begin
     if (accessType == `WRITE) begin
 
-        outgoingData <= incomingData;
-        registers[index] <= incomingData; // writes the new data to the indexed register
+        outgoingData = incomingData;
+        registers[index] = incomingData; // writes the new data to the indexed register
 
     end  else if (accessType == `READ) 
 
-        outgoingData <= registers[index];
+        outgoingData = registers[index];
 
     else begin
 
-        outgoingData <= 'h0000; // null on invalid access type 
+        outgoingData = 'h0000; // null on invalid access type 
         $display("Invalid register access type");
 
     end
+//    $writememh("regs.mem", registers, 0, 16);
 end
 
 endmodule

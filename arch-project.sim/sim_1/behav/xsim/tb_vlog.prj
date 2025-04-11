@@ -1,6 +1,5 @@
 # compile verilog/system verilog design source files
 sv xil_defaultlib "/home/nfox/Documents/School/Computer Architecture/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/defines.sv" --include "../../../../arch-project.srcs/sources_1/imports/cse490-project1" -d "WRITE=1" -d "READ=0" \
-"../../../../arch-project.srcs/sources_1/imports/cse490-project1/control.sv" \
 "../../../../arch-project.srcs/sources_1/imports/cse490-project1/memory.sv" \
 "../../../../arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" \
 "../../../../arch-project.srcs/sources_1/imports/cse490-project1/reg.sv" \
