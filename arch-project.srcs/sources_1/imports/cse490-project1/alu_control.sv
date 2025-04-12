@@ -1,7 +1,7 @@
-// `timescale 1ns/1ps
+`timescale 1ns/1ps
 
 /*
-* ALU CONTROL UNIT OUTPUT TO ALU *
+ALU CONTROL UNIT OUTPUT TO ALU *
 ----------------------------------
 add: 010
 sub: 110
@@ -9,7 +9,7 @@ sll: 011
 and: 000
 
 
-* ALUOP FROM CONTROL UNIT TO ALU CONTROL UNIT *
+ALUOP FROM CONTROL UNIT TO ALU CONTROL UNIT *
 ----------------------------------------------
 add  (R): 10
 sub  (R): 10
@@ -23,7 +23,7 @@ bne  (I): 01
 jmp  (J): X
 
 
-* ALU CONTROL UNIT {ALUOP + FUNCT} -> ALU CONTROL UNIT OUTPUT *
+ALU CONTROL UNIT {ALUOP + FUNCT} -> ALU CONTROL UNIT OUTPUT *
 ---------------------------------------------------------------
 (add)   10 0000 -> 010 -> alu_ADD
 (sub)   10 0001 -> 110 -> alu_SUB

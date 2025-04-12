@@ -1,9 +1,11 @@
+`timescale 1ns/1ps
+
 // IMPORTANT: read section 5.4.3 – Detailed Instruction Information
-// ALU LOGIC - does not use any of the modules above and works as a standalone ALU implementation
+// ALU
 module alu (
   input  logic [15:0] input1,			// 16-bit contents read from register 1
   input  logic [15:0] input2,			// 16-bit contents read from register 2 
-  input  logic [15:0] fullInstr,		// 16-bit decoded instruction from instruction memory instruction
+  input  logic [15:0] fullInstr,		// 16-bit decoded instruction from instruction memory instruction to be used for 4-bit immediate.
   input  logic        flag_aluSrc,		// aluSrc flag from control unit
   input  logic [2:0]  alu_control_out,	// ALU Control Unit output to specify which ALU operation to perform
   output logic [15:0] result,			// result of the alu operation on the two inputs

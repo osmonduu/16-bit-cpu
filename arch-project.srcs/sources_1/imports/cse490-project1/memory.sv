@@ -37,7 +37,7 @@ endmodule
 
 
 module instruction_memory(
-    input int addr, optype, // memory address to access
+    input int addr,  // memory address to access
     output reg [15:0] outWord // read word
 );
 
