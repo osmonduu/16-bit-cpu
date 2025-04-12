@@ -6,7 +6,7 @@ module full_tb;
     reg [15:0] reg_write = 'h0000; // write to register
     reg [15:0] mem_write = 'h0000; // the thing to write to memory
 
-    logic [15:0] reg_result = 'h0; // result of the tested operation
+    wire [15:0] reg_result; // result of the tested operation
     logic [15:0] mem_result = 'h0;
 
     int idx = 3; // index value of the registers
