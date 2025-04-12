@@ -72,7 +72,7 @@ module tb;
          then, starting at current_address 0 it should increment the address by 2
          and store it in the register file
         */
-        $stop(); // stop at the beginning of every cycle
+//        $stop(); // stop at the beginning of every cycle
         idx = `PCR; // PC register index
         reg_operation_type = `WRITE;
         instruction = mem_result;
@@ -84,9 +84,7 @@ module tb;
         reg_operation_type = `READ;
         current_address = reg_result; // update program counter's address
         addr = current_address; // get next word
-        instruction = mem_result
-        
-;
+        instruction = mem_result;
     end
 
 
