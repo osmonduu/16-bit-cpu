@@ -12,8 +12,7 @@ module full_tb;
     int idx = 3; // index value of the registers
     logic clock = 0; // clock
     int reg_operation_type = `WRITE; // type of operation for registers
-    int mem_operation_type = `READ; // type of operation for memory
-    int daddr = 'h0;
+    int daddr = 'h40;
     int iaddr = 'h0;
     
     int current_address = 0;
@@ -58,7 +57,8 @@ module full_tb;
        .inWord(mem_write),
        .outWord(mem_result),
        .addr(daddr),
-       .optype(mem_operation_type)
+       .read_flag(mem_read_flag),
+       .write_flag(mem_write_flag)
      );
 
      // added local variables to make control, alu_control, and alu work
@@ -119,14 +119,14 @@ module full_tb;
         .flag_aluSrc(aluSrc_flag),          // input
         .alu_control_out(alu_control_out),  // input
         .result(alu_result),                // output
-        .zero_flag(alu_zero_flag),          // output
+        .zero_flag(alu_zero_flag)          // output
     );
 
 
     initial begin
 
         $dumpfile("tb.vcd");
-        $dumpvars(1); // dumpvars  
+        $dumpvars(); // dumpvars  
 //        $monitor("reg_write = %4h, mem_write = %4h, reg idx = %2d, current_address = %2d, next_address = %2d, addr = %2d, time = %2d", reg_write, mem_write, idx, current_address, next_address, addr, $time);
         #120 $finish();
     end   
@@ -139,7 +139,7 @@ module full_tb;
          then, starting at current_address 0 it should increment the address by 2
          and store it in the register file
         */
-        $stop(); // stop at the beginning of every cycle
+//        $stop(); // stop at the beginning of every cycle
 
         // ------- IMPLICITLY READS MEMORY AND FETCHES THE INSTRUCTION (stored in mem_result) BASED ON WHATEVER THE CURRENT ADDRESS IS (should be set from previous iteration)
         mem_operation_type = `READ;     // For readability purposes 
@@ -214,7 +214,7 @@ module full_tb;
 
 
         // ------- GIVE THE NEXT_ADDRESS TO THE MEMORY UNIT TO FETCH THE INSTRUCTION OF THE NEXT ADDRESS
-        addr = current_address; // get next word
+        iaddr = current_address; // get next word
 
 
         // ------- GET THE RESULT FROM THE MEMORY UNIT AND FEED THE FETCHED INSTRUCTION TO PC (fullInstr input) TO SET UP NEXT ITERATION
