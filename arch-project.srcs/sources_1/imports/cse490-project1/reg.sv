@@ -13,8 +13,8 @@ reg [15:0] registers [17] = '{default: 'h0}; // 17 registers, r16 is pc
 always_comb begin
     if (accessType == `WRITE) begin
 
-        outgoingData = incomingData;
         registers[index] = incomingData; // writes the new data to the indexed register
+        outgoingData = registers[index];
 
     end  else if (accessType == `READ) 
 

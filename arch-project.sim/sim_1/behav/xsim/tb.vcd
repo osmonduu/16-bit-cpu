@@ -1,5 +1,5 @@
 $date
-   Sat Apr 12 15:55:42 2025
+   Sat Apr 12 17:09:14 2025
 $end
 
 $version
@@ -19,105 +19,102 @@ $var reg 16 $ mem_result [15:0] $end
 $var reg 32 % idx [31:0] $end
 $var reg 1 & clock $end
 $var reg 32 ' reg_operation_type [31:0] $end
-$var reg 32 ( mem_operation_type [31:0] $end
-$var reg 32 ) daddr [31:0] $end
-$var reg 32 * iaddr [31:0] $end
-$var reg 32 + current_address [31:0] $end
-$var reg 32 , next_address [31:0] $end
-$var reg 16 - fetched_instruction [15:0] $end
-$var reg 16 . instruction [15:0] $end
-$var reg 1 / branch_flag $end
-$var reg 1 0 branch_select_flag $end
-$var reg 1 1 alu_zero_flag $end
-$var reg 1 2 jump_flag $end
-$var reg 4 3 opcode [3:0] $end
-$var reg 1 4 control_reset $end
-$var reg 1 5 mem_read_flag $end
-$var reg 1 6 mem_to_reg_flag $end
-$var reg 2 7 alu_op [1:0] $end
-$var reg 1 8 mem_write_flag $end
-$var reg 1 9 aluSrc_flag $end
-$var reg 1 : reg_write_flag $end
-$var reg 4 ; func [3:0] $end
-$var reg 3 < alu_control_out [2:0] $end
-$var reg 16 = reg1_contents [15:0] $end
-$var reg 16 > reg2_contents [15:0] $end
-$var reg 16 ? alu_result [15:0] $end
-$var reg 16 @ data_memory_output [15:0] $end
-$var reg 16 A memToReg_mux_output [15:0] $end
-$var wire 1 B mem_to_ $end
+$var reg 32 ( daddr [31:0] $end
+$var reg 32 ) iaddr [31:0] $end
+$var reg 32 * current_address [31:0] $end
+$var reg 32 + next_address [31:0] $end
+$var wire 16 , instruction [15:0] $end
+$var reg 1 - branch_flag $end
+$var reg 1 . branch_select_flag $end
+$var reg 1 / alu_zero_flag $end
+$var reg 1 0 jump_flag $end
+$var reg 4 1 opcode [3:0] $end
+$var reg 1 2 control_reset $end
+$var reg 1 3 mem_read_flag $end
+$var reg 1 4 mem_to_reg_flag $end
+$var reg 2 5 alu_op [1:0] $end
+$var reg 1 6 mem_write_flag $end
+$var reg 1 7 aluSrc_flag $end
+$var reg 1 8 reg_write_flag $end
+$var reg 4 9 func [3:0] $end
+$var reg 3 : alu_control_out [2:0] $end
+$var reg 16 ; reg1_contents [15:0] $end
+$var reg 16 < reg2_contents [15:0] $end
+$var reg 16 = alu_result [15:0] $end
+$var reg 16 > data_memory_output [15:0] $end
+$var reg 16 ? memToReg_mux_output [15:0] $end
+$var wire 1 @ mem_to_ $end
+$scope module con $end
+$var wire 4 A opcode [3:0] $end
+$var wire 1 B control_reset $end
+$var reg 1 0 jump $end
+$var reg 1 - branch $end
+$var reg 1 . branch_select $end
+$var reg 1 3 mem_read $end
+$var reg 1 C mem_to_reg $end
+$var reg 2 5 alu_op [1:0] $end
+$var reg 1 6 mem_write $end
+$var reg 1 7 aluSrc $end
+$var reg 1 8 reg_write $end
+$upscope $end
+$scope module alu_con $end
+$var wire 2 D alu_op [1:0] $end
+$var wire 4 E func [3:0] $end
+$var reg 3 : alu_control_var [2:0] $end
+$var reg 6 F alu_control_inp [5:0] $end
+$upscope $end
+$scope module alu $end
+$var wire 16 G input1 [15:0] $end
+$var wire 16 H input2 [15:0] $end
+$var wire 16 , fullInstr [15:0] $end
+$var wire 1 I flag_aluSrc $end
+$var wire 3 J alu_control_out [2:0] $end
+$var reg 16 = result [15:0] $end
+$var reg 1 / zero_flag $end
+$var reg 16 K adderFirstOperand [15:0] $end
+$var reg 16 L signExtImm [15:0] $end
+$upscope $end
 $scope module pc $end
-$var wire 1 C clock $end
-$var reg 32 + pc_current [31:0] $end
-$var wire 1 D flag_branch $end
-$var wire 1 E flag_branch_select $end
-$var wire 1 F aluZero $end
-$var wire 1 G flag_jump $end
-$var wire 16 H fullInstr [15:0] $end
-$var reg 32 , pc_next [31:0] $end
-$var reg 32 I nextAddr [31:0] $end
-$var reg 32 J branchAddr [31:0] $end
-$var reg 32 K signExtImm [31:0] $end
-$var reg 1 L beq_logic $end
-$var reg 1 M bne_logic $end
-$var reg 1 N branchMux $end
-$var reg 32 O pcSrc [31:0] $end
-$var reg 32 P jumpAddr [31:0] $end
+$var wire 1 M clock $end
+$var reg 32 * pc_current [31:0] $end
+$var wire 1 N flag_branch $end
+$var wire 1 O flag_branch_select $end
+$var wire 1 P aluZero $end
+$var wire 1 Q flag_jump $end
+$var wire 16 , fullInstr [15:0] $end
+$var reg 32 + pc_next [31:0] $end
+$var reg 32 R nextAddr [31:0] $end
+$var reg 32 S branchAddr [31:0] $end
+$var reg 32 T signExtImm [31:0] $end
+$var reg 1 U beq_logic $end
+$var reg 1 V bne_logic $end
+$var reg 1 W branchMux $end
+$var reg 32 X pcSrc [31:0] $end
+$var reg 32 Y jumpAddr [31:0] $end
 $upscope $end
 $scope module ra $end
 $var reg 16 ! incomingData [15:0] $end
 $var reg 32 % index [31:0] $end
 $var reg 32 ' accessType [31:0] $end
-$var wire 1 Q clk $end
+$var wire 1 Z clk $end
 $var reg 16 # outgoingData [15:0] $end
 $upscope $end
 $scope module imem $end
-$var reg 32 * addr [31:0] $end
-$var reg 16 - outWord [15:0] $end
-$var reg 8 R temp1 [7:0] $end
-$var reg 8 S temp2 [7:0] $end
+$var reg 32 ) addr [31:0] $end
+$var wire 16 , outWord [15:0] $end
 $upscope $end
 $scope module dmem $end
 $var reg 16 " inWord [15:0] $end
-$var reg 32 ) addr [31:0] $end
-$var reg 32 ( optype [31:0] $end
+$var reg 32 ( addr [31:0] $end
+$var wire 1 [ read_flag $end
+$var wire 1 \ write_flag $end
 $var reg 16 $ outWord [15:0] $end
-$scope begin Block30_4 $end
-$var reg 32 T wmemtrnsf_fd [31:0] $end
-$scope begin Block30_5 $end
-$var reg 32 U i1 [31:0] $end
+$scope begin Block32_6 $end
+$var reg 32 ] wmemtrnsf_fd [31:0] $end
+$scope begin Block32_7 $end
+$var reg 32 ^ i1 [31:0] $end
 $upscope $end
 $upscope $end
-$upscope $end
-$scope module con $end
-$var wire 4 V opcode [3:0] $end
-$var wire 1 W control_reset $end
-$var reg 1 2 jump $end
-$var reg 1 / branch $end
-$var reg 1 0 branch_select $end
-$var reg 1 5 mem_read $end
-$var reg 1 X mem_to_reg $end
-$var reg 2 7 alu_op [1:0] $end
-$var reg 1 8 mem_write $end
-$var reg 1 9 aluSrc $end
-$var reg 1 : reg_write $end
-$upscope $end
-$scope module alu_con $end
-$var wire 2 Y alu_op [1:0] $end
-$var wire 4 Z func [3:0] $end
-$var reg 3 < alu_control_var [2:0] $end
-$var reg 6 [ alu_control_inp [5:0] $end
-$upscope $end
-$scope module alu $end
-$var wire 16 \ input1 [15:0] $end
-$var wire 16 ] input2 [15:0] $end
-$var wire 16 ^ fullInstr [15:0] $end
-$var wire 1 _ flag_aluSrc $end
-$var wire 3 ` alu_control_out [2:0] $end
-$var reg 16 ? result [15:0] $end
-$var reg 1 1 zero_flag $end
-$var reg 16 a adderFirstOperand [15:0] $end
-$var reg 16 b signExtImm [15:0] $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
@@ -131,63 +128,72 @@ b0 $
 b10000 %
 0&
 b1 '
-b0 (
+b1000000 (
 b0 )
 b0 *
 b0 +
-b0 ,
-b100100000 -
-b0 .
-0/
+b100100000 ,
+0-
+0.
+1/
 00
-x1
+b0 1
 02
-b0 3
+03
 04
-x5
-x6
-bx 7
-x8
-x9
-x:
+b10 5
+06
+07
+18
+b0 9
+b10 :
 b0 ;
-bx <
+b0 <
 b0 =
 b0 >
-bx ?
-bx @
-bx A
-xB
+b0 ?
+0@
+b0 A
+0B
 0C
-0D
-0E
-xF
-0G
+b10 D
+b0 E
+b100000 F
+b0 G
 b0 H
-b0 I
-b0 J
+0I
+b10 J
 b0 K
-xL
-xM
-xN
-b0 O
-b0 P
+b0 L
+0M
+0N
+0O
+1P
 0Q
-b1 R
-b100000 S
+b0 R
+b0 S
 b0 T
-b0 U
-b0 V
-0W
-xX
-bx Y
-b0 Z
-bx [
-b0 \
+xU
+xV
+xW
+b0 X
+b0 Y
+0Z
+0[
+0\
 b0 ]
 b0 ^
-x_
-bx `
-bx a
-b0 b
 $end
+
+#1000
+1&
+b10 +
+1M
+b10 R
+b10 S
+0U
+0V
+0W
+b10 X
+b1001000000 Y
+1Z

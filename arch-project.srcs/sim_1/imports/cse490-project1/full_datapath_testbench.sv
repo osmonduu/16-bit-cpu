@@ -17,76 +17,37 @@ module full_tb;
     
     int current_address = 0;
     int next_address = 0;
-    logic [15:0] fetched_instruction = 'h0;
-    logic [15:0] instruction = 'h0;
+    wire [15:0] instruction;
     logic branch_flag = 0;
     logic branch_select_flag = 0;
     logic alu_zero_flag = 0;
     logic jump_flag = 0;
-    
-
-    ProgramCounter pc
-    (
-        .clock(clock),
-        .pc_current(current_address),
-        .flag_branch(branch_flag),
-        .flag_branch_select(branch_select_flag),
-        .aluZero(alu_zero_flag),
-        .flag_jump(jump_flag),
-        .pc_next(next_address),
-        .fullInstr(instruction)
-    );
-
-    register ra
-    (
-        .index(idx),
-        .accessType(reg_operation_type),
-        .clk(clock),
-        .incomingData(reg_write),
-        .outgoingData(reg_result)
-    );
-
-    instruction_memory imem 
-    (
-        .addr(iaddr),
-        .outWord(fetched_instruction)
-    );
-
-     data_memory dmem
-     (
-       .inWord(mem_write),
-       .outWord(mem_result),
-       .addr(daddr),
-       .read_flag(mem_read_flag),
-       .write_flag(mem_write_flag)
-     );
-
      // added local variables to make control, alu_control, and alu work
      // Control
-     logic [3:0] opcode;            // 4-bit opcode - will be assigned instruction[15:12]
+     logic [3:0] opcode = 'h0;            // 4-bit opcode - will be assigned instruction[15:12]
      logic control_reset = 0;       // should always be 0 unless testing
-     logic mem_read_flag;           // mem_read control output to pass to data memory
-     logic mem_to_reg_flag;         // mem_to_reg control output to pass to write memToReg MUX
-     logic [1:0] alu_op;            // alu_op control output to pass to alu control unit
-     logic mem_write_flag;          // mem_write control output to pass to data memory 
-     logic aluSrc_flag;             // aluSrc control output to pass to alu (chooses whether to use input1 or sign-extended immediate)
-     logic reg_write_flag;          // reg_write control output to write memToReg MUX output to reg1
+     logic mem_read_flag = 1;           // mem_read control output to pass to data memory
+     logic mem_to_reg_flag = 'h0;         // mem_to_reg control output to pass to write memToReg MUX
+     logic [1:0] alu_op = 'h0;            // alu_op control output to pass to alu control unit
+     logic mem_write_flag = 0;          // mem_write control output to pass to data memory 
+     logic aluSrc_flag = 'h0;             // aluSrc control output to pass to alu (chooses whether to use input1 or sign-extended immediate)
+     logic reg_write_flag = 'h0;          // reg_write control output to write memToReg MUX output to reg1
 
      // ALU Control 
-     logic [3:0] func;              // 4-bit funct field - will be assigned instruction[3:0]
-     logic [2:0] alu_control_out;   // 3-bit alu control unit output to pass to alu (picks which alu operation to perform)
+     logic [3:0] func = 'h0;              // 4-bit funct field - will be assigned instruction[3:0]
+     logic [2:0] alu_control_out = 'h0;   // 3-bit alu control unit output to pass to alu (picks which alu operation to perform)
 
      // ALU
-     logic [15:0] reg1_contents;    // contents of register 1 from reg to pass into alu "input1" input
-     logic [15:0] reg2_contents;    // contents of register 2 from reg to pass into alu "input2" input
-     logic [15:0] alu_result;       // alu output result to pass into memToRegMUX
+     logic [15:0] reg1_contents = 'h0;    // contents of register 1 from reg to pass into alu "input1" input
+     logic [15:0] reg2_contents = 'h0;    // contents of register 2 from reg to pass into alu "input2" input
+     logic [15:0] alu_result = 'h0;       // alu output result to pass into memToRegMUX
 
      // Data memory
-     logic [15:0] data_memory_output;   // Word loaded from memory address calculted by alu - alu_result (SHOULD ONLY HAVE OUTPUT ON LW INSTRUCTIONS)
+     logic [15:0] data_memory_output = 'h0;   // Word loaded from memory address calculted by alu - alu_result (SHOULD ONLY HAVE OUTPUT ON LW INSTRUCTIONS)
 
      // memToReg MUX
-     logic [15:0] memToReg_mux_output;  // 16-bit information - either alu_result or data_memory_output
-
+     logic [15:0] memToReg_mux_output = 'h0;  // 16-bit information - either alu_result or data_memory_output
+ 
 
      // added instantiation of control, alu_control, and alu
     control con 
@@ -122,12 +83,50 @@ module full_tb;
         .zero_flag(alu_zero_flag)          // output
     );
 
+ProgramCounter pc
+    (
+        .clock(clock),
+        .pc_current(current_address),
+        .flag_branch(branch_flag),
+        .flag_branch_select(branch_select_flag),
+        .aluZero(alu_zero_flag),
+        .flag_jump(jump_flag),
+        .pc_next(next_address),
+        .fullInstr(instruction)
+    );
+
+    register ra
+    (
+        .index(idx),
+        .accessType(reg_operation_type),
+        .clk(clock),
+        .incomingData(reg_write),
+        .outgoingData(reg_result)
+    );
+
+    instruction_memory imem 
+    (
+        .addr(iaddr),
+        .outWord(instruction)
+    );
+
+     data_memory dmem
+     (
+       .inWord(mem_write),
+       .outWord(mem_result),
+       .addr(daddr),
+       .read_flag(mem_read_flag),
+       .write_flag(mem_write_flag)
+     );
+
 
     initial begin
+
 
         $dumpfile("tb.vcd");
         $dumpvars(); // dumpvars  
 //        $monitor("reg_write = %4h, mem_write = %4h, reg idx = %2d, current_address = %2d, next_address = %2d, addr = %2d, time = %2d", reg_write, mem_write, idx, current_address, next_address, addr, $time);
+        $stop();
         #120 $finish();
     end   
 
@@ -141,9 +140,8 @@ module full_tb;
         */
 //        $stop(); // stop at the beginning of every cycle
 
-        // ------- IMPLICITLY READS MEMORY AND FETCHES THE INSTRUCTION (stored in mem_result) BASED ON WHATEVER THE CURRENT ADDRESS IS (should be set from previous iteration)
-        mem_operation_type = `READ;     // For readability purposes 
-        instruction = mem_result;       // For readability purposes - fetch the instruction from memory read
+        // ------- IMPLICITLY READS MEMORY AND FETCHES THE INSTRUCTION (stored in mem_result) BASED ON WHATEVER THE CURRENT ADDRESS IS (should be set from previous iteration) 
+        // For readability purposes - fetch the instruction from memory read
 
         // CONTROL CODE UNIT
         opcode = instruction[15:12];    // Set opcode to first 4 bits of fetched instruction - triggers the control module to produce new outputs.
@@ -193,8 +191,7 @@ module full_tb;
         idx = `PCR; // PC register index
         reg_operation_type = `WRITE;
 
-        // ------- READ THE ADDR ADDRESS (0x0000 in beginning) AND PASS THE FETCHED INSTRUCTION TO PC [DUPLICATE JUST FOR FIRST ITERATION]
-        instruction = mem_result;
+        // ------- READ THE ADDR ADDRESS (0x0000 in beginning) AND PASS THE FETCHED INSTRUCTION TO PC [DUPLICATE JUST FOR FIRST ITERATION;
 
         // ------- WAIT FOR PC TO COMPUTE THE NEXT ADDRESS - PC IS THE ONLY CLOCKED MODULE
         #1 clock = 1;
@@ -218,7 +215,6 @@ module full_tb;
 
 
         // ------- GET THE RESULT FROM THE MEMORY UNIT AND FEED THE FETCHED INSTRUCTION TO PC (fullInstr input) TO SET UP NEXT ITERATION
-        instruction = mem_result;
     end
 
 

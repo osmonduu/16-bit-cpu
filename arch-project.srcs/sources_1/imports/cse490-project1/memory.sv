@@ -34,7 +34,7 @@ module data_memory(
               outWord = inWord;
         end
         
-        if ( read_flag ^~ write_flag == 1) begin
+        if ( (read_flag ^~ write_flag) == 1) begin
             outWord = 'hZZZZ; // return sometihng stupid
         end 
 
@@ -44,30 +44,13 @@ endmodule
 
 module instruction_memory(
     input int addr,  // memory address to access
-    output reg [15:0] outWord // read word
+    output wire [15:0] outWord // read word
 );
 
     reg [7:0] instruction_mem [0:63] =  '{ 'h01, 'h20, 'h30, 'h35, 'h60, 'h05, 'h31, 'h40, 'h00, 'h21, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00 };
-
-    `ifdef dbg
-    reg [7:0] temp1 ='h0;
-    reg [7:0] temp2 ='h0;
-    `endif
-
-    always_comb begin
-//        $readmemh("memory.mem", memoryArray, 0, 127); // initialize memory into array
-//        $stop();
-        
-          `ifdef dbg
-            $display("[debug:memory] operation is READ, time=%1d", $time);
-            temp1 = instruction_mem[addr];
-            temp2 = instruction_mem[addr+1];
-          `endif
           
-          outWord[7:0]  = instruction_mem[addr+1]; // don't need to validate reading, read lower word
-          outWord[15:8] = instruction_mem[addr];
-
-    end
+    assign outWord[7:0]  = instruction_mem[addr+1]; // don't need to validate reading, read lower word
+    assign outWord[15:8] = instruction_mem[addr];
 
 
 endmodule

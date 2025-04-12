@@ -46,7 +46,7 @@ module alu_control(
     logic [5:0] alu_control_inp;
     assign alu_control_inp = {alu_op, func};
     always_comb begin
-        casez (alu_control_inp)
+        case (alu_control_inp)
           //ALU CONTROL UNIT OUTPUT TO ALU
           // R-type instruction (add, sub, sll, and) with alu_op = 10:
           6'b100000: alu_control_var = 3'b010; // ADD
