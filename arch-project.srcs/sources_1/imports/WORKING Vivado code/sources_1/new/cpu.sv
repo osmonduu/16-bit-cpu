@@ -140,16 +140,13 @@ assign data_to_write = (mem_to_reg_flag) ? data_memory_output : alu_result;
 // Assign rd output to either:
 //      - the output of the memToReg MUX since that is the data that will be written to reg1 on the next posedge.
 //      OR
-//      - 0 if we are writing to r0 for some unexplicable reason (reg module will not write anything to r0).
+//      - the contents in reg1 if the instruction does not write back (SW, BEQ, BNE) or if we are somehow trying to write to r0.
 // 
-// (We need this logic because in the case of writing to r0, rd output would be the alu_result. Although reg will
-//  catch this and not write to r0, we are treating the rd output as the contents of rd even though we haven't technically
-//  written to rd at this point.)
-assign rd = (reg_write_flag && (fetched_instr[11:8] != 4'b0000)) ? data_to_write : 16'h0000;
-
-// If we are not writing back to registers (such as SW, BEQ, BNE) set rd output to show the data stored in the destination register
-// (need to show rd contents on the Basys board for every instruction except for jump)
-assign rd = (~reg_write_flag) ? reg1_contents : rd;
+// (We need this logic because
+//        - in the case of writing to r0, rd output would be the alu_result. Although reg will catch this and not write to r0, 
+//          we are treating the rd output as the contents of rd even though we haven't technically written to rd at this point.
+//        - for instructions that don't write back to reg1, we need to still display the contents of rd for Basys board portion of project.)
+assign rd = (reg_write_flag && (fetched_instr[11:8] != 4'b0000)) ? data_to_write : reg1_contents;
 
 // Assign current pc memory address to curent_pc output for debugging purposes
 assign current_pc = current_instr_address;
