@@ -2,30 +2,26 @@
 
 module register (
     input reg [15:0] incomingData,
-    input int index, accessType,
-    input logic clk,
+    input int index,
+    input reg clock, write_flag,
     output logic [15:0] outgoingData
 );
 
 // outgoing data on write will just be the data given
 reg [15:0] registers [17] = '{default: 'h0}; // 17 registers, r16 is pc
 
-always_comb begin
-    if (accessType == `WRITE) begin
+always@(negedge clock) begin // write block
+    if (write_flag == 1) begin
 
         outgoingData = incomingData;
         registers[index] = incomingData; // writes the new data to the indexed register
+    end 
+end
 
-    end  else if (accessType == `READ) 
-
+always@(index) begin // read block
+    if (write_flag == 0) begin
         outgoingData = registers[index];
-
-    else begin
-
-        outgoingData = 'h0000; // null on invalid access type 
-        $display("Invalid register access type");
-
-    end
+   end
 //    $writememh("regs.mem", registers, 0, 16);
 end
 

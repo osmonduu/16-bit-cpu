@@ -23,7 +23,35 @@ module full_tb;
     logic branch_select_flag = 0;
     logic alu_zero_flag = 0;
     logic jump_flag = 0;
-    
+
+     // added local variables to make control, alu_control, and alu work
+     // Control
+     logic [3:0] opcode;            // 4-bit opcode - will be assigned instruction[15:12]
+     logic control_reset = 0;       // should always be 0 unless testing
+     logic mem_to_reg_flag;         // mem_to_reg control output to pass to write memToReg MUX
+     logic [1:0] alu_op;            // alu_op control output to pass to alu control unit
+     reg mem_read_flag = 1;           // mem_read control output to pass to data memory
+     reg mem_write_flag = 0;          // mem_write control output to pass to data memory 
+     logic aluSrc_flag;             // aluSrc control output to pass to alu (chooses whether to use input1 or sign-extended immediate)
+     reg reg_write_flag = 1;          // reg_write control output to write memToReg MUX output to reg1
+     reg reg_read_flag = 0;
+
+     // ALU Control 
+     logic [3:0] func;              // 4-bit funct field - will be assigned instruction[3:0]
+     logic [2:0] alu_control_out;   // 3-bit alu control unit output to pass to alu (picks which alu operation to perform)
+
+     // ALU
+     logic [15:0] reg1_contents;    // contents of register 1 from reg to pass into alu "input1" input
+     logic [15:0] reg2_contents;    // contents of register 2 from reg to pass into alu "input2" input
+     logic [15:0] alu_result;       // alu output result to pass into memToRegMUX
+
+     // Data memory
+     logic [15:0] data_memory_output;   // Word loaded from memory address calculted by alu - alu_result (SHOULD ONLY HAVE OUTPUT ON LW INSTRUCTIONS)
+
+     // memToReg MUX
+     logic [15:0] memToReg_mux_output;  // 16-bit information - either alu_result or data_memory_output
+
+
 
     ProgramCounter pc
     (
@@ -40,7 +68,7 @@ module full_tb;
     register ra
     (
         .index(idx),
-        .accessType(reg_operation_type),
+        .write_flag(red_write_flag),
         .clk(clock),
         .incomingData(reg_write),
         .outgoingData(reg_result)
@@ -57,35 +85,10 @@ module full_tb;
        .inWord(mem_write),
        .outWord(mem_result),
        .addr(daddr),
+       .clock(clock),
        .read_flag(mem_read_flag),
        .write_flag(mem_write_flag)
      );
-
-     // added local variables to make control, alu_control, and alu work
-     // Control
-     logic [3:0] opcode;            // 4-bit opcode - will be assigned instruction[15:12]
-     logic control_reset = 0;       // should always be 0 unless testing
-     logic mem_read_flag;           // mem_read control output to pass to data memory
-     logic mem_to_reg_flag;         // mem_to_reg control output to pass to write memToReg MUX
-     logic [1:0] alu_op;            // alu_op control output to pass to alu control unit
-     logic mem_write_flag;          // mem_write control output to pass to data memory 
-     logic aluSrc_flag;             // aluSrc control output to pass to alu (chooses whether to use input1 or sign-extended immediate)
-     logic reg_write_flag;          // reg_write control output to write memToReg MUX output to reg1
-
-     // ALU Control 
-     logic [3:0] func;              // 4-bit funct field - will be assigned instruction[3:0]
-     logic [2:0] alu_control_out;   // 3-bit alu control unit output to pass to alu (picks which alu operation to perform)
-
-     // ALU
-     logic [15:0] reg1_contents;    // contents of register 1 from reg to pass into alu "input1" input
-     logic [15:0] reg2_contents;    // contents of register 2 from reg to pass into alu "input2" input
-     logic [15:0] alu_result;       // alu output result to pass into memToRegMUX
-
-     // Data memory
-     logic [15:0] data_memory_output;   // Word loaded from memory address calculted by alu - alu_result (SHOULD ONLY HAVE OUTPUT ON LW INSTRUCTIONS)
-
-     // memToReg MUX
-     logic [15:0] memToReg_mux_output;  // 16-bit information - either alu_result or data_memory_output
 
 
      // added instantiation of control, alu_control, and alu
@@ -141,8 +144,7 @@ module full_tb;
         */
 //        $stop(); // stop at the beginning of every cycle
 
-        // ------- IMPLICITLY READS MEMORY AND FETCHES THE INSTRUCTION (stored in mem_result) BASED ON WHATEVER THE CURRENT ADDRESS IS (should be set from previous iteration)
-        mem_operation_type = `READ;     // For readability purposes 
+        // ------- IMPLICITLY READS MEMORY AND FETCHES THE INSTRUCTION (stored in mem_result) BASED ON WHATEVER THE CURRENT ADDRESS IS (should be set from previous iteration) 
         instruction = mem_result;       // For readability purposes - fetch the instruction from memory read
 
         // CONTROL CODE UNIT
