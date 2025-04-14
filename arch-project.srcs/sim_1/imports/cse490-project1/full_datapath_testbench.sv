@@ -188,7 +188,7 @@ module full_tb;
         #1 clock = 0;
 
         // ------- READ THE ADDR ADDRESS (0x0000 in beginning) AND PASS THE FETCHED INSTRUCTION TO PC [DUPLICATE JUST FOR FIRST ITERATION]
-        instruction = dmem_result;
+//        instruction = dmem_result;
 
         // ------- WAIT FOR PC TO COMPUTE THE NEXT ADDRESS - PC IS THE ONLY CLOCKED MODULE
         #1 clock = 1;
