@@ -7,18 +7,18 @@ module full_tb;
     reg [15:0] mem_write = 'h0000; // the thing to write to memory
 
     logic [15:0] reg_result = 'h0; // result of the tested operation
-    logic [15:0] mem_result = 'h0;
+    logic [15:0] dmem_result = 'h0;
 
     int idx = 3; // index value of the registers
-    logic clock = 0; // clock
+    logic clock = 1; // clock
     int reg_operation_type = `WRITE; // type of operation for registers
     int daddr = 'h40;
     int iaddr = 'h0;
     
     int current_address = 0;
     int next_address = 0;
-    logic [15:0] fetched_instruction = 'h0;
-    logic [15:0] instruction = 'h0;
+    logic [15:0] instruction = 'h0; // directly driven by imem
+//    logic [15:0] fetched_instruction = 'h0;
     logic branch_flag = 0;
     logic branch_select_flag = 0;
     logic alu_zero_flag = 0;
@@ -77,13 +77,13 @@ module full_tb;
     instruction_memory imem 
     (
         .addr(iaddr),
-        .outWord(fetched_instruction)
+        .outWord(instruction)
     );
 
      data_memory dmem
      (
        .inWord(mem_write),
-       .outWord(mem_result),
+       .outWord(dmem_result),
        .addr(daddr),
        .clock(clock),
        .read_flag(mem_read_flag),
@@ -127,7 +127,7 @@ module full_tb;
 
 
     initial begin
-
+        #1 $stop();
         $dumpfile("tb.vcd");
         $dumpvars(); // dumpvars  
 //        $monitor("reg_write = %4h, mem_write = %4h, reg idx = %2d, current_address = %2d, next_address = %2d, addr = %2d, time = %2d", reg_write, mem_write, idx, current_address, next_address, addr, $time);
@@ -136,6 +136,7 @@ module full_tb;
 
     // pc testbench, integrated with register and memory
     always begin
+        // #1 clock = 1; // posedge
         /*
          steps: grab address (current_address) 0 from memory and read it, giving it to pc
          this will be the first instruction read 
@@ -146,10 +147,9 @@ module full_tb;
         `ifdef dbg
         $display("[debug:tb] BOOP! NEW CYCLE AT %t!", $time);
         `endif
-
+        #1 
         // ------- IMPLICITLY READS MEMORY AND FETCHES THE INSTRUCTION (stored in mem_result) BASED ON WHATEVER THE CURRENT ADDRESS IS (should be set from previous iteration) 
-        instruction = mem_result;       // For readability purposes - fetch the instruction from memory read
-        #1
+//        #1
         // CONTROL CODE UNIT
         opcode = instruction[15:12];    // Set opcode to first 4 bits of fetched instruction - triggers the control module to produce new outputs.
                                         // jump_flag, branch_flag, branch_select_flag, mem_read_flag, mem_to_reg_flag, alu_op, mem_write_flag, aluSrc, reg_write_flag
@@ -163,8 +163,8 @@ module full_tb;
         // ALU
         reg_operation_type = `READ;     // set reg operation to READ from register and store contents in reg_result
         idx = instruction[11:8];        // Read register 1 (rt/rd)
-        #1 
         reg1_contents = reg_result;     // Store the read data from register 1 to reg1_contents. Updates "input1" input in alu module.
+        #1 // index is changing, ra module should trigger
         idx = instruction[7:4];         // Read register 2 (rs)
         reg2_contents = reg_result;     // Store the read data from register 2 to reg2_contents. Updates "input2" input in alu module.
                                         // At this point, alu will produce a meaningful output since all the inputs are updated.
@@ -181,31 +181,31 @@ module full_tb;
         // MEMTOREG MUX
         memToReg_mux_output = (mem_to_reg_flag) ? data_memory_output : alu_result;  // choose between alu result or data memory outputs
 
+        // ------- SELECT PC REG AND WRITE CURRENT ADDRESS (calculated from last iteration) TO PC REG (1st iteration 0X0000)
+        #1 
+        idx = `PCR; // PC register index
+        reg_operation_type = `WRITE;
+        #1 clock = 0;
+
+        // ------- READ THE ADDR ADDRESS (0x0000 in beginning) AND PASS THE FETCHED INSTRUCTION TO PC [DUPLICATE JUST FOR FIRST ITERATION]
+        instruction = dmem_result;
+
+        // ------- WAIT FOR PC TO COMPUTE THE NEXT ADDRESS - PC IS THE ONLY CLOCKED MODULE
+        #1 clock = 1;
+
 
         // WRITE BACK (to register 1)
         if (reg_write_flag) begin
             reg_operation_type = `WRITE;        // Set reg operation to WRITE to register.
             reg_write = memToReg_mux_output;    // Set data to write to the memToReg MUX output. Should either be alu_result or data_memory_output.
+            // index change, reg should read
             idx = instruction[11:8];            // Write to register 1
         end 
-        else begin
+        
             // do nothing since we do not need to write back to register
-        end
 
-
-
-
-        // ------- SELECT PC REG AND WRITE CURRENT ADDRESS (calculated from last iteration) TO PC REG (1st iteration 0X0000)
-        #1 
-        idx = `PCR; // PC register index
-        reg_operation_type = `WRITE;
-
-        // ------- READ THE ADDR ADDRESS (0x0000 in beginning) AND PASS THE FETCHED INSTRUCTION TO PC [DUPLICATE JUST FOR FIRST ITERATION]
-        instruction = mem_result;
-
-        // ------- WAIT FOR PC TO COMPUTE THE NEXT ADDRESS - PC IS THE ONLY CLOCKED MODULE
-        #1 clock = 1;
         #1 clock = 0;
+
 
         // ------- WRITE THE NEXT ADDRESS TO PC REG
         #1 reg_write = next_address; // update program counter 
@@ -217,6 +217,7 @@ module full_tb;
         #1
         reg_operation_type = `READ;
 
+
         // ------- PASS THE NEXT ADDRESS TO THE PC TO SET UP NEXT ITERATION - DOESN'T EXECUTE THIS ITERATION (NEXT ITERATION WILL BEGIN WITH WRITING TO PC REG)
         #1
         current_address = reg_result; // update program counter's address
@@ -224,10 +225,9 @@ module full_tb;
 
         // ------- GIVE THE NEXT_ADDRESS TO THE MEMORY UNIT TO FETCH THE INSTRUCTION OF THE NEXT ADDRESS
         iaddr = current_address; // get next word
-        #1
-
+       
         // ------- GET THE RESULT FROM THE MEMORY UNIT AND FEED THE FETCHED INSTRUCTION TO PC (fullInstr input) TO SET UP NEXT ITERATION
-        instruction = mem_result;
+   
     end
 
 

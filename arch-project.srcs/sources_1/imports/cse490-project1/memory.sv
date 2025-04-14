@@ -17,7 +17,7 @@ module data_memory(
         $display("[debug:dmem] BEEP!");
     `endif
 //        $readmemh("memory.mem", memoryArray, 0, 127); // initialize memory into array
-        if ((read_flag == 1) && (write_flag == 0))
+    if ((read_flag == 1) && (write_flag == 0))
         begin
     
           outWord[7:0]  = data_mem[addr+1]; // don't need to validate reading, read lower word
@@ -49,7 +49,7 @@ module instruction_memory(
     output reg [15:0] outWord // read word
 );
 
-    reg [7:0] instruction_mem [0:63] =  '{ 'h01, 'h20, 'h30, 'h35, 'h60, 'h05, 'h31, 'h40, 'h00, 'h21, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00 };
+    reg [7:0] instruction_mem [0:63] =  '{ 'h00, 'h00, 'h01, 'h20, 'h30, 'h35, 'h60, 'h05, 'h31, 'h40, 'h00, 'h21, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00, 'h00 };
 
     `ifdef dbg
     reg [7:0] temp1 ='h0;
