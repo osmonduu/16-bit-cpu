@@ -8,7 +8,8 @@ module register (
 );
 
 // outgoing data on write will just be the data given
-reg [15:0] registers [17] = '{default: 'h0}; // 17 registers, r16 is pc
+wire [15:0] registers [17] = '{default: 'h0}; // 17 registers, r16 is pc
+
 
 always@(negedge clock) begin // write block
     `ifdef dbg

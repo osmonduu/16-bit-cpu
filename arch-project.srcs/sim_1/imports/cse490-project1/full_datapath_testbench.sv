@@ -125,12 +125,49 @@ module full_tb;
         .zero_flag(alu_zero_flag)          // output
     );
 
+ProgramCounter pc
+    (
+        .clock(clock),
+        .pc_current(current_address),
+        .flag_branch(branch_flag),
+        .flag_branch_select(branch_select_flag),
+        .aluZero(alu_zero_flag),
+        .flag_jump(jump_flag),
+        .pc_next(next_address),
+        .fullInstr(instruction)
+    );
+
+    register ra
+    (
+        .index(idx),
+        .accessType(reg_operation_type),
+        .clk(clock),
+        .incomingData(reg_write),
+        .outgoingData(reg_result)
+    );
+
+    instruction_memory imem 
+    (
+        .addr(iaddr),
+        .outWord(instruction)
+    );
+
+     data_memory dmem
+     (
+       .inWord(mem_write),
+       .outWord(mem_result),
+       .addr(daddr),
+       .read_flag(mem_read_flag),
+       .write_flag(mem_write_flag)
+     );
+
 
     initial begin
         #1 $stop();
         $dumpfile("tb.vcd");
         $dumpvars(); // dumpvars  
 //        $monitor("reg_write = %4h, mem_write = %4h, reg idx = %2d, current_address = %2d, next_address = %2d, addr = %2d, time = %2d", reg_write, mem_write, idx, current_address, next_address, addr, $time);
+        $stop();
         #120 $finish();
     end   
 
