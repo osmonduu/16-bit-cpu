@@ -46,10 +46,10 @@ module full_tb;
      logic [15:0] alu_result;       // alu output result to pass into memToRegMUX
 
      // Data memory
-     logic [15:0] data_memory_output;   // Word loaded from memory address calculted by alu - alu_result (SHOULD ONLY HAVE OUTPUT ON LW INSTRUCTIONS)
+     logic [15:0] data_memory_output = 'h0;   // Word loaded from memory address calculted by alu - alu_result (SHOULD ONLY HAVE OUTPUT ON LW INSTRUCTIONS)
 
      // memToReg MUX
-     logic [15:0] memToReg_mux_output;  // 16-bit information - either alu_result or data_memory_output
+     logic [15:0] memToReg_mux_output = 'h0;  // 16-bit information - either alu_result or data_memory_output
 
 
 
@@ -68,8 +68,8 @@ module full_tb;
     register ra
     (
         .index(idx),
-        .write_flag(red_write_flag),
-        .clk(clock),
+        .write_flag(reg_write_flag),
+        .clock(clock),
         .incomingData(reg_write),
         .outgoingData(reg_result)
     );
@@ -143,23 +143,27 @@ module full_tb;
          and store it in the register file
         */
 //        $stop(); // stop at the beginning of every cycle
+        `ifdef dbg
+        $display("[debug:tb] BOOP! NEW CYCLE AT %t!", $time);
+        `endif
 
         // ------- IMPLICITLY READS MEMORY AND FETCHES THE INSTRUCTION (stored in mem_result) BASED ON WHATEVER THE CURRENT ADDRESS IS (should be set from previous iteration) 
         instruction = mem_result;       // For readability purposes - fetch the instruction from memory read
-
+        #1
         // CONTROL CODE UNIT
         opcode = instruction[15:12];    // Set opcode to first 4 bits of fetched instruction - triggers the control module to produce new outputs.
                                         // jump_flag, branch_flag, branch_select_flag, mem_read_flag, mem_to_reg_flag, alu_op, mem_write_flag, aluSrc, reg_write_flag
                                         // updates and wait for other inputs in their respective modules to produce a meaningful output.
-
+        #1
         // ALU CONTROL UNIT
         func = instruction[3:0];        // Set func to last 4 bits of fetched instruction (alu _control module produces meaningful output).
                                         // alu_control_out will output from alu_control. Wait for reg1_contents and reg2_contents to be updated 
                                         // in order for alu module to produce a meaningful output.
-
+        #1
         // ALU
         reg_operation_type = `READ;     // set reg operation to READ from register and store contents in reg_result
         idx = instruction[11:8];        // Read register 1 (rt/rd)
+        #1 
         reg1_contents = reg_result;     // Store the read data from register 1 to reg1_contents. Updates "input1" input in alu module.
         idx = instruction[7:4];         // Read register 2 (rs)
         reg2_contents = reg_result;     // Store the read data from register 2 to reg2_contents. Updates "input2" input in alu module.
@@ -191,7 +195,8 @@ module full_tb;
 
 
 
-        // ------- SELECT PC REG AND WRITE CURRENT ADDRESS (calculated from last iteration) TO PC REG (1st iteration 0X0000) 
+        // ------- SELECT PC REG AND WRITE CURRENT ADDRESS (calculated from last iteration) TO PC REG (1st iteration 0X0000)
+        #1 
         idx = `PCR; // PC register index
         reg_operation_type = `WRITE;
 
@@ -203,21 +208,23 @@ module full_tb;
         #1 clock = 0;
 
         // ------- WRITE THE NEXT ADDRESS TO PC REG
-        reg_write = next_address; // update program counter 
+        #1 reg_write = next_address; // update program counter 
 
 
         // ------- READ THE NEXT ADDRESS FROM PC REG
         // commmits the write to the pcr
         // now read it
+        #1
         reg_operation_type = `READ;
 
         // ------- PASS THE NEXT ADDRESS TO THE PC TO SET UP NEXT ITERATION - DOESN'T EXECUTE THIS ITERATION (NEXT ITERATION WILL BEGIN WITH WRITING TO PC REG)
+        #1
         current_address = reg_result; // update program counter's address
 
 
         // ------- GIVE THE NEXT_ADDRESS TO THE MEMORY UNIT TO FETCH THE INSTRUCTION OF THE NEXT ADDRESS
         iaddr = current_address; // get next word
-
+        #1
 
         // ------- GET THE RESULT FROM THE MEMORY UNIT AND FEED THE FETCHED INSTRUCTION TO PC (fullInstr input) TO SET UP NEXT ITERATION
         instruction = mem_result;

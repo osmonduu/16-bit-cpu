@@ -11,6 +11,9 @@ module register (
 reg [15:0] registers [17] = '{default: 'h0}; // 17 registers, r16 is pc
 
 always@(negedge clock) begin // write block
+    `ifdef dbg
+     $display("[debug:reg_write] BEEP!");
+    `endif
     if (write_flag == 1) begin
 
         outgoingData = incomingData;
@@ -18,7 +21,10 @@ always@(negedge clock) begin // write block
     end 
 end
 
-always@(index) begin // read block
+always_comb begin // read block
+    `ifdef dbg
+     $display("[debug:reg_read] BEEP!");
+    `endif
     if (write_flag == 0) begin
         outgoingData = registers[index];
    end

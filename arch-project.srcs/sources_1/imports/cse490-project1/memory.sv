@@ -12,14 +12,18 @@ module data_memory(
 
     reg [7:0] data_mem [64:127] = '{ default: 'h0 };
     
-    always_comb@(addr) begin // read block
+    always_comb begin // read block
+    `ifdef dbg
+        $display("[debug:dmem] BEEP!");
+    `endif
 //        $readmemh("memory.mem", memoryArray, 0, 127); // initialize memory into array
-        if (read_flag == 1 && write_flag == 0) begin
+        if ((read_flag == 1) && (write_flag == 0))
+        begin
     
           outWord[7:0]  = data_mem[addr+1]; // don't need to validate reading, read lower word
           outWord[15:8] = data_mem[addr];
           `ifdef dbg
-            $display("[debug:memory] outWord = %4h", outWord);
+            $display("[debug:dmem] outWord = %4h, address = %2h", outWord, addr);
           `endif
         end    
    end
@@ -52,12 +56,12 @@ module instruction_memory(
     reg [7:0] temp2 ='h0;
     `endif
 
-    always_comb@(addr) begin // read block, only execute on change in addr
+    always_comb begin // read block, only execute on change in addr
 //        $readmemh("memory.mem", memoryArray, 0, 127); // initialize memory into array
 //        $stop();
         
           `ifdef dbg
-            $display("[debug:memory] operation is READ, time=%1d", $time);
+            $display("[debug:imem] accessing address: $2h, time=%1d", addr, $time);
             temp1 = instruction_mem[addr];
             temp2 = instruction_mem[addr+1];
           `endif
