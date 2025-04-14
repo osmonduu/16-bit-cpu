@@ -6,10 +6,10 @@ module full_tb;
   reg [15:0] reg_write = 'h0000; // write to register
   reg [15:0] mem_write = 'h0000; // the thing to write to memory
 
-  wire [15:0] reg_result; // result of the tested operation
+  logic [15:0] reg_result; // result of the tested operation
   logic [15:0] mem_result = 'h0;
 
-  int idx = 3; // index value of the registers
+  logic [3:0] idx; // index value of the registers
   logic clock = 0; // clock
   int reg_operation_type = `WRITE; // type of operation for registers
   int daddr = 'h40;
@@ -17,7 +17,7 @@ module full_tb;
 
   int current_address = 0;
   int next_address = 0;
-  wire [15:0] instruction;
+  logic [15:0] instruction;
   logic branch_flag = 0;
   logic branch_select_flag = 0;
   logic alu_zero_flag = 0;
@@ -35,7 +35,7 @@ module full_tb;
 
   // ALU Control
   logic [3:0] func = 'h0;              // 4-bit funct field - will be assigned instruction[3:0]
-  logic [2:0] alu_control_out = 'h0;   // 3-bit alu control unit output to pass to alu (picks which alu operation to perform)
+  logic [2:0] alu_control_out = 'b000;   // 3-bit alu control unit output to pass to alu (picks which alu operation to perform)
 
   // ALU
   logic [15:0] reg1_contents = 'h0;    // contents of register 1 from reg to pass into alu "input1" input
@@ -58,7 +58,7 @@ module full_tb;
             .branch(branch_flag),               // output
             .branch_select(branch_select_flag), // output
             .mem_read(mem_read_flag),           // output
-            .mem_to_reg(mem_to_),               // output
+            .mem_to_reg(mem_to_reg_flag),       // output
             .alu_op(alu_op),                    // output
             .mem_write(mem_write_flag),         // output
             .aluSrc(aluSrc_flag),               // output
@@ -94,14 +94,16 @@ module full_tb;
                    .pc_next(next_address),
                    .fullInstr(instruction)
                  );
+// added var
+logic [15:0] data_to_write;     // should either be data memory output or alu result
 
   register ra
            (
-             .index(idx),
-             .accessType(reg_operation_type),
-             .clk(clock),
-             .incomingData(reg_write),
-             .outgoingData(reg_result)
+            .clk(clock),                    // clock used for negedge write backs
+            .incomingData(data_to_write),
+            .reg_write(reg_write_flag),     
+            .reg1_contents(reg1_contents),
+            .reg2_contents(reg2_contents)
            );
 
   instruction_memory imem
@@ -158,8 +160,10 @@ module full_tb;
     // ALU
     reg_operation_type = `READ;     // set reg operation to READ from register and store contents in reg_result
     idx = instruction[11:8];        // Read register 1 (rt/rd)
+//    #1
     reg1_contents = reg_result;     // Store the read data from register 1 to reg1_contents. Updates "input1" input in alu module.
     idx = instruction[7:4];         // Read register 2 (rs)
+//    #1
     reg2_contents = reg_result;     // Store the read data from register 2 to reg2_contents. Updates "input2" input in alu module.
     // At this point, alu will produce a meaningful output since all the inputs are updated.
 

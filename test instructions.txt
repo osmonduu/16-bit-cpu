@@ -1,0 +1,77 @@
+**Basic tests**
+# assuming r0 = 0, r1 = 1, ... , r15 = 15
+#1. 0000 -> NOP
+add r0, r0
+
+#2. 0120 -> output r1 = 1+2 = 3
+add r1, r2
+
+#3. 3235 -> output r2 = 3+5 = 8
+addi r2, r3, 5
+				
+#4. 6002 -> jump over addi and add 
+jmp 2
+
+#5. 3140 -> shouldn't execute
+addi r1, r4
+
+#6. 0020 -> shouldn't execute + should never write to r0
+add r0, r2 
+
+#7. 0100 -> output r1 = 3 (if jump was successful)
+add r1, r0				
+
+
+
+
+
+**Complicated tests**
+# assuming r0 = 0, r1 = 1, ... , r15 = 15
+#1. 0x0000 -> NOP (r0 = r0 + r0)
+add r0, r0
+
+#2. 0x0120 -> output r1 = 1+2 = 3
+add r1, r2
+
+#3. 0x3435 -> output r4 = 3+5 = 8
+addi r4, r3, 5
+
+#4. 0x6001 -> jump over addi instruction (jump to next instruction + 1 instruction = instr # 6)
+jmp 1
+
+#5. 0x0120 -> SHOULD JUMP OVER (if jump fails, r1 = 5). 
+add r1, r2
+
+#6. 0x0100 -> output r1 = 3+0 = 3 (r1 should stay 3 if the jump succeeds)
+add r1, r0
+
+#7. 0x0561 -> output r5 = 5-6 = -1 (0xffff)
+sub r5, r6
+
+#8. 0x0122 -> output r1 = 3<<2 = 12 (0x000c)
+sll r1, r2
+
+#9. 0x3647 -> output r6 = 8+7 = 15 (0x000f)
+addi r6, r4, 7
+
+#10. 0x0563 -> output r5 = 0xffff & 0x000f = 0x000f
+and r5, r6
+
+#11. 0x3DD1 -> FIRST PASS: r13 = 13+1 = 14 (0x000e). SECOND PASS: r13 = 14+15 = 15 (0x000f)
+addi r13, r13, 1
+
+#12. 0x48C3 -> FIRST PASS: r8 = 8 (branch not taken). SECOND PASS: output r8 = 12 (0x000c) | r8(12) == r12(12) | BRANCH TAKEN! | imm: 0x3 = 3 -> (pc+2 + 3) = (instr 13 + 3) = instr 16
+beq r8, r12, 3
+
+#13. 0x2102 -> output r8 = 12 (0x000c). Store word starting at data memory address 0x0002. [0x0002 = 0x00, 0x0003 = 0x0c]
+sw r1, r0, 2
+
+#14. 0x1802 -> output r8 = 12 (0x000c). Loads the word stored in data memory address 0x0002 (should be 0x000c because big endian)
+lw r8, r0, 2
+
+#15. 0x584B -> output rd| r8(12) != r4(8) | BRANCH TAKEN! | imm: 0xB = -5 -> (pc+2 - 5 instr) = (instr 16 - 5) = instr 11
+bne r8, r4, -5
+
+#16. 0d00 -> output r13 = 15 (0x000f) (if both branches were taken)
+add r13, r0
+

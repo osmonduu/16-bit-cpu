@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+
 
 // IMPORTANT: read section 5.4.3 – Detailed Instruction Information
 // ALU
@@ -16,17 +16,20 @@ module alu (
   logic signed [15:0] adderFirstOperand;
   logic signed [15:0] signExtImm;
 
-  // Sign extend 4-bit immediate
-  assign signExtImm = {{12{fullInstr[3]}}, fullInstr[3:0]};
 
-  // If flag_aluSrc is 1, use sign extended immediate in adder. If 0, use input1 in adder. 
-  // Input 2 will be the second operand in both cases.
-  // input1 is used in the adder with ADD instructions 
-  // signExtImm is used in the adder with ADDI, LW, SW instructions
-  assign adderFirstOperand = (flag_aluSrc) ? signExtImm : input1;
+
+
   
   // Update result as soon as the inputs change
   always_comb begin
+      // Sign extend 4-bit immediate
+      signExtImm = {{12{fullInstr[3]}}, fullInstr[3:0]};
+  
+      // If flag_aluSrc is 1, use sign extended immediate in adder. If 0, use input1 in adder. 
+      // Input 2 will be the second operand in both cases.
+      // input1 is used in the adder with ADD instructions 
+      // signExtImm is used in the adder with ADDI, LW, SW instructions
+      adderFirstOperand = (flag_aluSrc) ? signExtImm : input1;
     case (alu_control_out)
       3'b010: result = adderFirstOperand + input2;				// ADD
       3'b110: result = $signed(input1) - $signed(input2); 		// SUB
@@ -34,10 +37,12 @@ module alu (
       3'b000: result = input1 & input2; 						// AND
       default: result = 16'h0000;
     endcase
+    // Zero flag logic
+    zero_flag = (result == 16'h0000);
   end
   
-  // Zero flag logic
-  assign zero_flag = (result == 16'h0000);
+  
+//  assign zero_flag = (result == 16'h0000);
       
 endmodule
 

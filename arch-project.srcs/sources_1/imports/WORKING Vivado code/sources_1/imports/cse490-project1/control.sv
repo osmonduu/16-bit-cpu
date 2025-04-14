@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+
 
 module control (
   input  logic [3:0] opcode,

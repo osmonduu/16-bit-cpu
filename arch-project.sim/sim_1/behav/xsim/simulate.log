@@ -1,111 +1,37 @@
 Time resolution is 1 ps
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" Line 22
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/reg.sv" Line 13
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/memory.sv" Line 13
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/alu_control.sv" Line 47
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/alu.sv" Line 20
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/alu.sv" Line 26
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/alu.sv" Line 40
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/memory.sv" Line 52
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/memory.sv" Line 53
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 56
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 57
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 58
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 59
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 20
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/alu.sv" Line 20
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/alu.sv" Line 26
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 46
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 47
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 48
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 49
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 51
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 52
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 53
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 54
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sim_1/imports/cse490-project1/full_datapath_testbench.sv" Line 126
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sim_1/imports/cse490-project1/full_datapath_testbench.sv" Line 127
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sim_1/imports/cse490-project1/full_datapath_testbench.sv" Line 129
-$stop called at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sim_1/imports/cse490-project1/full_datapath_testbench.sv" Line 129
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sim_1/imports/cse490-project1/full_datapath_testbench.sv" Line 130
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sim_1/imports/cse490-project1/full_datapath_testbench.sv" Line 147
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sim_1/imports/cse490-project1/full_datapath_testbench.sv" Line 152
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sim_1/imports/cse490-project1/full_datapath_testbench.sv" Line 157
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sim_1/imports/cse490-project1/full_datapath_testbench.sv" Line 158
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sim_1/imports/cse490-project1/full_datapath_testbench.sv" Line 159
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sim_1/imports/cse490-project1/full_datapath_testbench.sv" Line 160
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sim_1/imports/cse490-project1/full_datapath_testbench.sv" Line 161
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sim_1/imports/cse490-project1/full_datapath_testbench.sv" Line 174
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sim_1/imports/cse490-project1/full_datapath_testbench.sv" Line 178
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sim_1/imports/cse490-project1/full_datapath_testbench.sv" Line 191
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sim_1/imports/cse490-project1/full_datapath_testbench.sv" Line 192
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sim_1/imports/cse490-project1/full_datapath_testbench.sv" Line 197
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 62
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 63
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 64
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 70
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 71
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 76
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 77
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/control.sv" Line 19
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/control.sv" Line 33
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/control.sv" Line 34
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/control.sv" Line 35
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/control.sv" Line 36
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/control.sv" Line 37
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/control.sv" Line 38
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/control.sv" Line 39
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/control.sv" Line 40
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/control.sv" Line 41
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/control.sv" Line 43
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/control.sv" Line 46
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/control.sv" Line 47
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/control.sv" Line 48
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/control.sv" Line 18
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/alu_control.sv" Line 49
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/alu_control.sv" Line 64
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/alu_control.sv" Line 48
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/alu.sv" Line 30
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/alu.sv" Line 34
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/alu.sv" Line 29
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/reg.sv" Line 14
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/reg.sv" Line 16
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/reg.sv" Line 17
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/reg.sv" Line 13
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/memory.sv" Line 17
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/memory.sv" Line 26
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/memory.sv" Line 37
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/memory.sv" Line 13
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 56
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 58
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 57
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 59
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/alu_control.sv" Line 47
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/alu_control.sv" Line 49
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/alu_control.sv" Line 52
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/alu_control.sv" Line 48
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/alu.sv" Line 30
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/alu.sv" Line 31
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/alu.sv" Line 29
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 72
-Stopped at time : 0 fs : File "/home/nfox/Documents/School/cse490-vivado/arch-project.sim/sim_1/behav/xsim/glbl.v" Line 57
-Stopped at time : 1 ns : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sim_1/imports/cse490-project1/full_datapath_testbench.sv" Line 197
-Stopped at time : 1 ns : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sim_1/imports/cse490-project1/full_datapath_testbench.sv" Line 198
-Stopped at time : 1 ns : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" Line 24
-Stopped at time : 1 ns : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" Line 27
-Stopped at time : 1 ns : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" Line 28
-Stopped at time : 1 ns : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" Line 31
-Stopped at time : 1 ns : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" Line 32
-Stopped at time : 1 ns : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" Line 33
-Stopped at time : 1 ns : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" Line 34
-Stopped at time : 1 ns : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" Line 38
-Stopped at time : 1 ns : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" Line 42
-Stopped at time : 1 ns : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" Line 46
-[PC MODULE @ 1000] pc_current=00000000, nextAddr=00000002, fullInstr=0120, signExtImm=00000000, branchAddr=00000002, pcSrc = 00000002, jumpAddr=00000240, flag_jump=0, pc_next=00000002
-Stopped at time : 1 ns : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv" Line 22
-Stopped at time : 2 ns : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sim_1/imports/cse490-project1/full_datapath_testbench.sv" Line 198
-Stopped at time : 2 ns : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sim_1/imports/cse490-project1/full_datapath_testbench.sv" Line 201
-Stopped at time : 2 ns : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sim_1/imports/cse490-project1/full_datapath_testbench.sv" Line 207
-Stopped at time : 2 ns : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sim_1/imports/cse490-project1/full_datapath_testbench.sv" Line 210
-Stopped at time : 2 ns : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sim_1/imports/cse490-project1/full_datapath_testbench.sv" Line 214
-Stopped at time : 2 ns : File "/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sim_1/imports/cse490-project1/full_datapath_testbench.sv" Line 147
+Time		PC		Instr		rd
+0ns		0000		0000		0000
+1ns		0002		0120		0003
+3ns		0004		3435		0008
+5ns		0006		6001		0000
+7ns		000a		0100		0003
+9ns		000c		0561		ffff
+11ns		000e		0122		000c
+13ns		0010		3647		000f
+15ns		0012		0563		000f
+17ns		0014		3dd1		000e
+19ns		0016		48c3		0008
+21ns		0018		2102		000c
+[debug:memory] outWord = 000c
+23ns		001a		1802		000c
+25ns		001c		584b		000c
+27ns		0014		3dd1		000f
+29ns		0016		48c3		000c
+31ns		001e		0d00		000f
+33ns		0020		0000		0000
+35ns		0022		0000		0000
+37ns		0024		0000		0000
+39ns		0026		0000		0000
+41ns		0028		0000		0000
+43ns		002a		0000		0000
+45ns		002c		0000		0000
+47ns		002e		0000		0000
+49ns		0030		0000		0000
+51ns		0032		0000		0000
+53ns		0034		0000		0000
+55ns		0036		0000		0000
+57ns		0038		0000		0000
+59ns		003a		0000		0000
+61ns		003c		0000		0000
+63ns		003e		0000		0000
+$finish called at time : 64 ns : File "C:/Users/osmon/temp/cse490-vivado/arch-project.srcs/sources_1/imports/WORKING Vivado code/sim_1/new/cpu_tb.sv" Line 37
