@@ -5,14 +5,16 @@ module cpu_tb;
     // inputs
     logic clock;
     // outputs
-    logic [15:0] rd_tb;
+    logic [15:0] rd_before_tb;
+    logic [15:0] rd_after_tb;
     logic [15:0] current_pc_tb;
     logic [15:0] current_instr_tb;
     
     // instantiate cpu module
     cpu test (
         .clock(clock),
-        .rd(rd_tb),
+        .rd_before(rd_before_tb),
+        .rd_after(rd_after_tb),
         .current_pc(current_pc_tb),
         .current_instr(current_instr_tb)
     );
@@ -29,8 +31,8 @@ module cpu_tb;
     
     // monitor the outputs
     initial begin
-        $display("Time\t\tPC\t\tInstr\t\trd");
-        $monitor("%0dns\t\t%h\t\t%h\t\t%h", $time, current_pc_tb, current_instr_tb, rd_tb);
+        $display("Time\t\tPC\t\tInstr\t\trd_before\t\trd_after");
+        $monitor("%0dns\t\t%h\t\t%h\t\t%h\t\t%h", $time, current_pc_tb, current_instr_tb, rd_before_tb, rd_after_tb);
     end
     
     // Adjust time to finish simulation. Finish after 64 time units (32 cycles)
