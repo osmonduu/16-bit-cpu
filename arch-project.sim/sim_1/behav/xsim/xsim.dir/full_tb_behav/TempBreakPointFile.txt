@@ -1,3 +1,0 @@
-Breakpoint File Version 1.0
-22,true,"/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/pc.sv"
-13,true,"/home/nfox/Documents/School/cse490-vivado/arch-project.srcs/sources_1/imports/cse490-project1/reg.sv"

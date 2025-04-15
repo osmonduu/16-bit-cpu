@@ -2,12 +2,12 @@
 `timescale 1ns/1ns
 // testbench to run everything, make sure that things make sense
 module full_tb;
-  // local variables to make program counter, memory, and register work
-  reg [15:0] reg_write = 'h0000; // write to register
-  reg [15:0] mem_write = 'h0000; // the thing to write to memory
+    // local variables to make program counter, memory, and register work
+    reg [15:0] reg_write = 'h0000; // write to register
+    reg [15:0] mem_write = 'h0000; // the thing to write to memory
 
-  logic [15:0] reg_result; // result of the tested operation
-  logic [15:0] mem_result = 'h0;
+    logic [15:0] reg_result = 'h0; // result of the tested operation
+    logic [15:0] dmem_result = 'h0;
 
   logic [3:0] idx; // index value of the registers
   logic clock = 0; // clock
@@ -37,16 +37,55 @@ module full_tb;
   logic [3:0] func = 'h0;              // 4-bit funct field - will be assigned instruction[3:0]
   logic [2:0] alu_control_out = 'b000;   // 3-bit alu control unit output to pass to alu (picks which alu operation to perform)
 
-  // ALU
-  logic [15:0] reg1_contents = 'h0;    // contents of register 1 from reg to pass into alu "input1" input
-  logic [15:0] reg2_contents = 'h0;    // contents of register 2 from reg to pass into alu "input2" input
-  logic [15:0] alu_result = 'h0;       // alu output result to pass into memToRegMUX
+     // ALU
+     logic [15:0] reg1_contents;    // contents of register 1 from reg to pass into alu "input1" input
+     logic [15:0] reg2_contents;    // contents of register 2 from reg to pass into alu "input2" input
+     logic [15:0] alu_result;       // alu output result to pass into memToRegMUX
 
-  // Data memory
-  logic [15:0] data_memory_output = 'h0;   // Word loaded from memory address calculted by alu - alu_result (SHOULD ONLY HAVE OUTPUT ON LW INSTRUCTIONS)
+     // Data memory
+     logic [15:0] data_memory_output = 'h0;   // Word loaded from memory address calculted by alu - alu_result (SHOULD ONLY HAVE OUTPUT ON LW INSTRUCTIONS)
 
-  // memToReg MUX
-  logic [15:0] memToReg_mux_output = 'h0;  // 16-bit information - either alu_result or data_memory_output
+     // memToReg MUX
+     logic [15:0] memToReg_mux_output = 'h0;  // 16-bit information - either alu_result or data_memory_output
+
+
+
+    ProgramCounter pc
+    (
+        .clock(clock),
+        .pc_current(current_address),
+        .flag_branch(branch_flag),
+        .flag_branch_select(branch_select_flag),
+        .aluZero(alu_zero_flag),
+        .flag_jump(jump_flag),
+        .pc_next(next_address),
+        .fullInstr(instruction)
+    );
+
+    register ra
+    (
+        .index(idx),
+        .write_flag(reg_write_flag),
+        .clock(clock),
+        .incomingData(reg_write),
+        .outgoingData(reg_result)
+    );
+
+    instruction_memory imem 
+    (
+        .addr(iaddr),
+        .outWord(instruction)
+    );
+
+     data_memory dmem
+     (
+       .inWord(mem_write),
+       .outWord(dmem_result),
+       .addr(daddr),
+       .clock(clock),
+       .read_flag(mem_read_flag),
+       .write_flag(mem_write_flag)
+     );
 
 
   // added instantiation of control, alu_control, and alu
@@ -65,15 +104,15 @@ module full_tb;
             .reg_write(reg_write_flag)          // output
           );
 
-  alu_control alu_con
-              (
-                .alu_op(alu_op),                    // input
-                .func(func),                        // input
-                .alu_control_var(alu_control_out)   // output
-              );
+    alu_control alu_con
+    (
+        .alu_op(alu_op),                    // input
+        .func(func),                        // input
+        .alu_control_var(alu_control_out)   // output
+    );
 
-  alu alu
-      (
+    alu alu
+    (
         .input1(reg1_contents),             // input
         .input2(reg2_contents),             // input
         .fullInstr(instruction),            // input
@@ -81,7 +120,7 @@ module full_tb;
         .alu_control_out(alu_control_out),  // input
         .result(alu_result),                // output
         .zero_flag(alu_zero_flag)          // output
-      );
+    );
 
   ProgramCounter pc
                  (
@@ -106,32 +145,30 @@ logic [15:0] data_to_write;     // should either be data memory output or alu re
             .reg2_contents(reg2_contents)
            );
 
-  instruction_memory imem
-                     (
-                       .addr(iaddr),
-                       .outWord(instruction)
-                     );
+    instruction_memory imem 
+    (
+        .addr(iaddr),
+        .outWord(instruction)
+    );
 
-  data_memory dmem
-              (
-                .inWord(mem_write),
-                .outWord(mem_result),
-                .addr(daddr),
-                .read_flag(mem_read_flag),
-                .write_flag(mem_write_flag)
-              );
-
-
-  initial
-  begin
+     data_memory dmem
+     (
+       .inWord(mem_write),
+       .outWord(mem_result),
+       .addr(daddr),
+       .read_flag(mem_read_flag),
+       .write_flag(mem_write_flag)
+     );
 
 
-    $dumpfile("tb.vcd");
-    $dumpvars(); // dumpvars
-    //        $monitor("reg_write = %4h, mem_write = %4h, reg idx = %2d, current_address = %2d, next_address = %2d, addr = %2d, time = %2d", reg_write, mem_write, idx, current_address, next_address, addr, $time);
-    $stop();
-    #120 $finish();
-  end
+    initial begin
+        #1 $stop();
+        $dumpfile("tb.vcd");
+        $dumpvars(); // dumpvars  
+//        $monitor("reg_write = %4h, mem_write = %4h, reg idx = %2d, current_address = %2d, next_address = %2d, addr = %2d, time = %2d", reg_write, mem_write, idx, current_address, next_address, addr, $time);
+        $stop();
+        #120 $finish();
+    end   
 
   // pc testbench, integrated with register and memory
   always
@@ -167,66 +204,66 @@ logic [15:0] data_to_write;     // should either be data memory output or alu re
     reg2_contents = reg_result;     // Store the read data from register 2 to reg2_contents. Updates "input2" input in alu module.
     // At this point, alu will produce a meaningful output since all the inputs are updated.
 
-    // DATA MEMORY
-    reg_operation_type = `READ;     // Prepare to read register
-    idx = instruction [11:8];       // Select which register to read to register 1
-    reg1_contents = reg_result;     // Read the contents of register 1
-    mem_write = reg1_contents;      // Set the "inword" data memory input to contents of register 1 (only used in SW)
-    daddr = alu_result;             // Assign the data memory input "addr" to alu_result (should be R[rs] + imm)
-    //  - LW takes alu_result memory address, reads the data, and sets mem_result to that data
-    //  - SW takes reg1_contents data and writes it to the alu_result memory
-    // NOW, mem_result (data_memory module output) has all the updated inputs and
-    // will have a meaningful output if either mem_read or mem_write flags are 1.
+        // DATA MEMORY
+        // TODO: 
+                // - need to assign "addr" input of data memory module to the alu output (alu_result = R[rs] + imm)
+                //     - For SW, write reg1_contents to alu_result (memory address). NO OUTPUT.
+                //     - For LW, read from alu_result (memory address). OUTPUT = contents read from memory. Output is used in memToReg MUX. 
+                // - need to modify nathan's data memory module to take mem_read and mem_write flags and set optype depending on which flag is 1.
+                // - need to add a reg1_contents input to nathan's data memory module for SW purposes.
 
 
-    // MEMTOREG MUX
-    memToReg_mux_output = (mem_to_reg_flag) ? mem_result : alu_result;  // choose between alu result or data memory output
+        // MEMTOREG MUX
+        memToReg_mux_output = (mem_to_reg_flag) ? data_memory_output : alu_result;  // choose between alu result or data memory outputs
+
+        // ------- SELECT PC REG AND WRITE CURRENT ADDRESS (calculated from last iteration) TO PC REG (1st iteration 0X0000)
+        #1 
+        idx = `PCR; // PC register index
+        reg_operation_type = `WRITE;
+        #1 clock = 0;
+
+        // ------- READ THE ADDR ADDRESS (0x0000 in beginning) AND PASS THE FETCHED INSTRUCTION TO PC [DUPLICATE JUST FOR FIRST ITERATION]
+//        instruction = dmem_result;
+
+        // ------- WAIT FOR PC TO COMPUTE THE NEXT ADDRESS - PC IS THE ONLY CLOCKED MODULE
+        #1 clock = 1;
 
 
-    // WRITE BACK (to register 1)
-    if (reg_write_flag)
-    begin
-      reg_operation_type = `WRITE;        // Set reg operation to WRITE to register.
-      reg_write = memToReg_mux_output;    // Set data to write to the memToReg MUX output. Should either be alu_result or data_memory_output.
-      idx = instruction[11:8];            // Write to register 1
+        // WRITE BACK (to register 1)
+        if (reg_write_flag) begin
+            reg_operation_type = `WRITE;        // Set reg operation to WRITE to register.
+            reg_write = memToReg_mux_output;    // Set data to write to the memToReg MUX output. Should either be alu_result or data_memory_output.
+            // index change, reg should read
+            idx = instruction[11:8];            // Write to register 1
+        end 
+        
+            // do nothing since we do not need to write back to register
+
+        #1 clock = 0;
+
+
+        // ------- WRITE THE NEXT ADDRESS TO PC REG
+        #1 reg_write = next_address; // update program counter 
+
+
+        // ------- READ THE NEXT ADDRESS FROM PC REG
+        // commmits the write to the pcr
+        // now read it
+        #1
+        reg_operation_type = `READ;
+
+
+        // ------- PASS THE NEXT ADDRESS TO THE PC TO SET UP NEXT ITERATION - DOESN'T EXECUTE THIS ITERATION (NEXT ITERATION WILL BEGIN WITH WRITING TO PC REG)
+        #1
+        current_address = reg_result; // update program counter's address
+
+
+        // ------- GIVE THE NEXT_ADDRESS TO THE MEMORY UNIT TO FETCH THE INSTRUCTION OF THE NEXT ADDRESS
+        iaddr = current_address; // get next word
+       
+        // ------- GET THE RESULT FROM THE MEMORY UNIT AND FEED THE FETCHED INSTRUCTION TO PC (fullInstr input) TO SET UP NEXT ITERATION
+   
     end
-    else
-    begin
-      // do nothing since we do not need to write back to register
-    end
-
-
-
-
-    // ------- SELECT PC REG AND WRITE CURRENT ADDRESS (calculated from last iteration) TO PC REG (1st iteration 0X0000)
-    idx = `PCR; // PC register index
-    reg_operation_type = `WRITE;
-
-    // ------- READ THE ADDR ADDRESS (0x0000 in beginning) AND PASS THE FETCHED INSTRUCTION TO PC [DUPLICATE JUST FOR FIRST ITERATION;
-
-    // ------- WAIT FOR PC TO COMPUTE THE NEXT ADDRESS - PC IS THE ONLY CLOCKED MODULE
-    #1 clock = 1;
-    #1 clock = 0;
-
-    // ------- WRITE THE NEXT ADDRESS TO PC REG
-    reg_write = next_address; // update program counter
-
-
-    // ------- READ THE NEXT ADDRESS FROM PC REG
-    // commmits the write to the pcr
-    // now read it
-    reg_operation_type = `READ;
-
-    // ------- PASS THE NEXT ADDRESS TO THE PC TO SET UP NEXT ITERATION - DOESN'T EXECUTE THIS ITERATION (NEXT ITERATION WILL BEGIN WITH WRITING TO PC REG)
-    current_address = reg_result; // update program counter's address
-
-
-    // ------- GIVE THE NEXT_ADDRESS TO THE MEMORY UNIT TO FETCH THE INSTRUCTION OF THE NEXT ADDRESS
-    iaddr = current_address; // get next word
-
-
-    // ------- GET THE RESULT FROM THE MEMORY UNIT AND FEED THE FETCHED INSTRUCTION TO PC (fullInstr input) TO SET UP NEXT ITERATION
-  end
 
 
 
