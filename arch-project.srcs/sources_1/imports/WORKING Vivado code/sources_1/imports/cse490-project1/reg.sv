@@ -13,21 +13,21 @@ module register (
 // initialize 16-bit registers, 17 of them
 logic [15:0] registers [0:16] = '{
     16'h0000,   // r0
-    16'h0001,   // r1
-    16'h0002,   // r2
-    16'h0003,   // r3
-    16'h0004,   // r4
-    16'h0005,   // r5
-    16'h0006,   // r6
-    16'h0007,   // r7
-    16'h0008,   // r8
-    16'h0009,   // r9
-    16'h000A,   // r10
-    16'h000B,   // r11
-    16'h000C,   // r12
-    16'h000D,   // r13
-    16'h000E,   // r14
-    16'h000F,   // r15
+    16'h0000,   // r1
+    16'h0000,   // r2
+    16'h0000,   // r3
+    16'h0000,   // r4
+    16'h0000,   // r5
+    16'h0000,   // r6
+    16'h0000,   // r7
+    16'h0000,   // r8
+    16'h0000,   // r9
+    16'h0000,   // r10
+    16'h0000,   // r11
+    16'h0000,   // r12
+    16'h0000,   // r13
+    16'h0000,   // r14
+    16'h0000,   // r15
     16'h0000    // r16 = PC (can default to 0)
 };
 
@@ -36,6 +36,14 @@ always_comb begin
     reg2_contents = registers[reg2_idx];
 end 
 
+// Don't use negedge because then we will run the alu again. It won't write anything but the value in reg1 will update, causing the
+// local variable in cpu module (reg1_contents) to update, causing a chain reaction of combinational logic which causes another 
+// instance of the instruction to run but with the written reg1 contents. The memToReg MUX result will then be different from the 
+// negedge to the next cycle posedge. 
+// It won't write it though because then a new instruction will be ran and that new instruction's write will occur,
+// essentially overwriting the false data_write. 
+// Because of the way we are extracing rd_after in cpu module, we need this to be posedge so that the data will be written to the
+// register on the posedge of the next cycle. 
 always @(posedge clk) begin
     if (reg_write) begin
         if (reg1_idx == 0) begin

@@ -164,13 +164,13 @@ assign current_pc = current_instr_address;
 // Assign fetched instruction to current_instr output for debugging purposes
 assign current_instr = fetched_instr;
 
-// Use non-blocking assignment to assign pc output to the pc_reg on the NEXT positive clock edge. Always "lagging" 1 cycle behind the clock.
-// In the NEXT cycle, instruction memory combinational logic will run once pc_reg is updated with the NEXT cycle's instruction address.
+// Use blocking assignment to assign pc output (next instruction) from last cycle to the pc_reg on the positive clock edge.
+// In the start of the cycle, instruction memory combinational logic will run once pc_reg is updated with the current cycle's instruction address.
 // PC combinational logic will run the first time when pc_reg is updated, a second time when instruction memory fetches the current instruction,
 // and finally a third and last time (in this cycle) when the control unit is able to get the fetched instruction's opcode and produces the flags
 // the pc needs for all its inputs to be updated for this cycle and compute a meaningful "next instruction" for the next cycle.
 always @(posedge clock) begin
-    pc_reg <= next_instr_address;
+    pc_reg = next_instr_address;
 end
 
 

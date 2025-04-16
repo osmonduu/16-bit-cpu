@@ -35,7 +35,7 @@ module cpu_tb;
         $monitor("%0dns\t\t%h\t\t%h\t\t%h\t\t%h", $time, current_pc_tb, current_instr_tb, rd_before_tb, rd_after_tb);
     end
     
-    // Adjust time to finish simulation. Finish after 64 time units (32 cycles)
-    initial #64 $finish;
+    // Adjust time to finish simulation. Finish after 65 time units (32 cycles)
+    initial #65 $finish;
     
 endmodule
