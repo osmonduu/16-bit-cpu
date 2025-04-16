@@ -1,0 +1,145 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
+| Date         : Tue Apr 15 20:56:15 2025
+| Host         : penacony running 64-bit unknown
+| Command      : report_control_sets -verbose -file cpu_control_sets_placed.rpt
+| Design       : cpu
+| Device       : xc7a35t
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    67 |
+|    Minimum number of control sets                        |    67 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |     1 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    67 |
+| >= 0 to < 4        |     0 |
+| >= 4 to < 6        |     0 |
+| >= 6 to < 8        |     0 |
+| >= 8 to < 10       |    64 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     1 |
+| >= 16              |     2 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              31 |           16 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |               0 |            0 |
+| Yes          | No                    | No                     |             512 |          218 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |               0 |            0 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++------------------+-------------------------+------------------+------------------+----------------+--------------+
+|   Clock Signal   |      Enable Signal      | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
++------------------+-------------------------+------------------+------------------+----------------+--------------+
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_0[0]  |                  |                7 |              8 |         1.14 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_34[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_31[0] |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_3[0]  |                  |                5 |              8 |         1.60 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_29[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_1[0]  |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_28[0] |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_25[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_24[0] |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_32[0] |                  |                6 |              8 |         1.33 |
+|  clock_IBUF_BUFG | alu/E[0]                |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_10[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_13[0] |                  |                5 |              8 |         1.60 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_14[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_11[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_12[0] |                  |                4 |              8 |         2.00 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_9[0]   |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_21[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_30[0] |                  |                4 |              8 |         2.00 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_33[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_4[0]  |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_35[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_7[0]  |                  |                5 |              8 |         1.60 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_6[0]  |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_5[0]  |                  |                5 |              8 |         1.60 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_8[0]  |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_9[0]  |                  |                4 |              8 |         2.00 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_27[0] |                  |                4 |              8 |         2.00 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1][0]    |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_15[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_18[0] |                  |                4 |              8 |         2.00 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_23[0] |                  |                4 |              8 |         2.00 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_26[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_7[0]   |                  |                5 |              8 |         1.60 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_16[0] |                  |                4 |              8 |         2.00 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_17[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_19[0] |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_2[0]  |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_20[0] |                  |                4 |              8 |         2.00 |
+|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_22[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1][0]     |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_0[0]   |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_1[0]   |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_10[0]  |                  |                6 |              8 |         1.33 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_11[0]  |                  |                5 |              8 |         1.60 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_12[0]  |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_13[0]  |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_14[0]  |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_15[0]  |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_17[0]  |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_8[0]   |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_6[0]   |                  |                5 |              8 |         1.60 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_5[0]   |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_4[0]   |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_3[0]   |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_24[0]  |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_16[0]  |                  |                4 |              8 |         2.00 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_23[0]  |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_22[0]  |                  |                4 |              8 |         2.00 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_21[0]  |                  |                4 |              8 |         2.00 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_20[0]  |                  |                4 |              8 |         2.00 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_2[0]   |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_19[0]  |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_18[0]  |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG |                         |                  |                5 |             15 |         3.00 |
+|  n_0_1224_BUFG   |                         |                  |               11 |             16 |         1.45 |
+|  clock_IBUF_BUFG | rf/p_0_in               |                  |                4 |             32 |         8.00 |
++------------------+-------------------------+------------------+------------------+----------------+--------------+
+
+

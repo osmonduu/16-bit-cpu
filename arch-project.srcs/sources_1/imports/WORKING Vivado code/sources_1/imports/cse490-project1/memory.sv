@@ -34,7 +34,7 @@ module data_memory(
     
 //                  $writememh("memory.mem", data_mem, 0, 63); // can only write entire contents of memory, not individual bytes
                   // return input word as output
-                  outWord = inWord;
+//                  outWord = inWord;
         end
         if ( (read_flag ^~ write_flag) == 1) begin
                 outWord = 'hZZZZ; // return sometihng stupid

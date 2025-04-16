@@ -7,10 +7,22 @@ module cpu (
     output logic [15:0] current_instr   // for debugging in testbench
 );
 
+wire [15:0] fetched_instr;    // assign NOP for first instruction
+logic [15:0] alu_result;    // result from alu operation
+logic alu_zero_flag;
 // PC Register - stores the pc output and next instruction for use in the next cycle.
 // When pc uses this value, that means pc is using the pc_next that was derived from last cycle.
 logic [15:0] pc_reg = 'h0000;   // start at first instruction
-
+logic control_reset;
+logic jump_flag;
+logic branch_flag;
+logic branch_select_flag;
+logic mem_read_flag;
+logic mem_to_reg_flag;
+logic [1:0] alu_op;
+logic mem_write_flag;
+logic aluSrc;
+logic reg_write_flag;
 // pc local variables
 logic [15:0] current_instr_address;
 //branch_flag    -> declared in con local variables
@@ -19,6 +31,17 @@ logic [15:0] current_instr_address;
 //jump_flag  -> declared in con local variables
 //fetched_instr -> declared in im local variables
 logic [15:0] next_instr_address;
+
+logic [3:0] alu_control_out;
+// Instantiate the ALU control unit
+logic [15:0] data_memory_output;    // should only ever be meaningful from LW instruction
+
+// rf local variables
+logic [15:0] data_to_write;         // result of memToReg mux which will be implemented in the main module
+//[3:0] reg1_idx  -> use fetched_instr[11:8]
+//[3:0] reg2_idx -> use fetched_instr[7:4]
+logic [15:0] reg1_contents;
+logic [15:0] reg2_contents;
 
 // Take this cycle's address (calculated in previous cycle) from the PC Register and pass into instruction memory and pc inputs.
 assign current_instr_address = pc_reg;
@@ -37,20 +60,14 @@ ProgramCounter pc (
 
 // im local variables 
 //addr -> use current_instr_address from pc register
-logic [15:0] fetched_instr = 'h0000;    // assign NOP for first instruction
+
 // Instantiate the instruction memory
 instruction_memory im (
     .addr(current_instr_address),    //input
     .outWord(fetched_instr)  //output
 );
 
-// rf local variables
-logic [15:0] data_to_write;         // result of memToReg mux which will be implemented in the main module
-logic reg_write_flag;
-//[3:0] reg1_idx  -> use fetched_instr[11:8]
-//[3:0] reg2_idx -> use fetched_instr[7:4]
-logic [15:0] reg1_contents;
-logic [15:0] reg2_contents;
+
 // Instantiate the register file
 register rf (
     .clk(clock),             //input
@@ -64,16 +81,7 @@ register rf (
 
 // con local variables
 //logic [3:0] opcode;   -> will use fethced_instr[15:12]
-logic control_reset;
-logic jump_flag;
-logic branch_flag;
-logic branch_select_flag;
-logic mem_read_flag;
-logic mem_to_reg_flag;
-logic [1:0] alu_op;
-logic mem_write_flag;
-logic aluSrc;
-logic reg_write_flag;
+
 // Instantiate the control unit
 control con (
     .opcode(fetched_instr[15:12]),          //input
@@ -92,8 +100,7 @@ control con (
 // alu_con local variables
 //alu_op -> declared in con local variables
 //func -> will use fetched_instr[3:0]
-logic [3:0] alu_control_out;
-// Instantiate the ALU control unit
+
 alu_control alu_con (
     .alu_op(alu_op),          //input
     .func(fetched_instr[3:0]),            //input
@@ -106,8 +113,7 @@ alu_control alu_con (
 // fetched_instr -> declared in pc local variabels
 // aluSrc -> declared in con local variables
 // alu_control_out -> declared in alu_con local variabels
-logic [15:0] alu_result;    // result from alu operation
-logic alu_zero_flag;
+
 // Instantiate the alu
 alu alu (
     .input1(reg1_contents),          //input
@@ -124,7 +130,7 @@ alu alu (
 //alu_result -> declared in alu local variables (address will always be calculated by alu)
 // mem_read_flag -> declared in con local variables
 // mem_write_flag -> declared in con local variabels
-logic [15:0] data_memory_output;    // should only ever be meaningful from LW instruction
+
 // Instantiate the data memory
 data_memory dm(
     .clock(clock),              //input
