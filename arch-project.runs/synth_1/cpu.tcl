@@ -56,10 +56,6 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 4
-set_param iopl.placeRegionalClockInstsInIOPlacer 0
-set_param xicom.use_bs_reader 1
-set_param iopl.placeGlobalClockInstsInIOPlacer 0
 set_msg_config  -id {filemgmt 56-199}  -suppress 
 set_msg_config  -id {USF-XSim-62}  -suppress 
 set_msg_config  -id {XSIM 43-4100}  -suppress 

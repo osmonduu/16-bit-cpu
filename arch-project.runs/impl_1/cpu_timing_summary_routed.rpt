@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
-| Date         : Tue Apr 15 20:56:26 2025
+| Date         : Wed Apr 16 23:46:44 2025
 | Host         : penacony running 64-bit unknown
 | Command      : report_timing_summary -max_paths 10 -report_unconstrained -file cpu_timing_summary_routed.rpt -pb cpu_timing_summary_routed.pb -rpx cpu_timing_summary_routed.rpx -warn_on_violation
 | Design       : cpu
@@ -231,363 +231,368 @@ Min Delay          1309 Endpoints
 Max Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 pc_reg_reg[2]/C
+  Source:                 pc_reg_reg[1]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            dm/data_mem_reg[58][7]/D
+  Destination:            rd_after[11]
+                            (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        17.541ns  (logic 2.726ns (15.541%)  route 14.815ns (84.459%))
-  Logic Levels:           10  (FDRE=1 LUT2=1 LUT3=1 LUT4=2 LUT5=1 LUT6=3 RAMD32=1)
+  Data Path Delay:        18.097ns  (logic 5.434ns (30.028%)  route 12.663ns (69.972%))
+  Logic Levels:           10  (FDRE=1 LUT3=2 LUT5=3 LUT6=2 OBUF=1 RAMD32=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X2Y18          FDRE                         0.000     0.000 r  pc_reg_reg[2]/C
-    SLICE_X2Y18          FDRE (Prop_fdre_C_Q)         0.478     0.478 r  pc_reg_reg[2]/Q
-                         net (fo=49, routed)          0.991     1.469    rf/Q[1]
-    SLICE_X0Y17          LUT4 (Prop_lut4_I2_O)        0.295     1.764 r  rf/current_instr_OBUF[7]_inst_i_1/O
-                         net (fo=19, routed)          1.728     3.491    rf/registers_reg_0_15_7_7/DPRA3
-    SLICE_X6Y18          RAMD32 (Prop_ramd32_RADR3_O)
-                                                      0.153     3.644 f  rf/registers_reg_0_15_7_7/DP/O
-                         net (fo=6, routed)           1.531     5.175    rf/pc_reg_reg[5]_0[7]
-    SLICE_X9Y19          LUT4 (Prop_lut4_I1_O)        0.359     5.534 f  rf/rd_after_OBUF[15]_inst_i_13/O
-                         net (fo=1, routed)           0.943     6.477    rf/rd_after_OBUF[15]_inst_i_13_n_1
-    SLICE_X9Y20          LUT6 (Prop_lut6_I4_O)        0.326     6.803 r  rf/rd_after_OBUF[15]_inst_i_10/O
-                         net (fo=20, routed)          1.502     8.306    rf/rd_after_OBUF[15]_inst_i_10_n_1
-    SLICE_X11Y17         LUT6 (Prop_lut6_I0_O)        0.124     8.430 r  rf/rd_after_OBUF[4]_inst_i_4/O
-                         net (fo=1, routed)           0.151     8.581    alu/data_mem_reg[48][7]_5
-    SLICE_X11Y17         LUT6 (Prop_lut6_I2_O)        0.124     8.705 r  alu/rd_after_OBUF[4]_inst_i_2/O
-                         net (fo=125, routed)         3.685    12.390    alu/pc_reg_reg[2][1]
-    SLICE_X5Y6           LUT2 (Prop_lut2_I0_O)        0.152    12.542 f  alu/data_mem[52][7]_i_4/O
-                         net (fo=33, routed)          2.630    15.172    rf/data_mem_reg[51][7]
-    SLICE_X13Y15         LUT5 (Prop_lut5_I2_O)        0.358    15.530 r  rf/data_mem[58][7]_i_4/O
-                         net (fo=8, routed)           0.859    16.388    rf/data_mem[58][7]_i_4_n_1
-    SLICE_X13Y13         LUT3 (Prop_lut3_I1_O)        0.357    16.745 r  rf/data_mem[58][7]_i_2/O
-                         net (fo=1, routed)           0.795    17.541    dm/data_mem_reg[58][7]_1[7]
-    SLICE_X12Y13         FDRE                                         r  dm/data_mem_reg[58][7]/D
+    SLICE_X3Y30          FDRE                         0.000     0.000 r  pc_reg_reg[1]/C
+    SLICE_X3Y30          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  pc_reg_reg[1]/Q
+                         net (fo=22, routed)          1.482     1.938    rf/Q[0]
+    SLICE_X0Y26          LUT5 (Prop_lut5_I0_O)        0.124     2.062 r  rf/g0_b0__0/O
+                         net (fo=54, routed)          1.395     3.456    rf/registers_reg_0_15_3_3/A0
+    SLICE_X6Y31          RAMD32 (Prop_ramd32_RADR0_O)
+                                                      0.156     3.612 r  rf/registers_reg_0_15_3_3/SP/O
+                         net (fo=76, routed)          3.188     6.801    rf/reg1_contents[3]
+    SLICE_X12Y31         LUT5 (Prop_lut5_I2_O)        0.355     7.156 r  rf/registers_reg_0_15_11_11_i_6/O
+                         net (fo=2, routed)           0.841     7.996    rf/registers_reg_0_15_11_11_i_6_n_0
+    SLICE_X12Y32         LUT3 (Prop_lut3_I2_O)        0.124     8.120 r  rf/registers_reg_0_15_11_11_i_5/O
+                         net (fo=2, routed)           0.839     8.959    rf/registers_reg_0_15_11_11_i_5_n_0
+    SLICE_X9Y32          LUT6 (Prop_lut6_I1_O)        0.124     9.083 r  rf/registers_reg_0_15_11_11_i_4/O
+                         net (fo=1, routed)           1.153    10.236    rf/registers_reg_0_15_11_11_i_4_n_0
+    SLICE_X9Y33          LUT6 (Prop_lut6_I2_O)        0.124    10.360 r  rf/registers_reg_0_15_11_11_i_2/O
+                         net (fo=2, routed)           0.745    11.105    dm/alu_result[11]
+    SLICE_X7Y34          LUT5 (Prop_lut5_I1_O)        0.124    11.229 r  dm/registers_reg_0_15_11_11_i_1/O
+                         net (fo=3, routed)           1.331    12.560    dm/incomingData[11]
+    SLICE_X5Y31          LUT3 (Prop_lut3_I0_O)        0.150    12.710 r  dm/rd_after_OBUF[11]_inst_i_1/O
+                         net (fo=1, routed)           1.690    14.400    rd_after_OBUF[11]
+    N18                  OBUF (Prop_obuf_I_O)         3.697    18.097 r  rd_after_OBUF[11]_inst/O
+                         net (fo=0)                   0.000    18.097    rd_after[11]
+    N18                                                               r  rd_after[11] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pc_reg_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            rd_after[9]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        17.497ns  (logic 5.401ns (30.866%)  route 12.096ns (69.134%))
+  Logic Levels:           10  (FDRE=1 LUT3=1 LUT5=3 LUT6=3 OBUF=1 RAMD32=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y30          FDRE                         0.000     0.000 r  pc_reg_reg[1]/C
+    SLICE_X3Y30          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  pc_reg_reg[1]/Q
+                         net (fo=22, routed)          1.482     1.938    rf/Q[0]
+    SLICE_X0Y26          LUT5 (Prop_lut5_I0_O)        0.124     2.062 r  rf/g0_b0__0/O
+                         net (fo=54, routed)          2.266     4.328    rf/registers_reg_0_15_1_1/A0
+    SLICE_X6Y33          RAMD32 (Prop_ramd32_RADR0_O)
+                                                      0.124     4.452 r  rf/registers_reg_0_15_1_1/SP/O
+                         net (fo=78, routed)          1.712     6.164    rf/reg1_contents[1]
+    SLICE_X10Y31         LUT5 (Prop_lut5_I2_O)        0.146     6.310 r  rf/registers_reg_0_15_9_9_i_6/O
+                         net (fo=2, routed)           0.824     7.134    rf/registers_reg_0_15_9_9_i_6_n_0
+    SLICE_X10Y32         LUT6 (Prop_lut6_I5_O)        0.328     7.462 r  rf/registers_reg_0_15_9_9_i_5/O
+                         net (fo=2, routed)           1.042     8.504    rf/registers_reg_0_15_9_9_i_5_n_0
+    SLICE_X9Y32          LUT6 (Prop_lut6_I1_O)        0.124     8.628 r  rf/registers_reg_0_15_9_9_i_4/O
+                         net (fo=1, routed)           0.726     9.354    rf/registers_reg_0_15_9_9_i_4_n_0
+    SLICE_X10Y33         LUT6 (Prop_lut6_I2_O)        0.124     9.478 r  rf/registers_reg_0_15_9_9_i_2/O
+                         net (fo=2, routed)           1.059    10.537    dm/alu_result[9]
+    SLICE_X7Y34          LUT5 (Prop_lut5_I1_O)        0.124    10.661 r  dm/registers_reg_0_15_9_9_i_1/O
+                         net (fo=3, routed)           1.162    11.823    dm/incomingData[9]
+    SLICE_X5Y30          LUT3 (Prop_lut3_I0_O)        0.152    11.975 r  dm/rd_after_OBUF[9]_inst_i_1/O
+                         net (fo=1, routed)           1.823    13.798    rd_after_OBUF[9]
+    P19                  OBUF (Prop_obuf_I_O)         3.699    17.497 r  rd_after_OBUF[9]_inst/O
+                         net (fo=0)                   0.000    17.497    rd_after[9]
+    P19                                                               r  rd_after[9] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pc_reg_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            rd_after[13]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        17.245ns  (logic 5.442ns (31.560%)  route 11.802ns (68.440%))
+  Logic Levels:           10  (FDRE=1 LUT3=2 LUT5=3 LUT6=2 OBUF=1 RAMD32=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y30          FDRE                         0.000     0.000 r  pc_reg_reg[1]/C
+    SLICE_X3Y30          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  pc_reg_reg[1]/Q
+                         net (fo=22, routed)          1.482     1.938    rf/Q[0]
+    SLICE_X0Y26          LUT5 (Prop_lut5_I0_O)        0.124     2.062 r  rf/g0_b0__0/O
+                         net (fo=54, routed)          1.395     3.456    rf/registers_reg_0_15_3_3/A0
+    SLICE_X6Y31          RAMD32 (Prop_ramd32_RADR0_O)
+                                                      0.156     3.612 r  rf/registers_reg_0_15_3_3/SP/O
+                         net (fo=76, routed)          3.188     6.801    rf/reg1_contents[3]
+    SLICE_X12Y31         LUT5 (Prop_lut5_I2_O)        0.355     7.156 r  rf/registers_reg_0_15_11_11_i_6/O
+                         net (fo=2, routed)           0.673     7.828    rf/registers_reg_0_15_11_11_i_6_n_0
+    SLICE_X12Y32         LUT3 (Prop_lut3_I0_O)        0.124     7.952 r  rf/registers_reg_0_15_13_13_i_5/O
+                         net (fo=2, routed)           0.791     8.743    rf/registers_reg_0_15_13_13_i_5_n_0
+    SLICE_X10Y33         LUT6 (Prop_lut6_I1_O)        0.124     8.867 r  rf/registers_reg_0_15_13_13_i_4/O
+                         net (fo=1, routed)           0.955     9.823    rf/registers_reg_0_15_13_13_i_4_n_0
+    SLICE_X9Y34          LUT6 (Prop_lut6_I2_O)        0.124     9.947 r  rf/registers_reg_0_15_13_13_i_2/O
+                         net (fo=2, routed)           0.902    10.849    dm/alu_result[13]
+    SLICE_X6Y34          LUT5 (Prop_lut5_I1_O)        0.124    10.973 r  dm/registers_reg_0_15_13_13_i_1/O
+                         net (fo=3, routed)           0.727    11.700    dm/incomingData[13]
+    SLICE_X4Y33          LUT3 (Prop_lut3_I0_O)        0.150    11.850 r  dm/rd_after_OBUF[13]_inst_i_1/O
+                         net (fo=1, routed)           1.690    13.539    rd_after_OBUF[13]
+    L18                  OBUF (Prop_obuf_I_O)         3.705    17.245 r  rd_after_OBUF[13]_inst/O
+                         net (fo=0)                   0.000    17.245    rd_after[13]
+    L18                                                               r  rd_after[13] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pc_reg_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            rd_after[7]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        17.208ns  (logic 5.651ns (32.838%)  route 11.557ns (67.162%))
+  Logic Levels:           10  (FDRE=1 LUT3=1 LUT4=1 LUT5=2 LUT6=3 OBUF=1 RAMD32=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y30          FDRE                         0.000     0.000 r  pc_reg_reg[1]/C
+    SLICE_X3Y30          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  pc_reg_reg[1]/Q
+                         net (fo=22, routed)          1.482     1.938    rf/Q[0]
+    SLICE_X0Y26          LUT5 (Prop_lut5_I0_O)        0.124     2.062 r  rf/g0_b0__0/O
+                         net (fo=54, routed)          1.395     3.456    rf/registers_reg_0_15_3_3/A0
+    SLICE_X6Y31          RAMD32 (Prop_ramd32_RADR0_O)
+                                                      0.156     3.612 r  rf/registers_reg_0_15_3_3/SP/O
+                         net (fo=76, routed)          3.188     6.801    rf/reg1_contents[3]
+    SLICE_X12Y31         LUT4 (Prop_lut4_I0_O)        0.347     7.148 r  rf/registers_reg_0_15_7_7_i_6/O
+                         net (fo=2, routed)           0.831     7.979    rf/registers_reg_0_15_7_7_i_6_n_0
+    SLICE_X11Y30         LUT6 (Prop_lut6_I5_O)        0.328     8.307 r  rf/registers_reg_0_15_7_7_i_5/O
+                         net (fo=2, routed)           0.164     8.470    rf/registers_reg_0_15_7_7_i_5_n_0
+    SLICE_X11Y30         LUT6 (Prop_lut6_I1_O)        0.124     8.594 r  rf/registers_reg_0_15_7_7_i_4/O
+                         net (fo=1, routed)           0.296     8.890    rf/registers_reg_0_15_7_7_i_4_n_0
+    SLICE_X11Y31         LUT6 (Prop_lut6_I2_O)        0.124     9.014 r  rf/registers_reg_0_15_7_7_i_2/O
+                         net (fo=2, routed)           1.259    10.273    dm/alu_result[7]
+    SLICE_X4Y34          LUT5 (Prop_lut5_I1_O)        0.124    10.397 r  dm/registers_reg_0_15_7_7_i_1/O
+                         net (fo=3, routed)           1.109    11.506    dm/incomingData[7]
+    SLICE_X4Y30          LUT3 (Prop_lut3_I0_O)        0.152    11.658 r  dm/rd_after_OBUF[7]_inst_i_1/O
+                         net (fo=1, routed)           1.834    13.492    rd_after_OBUF[7]
+    M18                  OBUF (Prop_obuf_I_O)         3.716    17.208 r  rd_after_OBUF[7]_inst/O
+                         net (fo=0)                   0.000    17.208    rd_after[7]
+    M18                                                               r  rd_after[7] (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
   Source:                 pc_reg_reg[2]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            dm/data_mem_reg[60][3]/D
+  Destination:            rd_after[0]
+                            (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        17.447ns  (logic 2.747ns (15.745%)  route 14.700ns (84.255%))
-  Logic Levels:           10  (FDRE=1 LUT2=1 LUT3=1 LUT4=2 LUT5=1 LUT6=3 RAMD32=1)
+  Data Path Delay:        17.188ns  (logic 5.290ns (30.780%)  route 11.898ns (69.220%))
+  Logic Levels:           9  (FDRE=1 LUT4=1 LUT5=3 LUT6=2 OBUF=1 RAMD32=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X2Y18          FDRE                         0.000     0.000 r  pc_reg_reg[2]/C
-    SLICE_X2Y18          FDRE (Prop_fdre_C_Q)         0.478     0.478 r  pc_reg_reg[2]/Q
-                         net (fo=49, routed)          0.991     1.469    rf/Q[1]
-    SLICE_X0Y17          LUT4 (Prop_lut4_I2_O)        0.295     1.764 r  rf/current_instr_OBUF[7]_inst_i_1/O
-                         net (fo=19, routed)          1.728     3.491    rf/registers_reg_0_15_7_7/DPRA3
-    SLICE_X6Y18          RAMD32 (Prop_ramd32_RADR3_O)
-                                                      0.153     3.644 f  rf/registers_reg_0_15_7_7/DP/O
-                         net (fo=6, routed)           1.531     5.175    rf/pc_reg_reg[5]_0[7]
-    SLICE_X9Y19          LUT4 (Prop_lut4_I1_O)        0.359     5.534 f  rf/rd_after_OBUF[15]_inst_i_13/O
-                         net (fo=1, routed)           0.943     6.477    rf/rd_after_OBUF[15]_inst_i_13_n_1
-    SLICE_X9Y20          LUT6 (Prop_lut6_I4_O)        0.326     6.803 r  rf/rd_after_OBUF[15]_inst_i_10/O
-                         net (fo=20, routed)          1.502     8.306    rf/rd_after_OBUF[15]_inst_i_10_n_1
-    SLICE_X11Y17         LUT6 (Prop_lut6_I0_O)        0.124     8.430 r  rf/rd_after_OBUF[4]_inst_i_4/O
-                         net (fo=1, routed)           0.151     8.581    alu/data_mem_reg[48][7]_5
-    SLICE_X11Y17         LUT6 (Prop_lut6_I2_O)        0.124     8.705 r  alu/rd_after_OBUF[4]_inst_i_2/O
-                         net (fo=125, routed)         3.685    12.390    alu/pc_reg_reg[2][1]
-    SLICE_X5Y6           LUT2 (Prop_lut2_I0_O)        0.152    12.542 f  alu/data_mem[52][7]_i_4/O
-                         net (fo=33, routed)          2.614    15.156    rf/data_mem_reg[51][7]
-    SLICE_X12Y13         LUT5 (Prop_lut5_I2_O)        0.360    15.516 r  rf/data_mem[60][7]_i_4/O
-                         net (fo=8, routed)           0.871    16.387    rf/data_mem[60][7]_i_4_n_1
-    SLICE_X12Y15         LUT3 (Prop_lut3_I1_O)        0.376    16.763 r  rf/data_mem[60][3]_i_1/O
-                         net (fo=1, routed)           0.684    17.447    dm/data_mem_reg[60][7]_1[3]
-    SLICE_X12Y12         FDRE                                         r  dm/data_mem_reg[60][3]/D
+    SLICE_X3Y30          FDRE                         0.000     0.000 r  pc_reg_reg[2]/C
+    SLICE_X3Y30          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  pc_reg_reg[2]/Q
+                         net (fo=22, routed)          1.648     2.104    rf/Q[1]
+    SLICE_X0Y25          LUT5 (Prop_lut5_I1_O)        0.124     2.228 r  rf/g0_b5__0__1/O
+                         net (fo=20, routed)          1.783     4.011    rf/registers_reg_0_15_7_7/DPRA1
+    SLICE_X6Y30          RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.153     4.164 f  rf/registers_reg_0_15_7_7/DP/O
+                         net (fo=6, routed)           1.215     5.380    rf/pc_reg_reg[1]_0[7]
+    SLICE_X9Y31          LUT4 (Prop_lut4_I1_O)        0.359     5.739 f  rf/rd_after_OBUF[5]_inst_i_15/O
+                         net (fo=1, routed)           0.298     6.037    rf/rd_after_OBUF[5]_inst_i_15_n_0
+    SLICE_X9Y33          LUT6 (Prop_lut6_I4_O)        0.326     6.363 r  rf/rd_after_OBUF[5]_inst_i_11/O
+                         net (fo=20, routed)          0.999     7.362    rf/rd_after_OBUF[5]_inst_i_11_n_0
+    SLICE_X11Y30         LUT5 (Prop_lut5_I0_O)        0.124     7.486 r  rf/rd_after_OBUF[0]_inst_i_4/O
+                         net (fo=5, routed)           1.272     8.757    rf/rd_after_OBUF[0]_inst_i_4_n_0
+    SLICE_X12Y33         LUT6 (Prop_lut6_I2_O)        0.124     8.881 r  rf/rd_after_OBUF[0]_inst_i_2/O
+                         net (fo=99, routed)          2.406    11.288    rf/rd_after_OBUF[5]_inst_i_7_3
+    SLICE_X4Y34          LUT5 (Prop_lut5_I1_O)        0.124    11.412 r  rf/rd_after_OBUF[0]_inst_i_1/O
+                         net (fo=1, routed)           2.276    13.688    rd_after_OBUF[0]
+    R18                  OBUF (Prop_obuf_I_O)         3.500    17.188 r  rd_after_OBUF[0]_inst/O
+                         net (fo=0)                   0.000    17.188    rd_after[0]
+    R18                                                               r  rd_after[0] (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 pc_reg_reg[2]/C
+  Source:                 pc_reg_reg[1]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            dm/data_mem_reg[60][2]/D
+  Destination:            rd_after[15]
+                            (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        17.398ns  (logic 2.745ns (15.778%)  route 14.653ns (84.222%))
-  Logic Levels:           10  (FDRE=1 LUT2=1 LUT3=1 LUT4=2 LUT5=1 LUT6=3 RAMD32=1)
+  Data Path Delay:        17.129ns  (logic 5.654ns (33.008%)  route 11.475ns (66.992%))
+  Logic Levels:           10  (FDRE=1 LUT3=2 LUT5=2 LUT6=3 OBUF=1 RAMD32=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X2Y18          FDRE                         0.000     0.000 r  pc_reg_reg[2]/C
-    SLICE_X2Y18          FDRE (Prop_fdre_C_Q)         0.478     0.478 r  pc_reg_reg[2]/Q
-                         net (fo=49, routed)          0.991     1.469    rf/Q[1]
-    SLICE_X0Y17          LUT4 (Prop_lut4_I2_O)        0.295     1.764 r  rf/current_instr_OBUF[7]_inst_i_1/O
-                         net (fo=19, routed)          1.728     3.491    rf/registers_reg_0_15_7_7/DPRA3
-    SLICE_X6Y18          RAMD32 (Prop_ramd32_RADR3_O)
-                                                      0.153     3.644 f  rf/registers_reg_0_15_7_7/DP/O
-                         net (fo=6, routed)           1.531     5.175    rf/pc_reg_reg[5]_0[7]
-    SLICE_X9Y19          LUT4 (Prop_lut4_I1_O)        0.359     5.534 f  rf/rd_after_OBUF[15]_inst_i_13/O
-                         net (fo=1, routed)           0.943     6.477    rf/rd_after_OBUF[15]_inst_i_13_n_1
-    SLICE_X9Y20          LUT6 (Prop_lut6_I4_O)        0.326     6.803 r  rf/rd_after_OBUF[15]_inst_i_10/O
-                         net (fo=20, routed)          1.502     8.306    rf/rd_after_OBUF[15]_inst_i_10_n_1
-    SLICE_X11Y17         LUT6 (Prop_lut6_I0_O)        0.124     8.430 r  rf/rd_after_OBUF[4]_inst_i_4/O
-                         net (fo=1, routed)           0.151     8.581    alu/data_mem_reg[48][7]_5
-    SLICE_X11Y17         LUT6 (Prop_lut6_I2_O)        0.124     8.705 r  alu/rd_after_OBUF[4]_inst_i_2/O
-                         net (fo=125, routed)         3.685    12.390    alu/pc_reg_reg[2][1]
-    SLICE_X5Y6           LUT2 (Prop_lut2_I0_O)        0.152    12.542 f  alu/data_mem[52][7]_i_4/O
-                         net (fo=33, routed)          2.614    15.156    rf/data_mem_reg[51][7]
-    SLICE_X12Y13         LUT5 (Prop_lut5_I2_O)        0.360    15.516 r  rf/data_mem[60][7]_i_4/O
-                         net (fo=8, routed)           0.881    16.397    rf/data_mem[60][7]_i_4_n_1
-    SLICE_X12Y15         LUT3 (Prop_lut3_I1_O)        0.374    16.771 r  rf/data_mem[60][2]_i_1/O
-                         net (fo=1, routed)           0.626    17.398    dm/data_mem_reg[60][7]_1[2]
-    SLICE_X12Y12         FDRE                                         r  dm/data_mem_reg[60][2]/D
+    SLICE_X3Y30          FDRE                         0.000     0.000 r  pc_reg_reg[1]/C
+    SLICE_X3Y30          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  pc_reg_reg[1]/Q
+                         net (fo=22, routed)          1.482     1.938    rf/Q[0]
+    SLICE_X0Y26          LUT5 (Prop_lut5_I0_O)        0.124     2.062 r  rf/g0_b0__0/O
+                         net (fo=54, routed)          1.395     3.456    rf/registers_reg_0_15_3_3/A0
+    SLICE_X6Y31          RAMD32 (Prop_ramd32_RADR0_O)
+                                                      0.156     3.612 r  rf/registers_reg_0_15_3_3/SP/O
+                         net (fo=76, routed)          3.416     7.028    rf/reg1_contents[3]
+    SLICE_X12Y32         LUT6 (Prop_lut6_I0_O)        0.355     7.383 r  rf/registers_reg_0_15_15_15_i_6/O
+                         net (fo=1, routed)           0.850     8.234    rf/registers_reg_0_15_15_15_i_6_n_0
+    SLICE_X12Y32         LUT3 (Prop_lut3_I2_O)        0.146     8.380 r  rf/registers_reg_0_15_15_15_i_5/O
+                         net (fo=1, routed)           1.135     9.515    rf/registers_reg_0_15_15_15_i_5_n_0
+    SLICE_X9Y34          LUT6 (Prop_lut6_I1_O)        0.328     9.843 r  rf/registers_reg_0_15_15_15_i_4/O
+                         net (fo=1, routed)           0.517    10.360    rf/registers_reg_0_15_15_15_i_4_n_0
+    SLICE_X8Y34          LUT6 (Prop_lut6_I2_O)        0.124    10.484 r  rf/registers_reg_0_15_15_15_i_2/O
+                         net (fo=2, routed)           0.554    11.038    dm/alu_result[15]
+    SLICE_X4Y35          LUT5 (Prop_lut5_I1_O)        0.124    11.162 r  dm/registers_reg_0_15_15_15_i_1/O
+                         net (fo=3, routed)           0.436    11.598    dm/incomingData[15]
+    SLICE_X4Y35          LUT3 (Prop_lut3_I0_O)        0.118    11.716 r  dm/rd_after_OBUF[15]_inst_i_1/O
+                         net (fo=1, routed)           1.690    13.406    rd_after_OBUF[15]
+    J17                  OBUF (Prop_obuf_I_O)         3.723    17.129 r  rd_after_OBUF[15]_inst/O
+                         net (fo=0)                   0.000    17.129    rd_after[15]
+    J17                                                               r  rd_after[15] (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 pc_reg_reg[2]/C
+  Source:                 pc_reg_reg[1]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            dm/data_mem_reg[60][6]/D
+  Destination:            rd_after[8]
+                            (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        17.393ns  (logic 2.752ns (15.823%)  route 14.641ns (84.177%))
-  Logic Levels:           10  (FDRE=1 LUT2=1 LUT3=1 LUT4=2 LUT5=1 LUT6=3 RAMD32=1)
+  Data Path Delay:        17.119ns  (logic 5.410ns (31.605%)  route 11.708ns (68.395%))
+  Logic Levels:           10  (FDRE=1 LUT3=1 LUT4=1 LUT5=2 LUT6=3 OBUF=1 RAMD32=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X2Y18          FDRE                         0.000     0.000 r  pc_reg_reg[2]/C
-    SLICE_X2Y18          FDRE (Prop_fdre_C_Q)         0.478     0.478 r  pc_reg_reg[2]/Q
-                         net (fo=49, routed)          0.991     1.469    rf/Q[1]
-    SLICE_X0Y17          LUT4 (Prop_lut4_I2_O)        0.295     1.764 r  rf/current_instr_OBUF[7]_inst_i_1/O
-                         net (fo=19, routed)          1.728     3.491    rf/registers_reg_0_15_7_7/DPRA3
-    SLICE_X6Y18          RAMD32 (Prop_ramd32_RADR3_O)
-                                                      0.153     3.644 f  rf/registers_reg_0_15_7_7/DP/O
-                         net (fo=6, routed)           1.531     5.175    rf/pc_reg_reg[5]_0[7]
-    SLICE_X9Y19          LUT4 (Prop_lut4_I1_O)        0.359     5.534 f  rf/rd_after_OBUF[15]_inst_i_13/O
-                         net (fo=1, routed)           0.943     6.477    rf/rd_after_OBUF[15]_inst_i_13_n_1
-    SLICE_X9Y20          LUT6 (Prop_lut6_I4_O)        0.326     6.803 r  rf/rd_after_OBUF[15]_inst_i_10/O
-                         net (fo=20, routed)          1.502     8.306    rf/rd_after_OBUF[15]_inst_i_10_n_1
-    SLICE_X11Y17         LUT6 (Prop_lut6_I0_O)        0.124     8.430 r  rf/rd_after_OBUF[4]_inst_i_4/O
-                         net (fo=1, routed)           0.151     8.581    alu/data_mem_reg[48][7]_5
-    SLICE_X11Y17         LUT6 (Prop_lut6_I2_O)        0.124     8.705 r  alu/rd_after_OBUF[4]_inst_i_2/O
-                         net (fo=125, routed)         3.685    12.390    alu/pc_reg_reg[2][1]
-    SLICE_X5Y6           LUT2 (Prop_lut2_I0_O)        0.152    12.542 f  alu/data_mem[52][7]_i_4/O
-                         net (fo=33, routed)          2.614    15.156    rf/data_mem_reg[51][7]
-    SLICE_X12Y13         LUT5 (Prop_lut5_I2_O)        0.360    15.516 r  rf/data_mem[60][7]_i_4/O
-                         net (fo=8, routed)           0.870    16.386    rf/data_mem[60][7]_i_4_n_1
-    SLICE_X12Y15         LUT3 (Prop_lut3_I1_O)        0.381    16.767 r  rf/data_mem[60][6]_i_1/O
-                         net (fo=1, routed)           0.625    17.393    dm/data_mem_reg[60][7]_1[6]
-    SLICE_X12Y12         FDRE                                         r  dm/data_mem_reg[60][6]/D
+    SLICE_X3Y30          FDRE                         0.000     0.000 r  pc_reg_reg[1]/C
+    SLICE_X3Y30          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  pc_reg_reg[1]/Q
+                         net (fo=22, routed)          1.482     1.938    rf/Q[0]
+    SLICE_X0Y26          LUT5 (Prop_lut5_I0_O)        0.124     2.062 r  rf/g0_b0__0/O
+                         net (fo=54, routed)          1.395     3.456    rf/registers_reg_0_15_3_3/A0
+    SLICE_X6Y31          RAMD32 (Prop_ramd32_RADR0_O)
+                                                      0.156     3.612 r  rf/registers_reg_0_15_3_3/SP/O
+                         net (fo=76, routed)          3.188     6.801    rf/reg1_contents[3]
+    SLICE_X12Y31         LUT4 (Prop_lut4_I0_O)        0.347     7.148 r  rf/registers_reg_0_15_7_7_i_6/O
+                         net (fo=2, routed)           0.831     7.979    rf/registers_reg_0_15_7_7_i_6_n_0
+    SLICE_X11Y30         LUT6 (Prop_lut6_I5_O)        0.328     8.307 r  rf/registers_reg_0_15_7_7_i_5/O
+                         net (fo=2, routed)           0.952     9.258    rf/registers_reg_0_15_7_7_i_5_n_0
+    SLICE_X11Y33         LUT6 (Prop_lut6_I3_O)        0.124     9.382 r  rf/registers_reg_0_15_8_8_i_4/O
+                         net (fo=1, routed)           0.655    10.038    rf/registers_reg_0_15_8_8_i_4_n_0
+    SLICE_X10Y33         LUT6 (Prop_lut6_I2_O)        0.124    10.162 r  rf/registers_reg_0_15_8_8_i_2/O
+                         net (fo=2, routed)           0.959    11.121    dm/alu_result[8]
+    SLICE_X5Y34          LUT5 (Prop_lut5_I1_O)        0.124    11.245 r  dm/registers_reg_0_15_8_8_i_1/O
+                         net (fo=3, routed)           0.559    11.804    dm/incomingData[8]
+    SLICE_X5Y30          LUT3 (Prop_lut3_I0_O)        0.124    11.928 r  dm/rd_after_OBUF[8]_inst_i_1/O
+                         net (fo=1, routed)           1.688    13.615    rd_after_OBUF[8]
+    R19                  OBUF (Prop_obuf_I_O)         3.503    17.119 r  rd_after_OBUF[8]_inst/O
+                         net (fo=0)                   0.000    17.119    rd_after[8]
+    R19                                                               r  rd_after[8] (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 pc_reg_reg[2]/C
+  Source:                 pc_reg_reg[1]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            dm/data_mem_reg[60][0]/D
+  Destination:            dm/data_mem_reg[53][7]/CE
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        17.363ns  (logic 2.745ns (15.809%)  route 14.618ns (84.191%))
-  Logic Levels:           10  (FDRE=1 LUT2=1 LUT3=1 LUT4=2 LUT5=1 LUT6=3 RAMD32=1)
+  Data Path Delay:        16.984ns  (logic 2.090ns (12.305%)  route 14.894ns (87.695%))
+  Logic Levels:           9  (CARRY4=1 FDRE=1 LUT2=1 LUT5=1 LUT6=4 RAMD32=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X2Y18          FDRE                         0.000     0.000 r  pc_reg_reg[2]/C
-    SLICE_X2Y18          FDRE (Prop_fdre_C_Q)         0.478     0.478 r  pc_reg_reg[2]/Q
-                         net (fo=49, routed)          0.991     1.469    rf/Q[1]
-    SLICE_X0Y17          LUT4 (Prop_lut4_I2_O)        0.295     1.764 r  rf/current_instr_OBUF[7]_inst_i_1/O
-                         net (fo=19, routed)          1.728     3.491    rf/registers_reg_0_15_7_7/DPRA3
-    SLICE_X6Y18          RAMD32 (Prop_ramd32_RADR3_O)
-                                                      0.153     3.644 f  rf/registers_reg_0_15_7_7/DP/O
-                         net (fo=6, routed)           1.531     5.175    rf/pc_reg_reg[5]_0[7]
-    SLICE_X9Y19          LUT4 (Prop_lut4_I1_O)        0.359     5.534 f  rf/rd_after_OBUF[15]_inst_i_13/O
-                         net (fo=1, routed)           0.943     6.477    rf/rd_after_OBUF[15]_inst_i_13_n_1
-    SLICE_X9Y20          LUT6 (Prop_lut6_I4_O)        0.326     6.803 r  rf/rd_after_OBUF[15]_inst_i_10/O
-                         net (fo=20, routed)          1.502     8.306    rf/rd_after_OBUF[15]_inst_i_10_n_1
-    SLICE_X11Y17         LUT6 (Prop_lut6_I0_O)        0.124     8.430 r  rf/rd_after_OBUF[4]_inst_i_4/O
-                         net (fo=1, routed)           0.151     8.581    alu/data_mem_reg[48][7]_5
-    SLICE_X11Y17         LUT6 (Prop_lut6_I2_O)        0.124     8.705 r  alu/rd_after_OBUF[4]_inst_i_2/O
-                         net (fo=125, routed)         3.685    12.390    alu/pc_reg_reg[2][1]
-    SLICE_X5Y6           LUT2 (Prop_lut2_I0_O)        0.152    12.542 f  alu/data_mem[52][7]_i_4/O
-                         net (fo=33, routed)          2.614    15.156    rf/data_mem_reg[51][7]
-    SLICE_X12Y13         LUT5 (Prop_lut5_I2_O)        0.360    15.516 r  rf/data_mem[60][7]_i_4/O
-                         net (fo=8, routed)           0.793    16.309    rf/data_mem[60][7]_i_4_n_1
-    SLICE_X12Y16         LUT3 (Prop_lut3_I1_O)        0.374    16.683 r  rf/data_mem[60][0]_i_1/O
-                         net (fo=1, routed)           0.680    17.363    dm/data_mem_reg[60][7]_1[0]
-    SLICE_X12Y12         FDRE                                         r  dm/data_mem_reg[60][0]/D
+    SLICE_X3Y30          FDRE                         0.000     0.000 r  pc_reg_reg[1]/C
+    SLICE_X3Y30          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  pc_reg_reg[1]/Q
+                         net (fo=22, routed)          1.482     1.938    rf/Q[0]
+    SLICE_X0Y26          LUT5 (Prop_lut5_I0_O)        0.124     2.062 r  rf/g0_b0__0/O
+                         net (fo=54, routed)          1.395     3.456    rf/registers_reg_0_15_2_2/A0
+    SLICE_X6Y31          RAMD32 (Prop_ramd32_RADR0_O)
+                                                      0.124     3.580 r  rf/registers_reg_0_15_2_2/SP/O
+                         net (fo=76, routed)          2.536     6.117    rf/reg1_contents[2]
+    SLICE_X7Y30          LUT6 (Prop_lut6_I3_O)        0.124     6.241 r  rf/result0_carry_i_2/O
+                         net (fo=1, routed)           0.000     6.241    alu/S[2]
+    SLICE_X7Y30          CARRY4 (Prop_carry4_S[2]_O[3])
+                                                      0.352     6.593 f  alu/result0_carry/O[3]
+                         net (fo=1, routed)           1.001     7.594    rf/data0[3]
+    SLICE_X9Y30          LUT6 (Prop_lut6_I5_O)        0.306     7.900 f  rf/rd_after_OBUF[3]_inst_i_4/O
+                         net (fo=1, routed)           0.263     8.163    rf/rd_after_OBUF[3]_inst_i_4_n_0
+    SLICE_X9Y30          LUT6 (Prop_lut6_I2_O)        0.124     8.287 f  rf/rd_after_OBUF[3]_inst_i_2/O
+                         net (fo=176, routed)         5.241    13.528    rf/rd_after_OBUF[5]_inst_i_7_2[2]
+    SLICE_X13Y46         LUT2 (Prop_lut2_I0_O)        0.153    13.681 f  rf/data_mem[56][7]_i_3/O
+                         net (fo=7, routed)           1.265    14.946    rf/data_mem[56][7]_i_3_n_0
+    SLICE_X13Y38         LUT6 (Prop_lut6_I3_O)        0.327    15.273 r  rf/data_mem[53][7]_i_1/O
+                         net (fo=8, routed)           1.711    16.984    dm/data_mem_reg[53][7]_0[0]
+    SLICE_X1Y39          FDRE                                         r  dm/data_mem_reg[53][7]/CE
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 pc_reg_reg[2]/C
+  Source:                 pc_reg_reg[1]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            dm/data_mem_reg[60][4]/D
+  Destination:            dm/data_mem_reg[15][1]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        17.275ns  (logic 2.747ns (15.901%)  route 14.528ns (84.099%))
-  Logic Levels:           10  (FDRE=1 LUT2=1 LUT3=1 LUT4=2 LUT5=1 LUT6=3 RAMD32=1)
+  Data Path Delay:        16.878ns  (logic 2.143ns (12.697%)  route 14.735ns (87.303%))
+  Logic Levels:           10  (CARRY4=2 FDRE=1 LUT3=1 LUT5=1 LUT6=4 RAMD32=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X2Y18          FDRE                         0.000     0.000 r  pc_reg_reg[2]/C
-    SLICE_X2Y18          FDRE (Prop_fdre_C_Q)         0.478     0.478 r  pc_reg_reg[2]/Q
-                         net (fo=49, routed)          0.991     1.469    rf/Q[1]
-    SLICE_X0Y17          LUT4 (Prop_lut4_I2_O)        0.295     1.764 r  rf/current_instr_OBUF[7]_inst_i_1/O
-                         net (fo=19, routed)          1.728     3.491    rf/registers_reg_0_15_7_7/DPRA3
-    SLICE_X6Y18          RAMD32 (Prop_ramd32_RADR3_O)
-                                                      0.153     3.644 f  rf/registers_reg_0_15_7_7/DP/O
-                         net (fo=6, routed)           1.531     5.175    rf/pc_reg_reg[5]_0[7]
-    SLICE_X9Y19          LUT4 (Prop_lut4_I1_O)        0.359     5.534 f  rf/rd_after_OBUF[15]_inst_i_13/O
-                         net (fo=1, routed)           0.943     6.477    rf/rd_after_OBUF[15]_inst_i_13_n_1
-    SLICE_X9Y20          LUT6 (Prop_lut6_I4_O)        0.326     6.803 r  rf/rd_after_OBUF[15]_inst_i_10/O
-                         net (fo=20, routed)          1.502     8.306    rf/rd_after_OBUF[15]_inst_i_10_n_1
-    SLICE_X11Y17         LUT6 (Prop_lut6_I0_O)        0.124     8.430 r  rf/rd_after_OBUF[4]_inst_i_4/O
-                         net (fo=1, routed)           0.151     8.581    alu/data_mem_reg[48][7]_5
-    SLICE_X11Y17         LUT6 (Prop_lut6_I2_O)        0.124     8.705 r  alu/rd_after_OBUF[4]_inst_i_2/O
-                         net (fo=125, routed)         3.685    12.390    alu/pc_reg_reg[2][1]
-    SLICE_X5Y6           LUT2 (Prop_lut2_I0_O)        0.152    12.542 f  alu/data_mem[52][7]_i_4/O
-                         net (fo=33, routed)          2.614    15.156    rf/data_mem_reg[51][7]
-    SLICE_X12Y13         LUT5 (Prop_lut5_I2_O)        0.360    15.516 r  rf/data_mem[60][7]_i_4/O
-                         net (fo=8, routed)           0.877    16.393    rf/data_mem[60][7]_i_4_n_1
-    SLICE_X10Y13         LUT3 (Prop_lut3_I1_O)        0.376    16.769 r  rf/data_mem[60][4]_i_1/O
-                         net (fo=1, routed)           0.506    17.275    dm/data_mem_reg[60][7]_1[4]
-    SLICE_X11Y13         FDRE                                         r  dm/data_mem_reg[60][4]/D
+    SLICE_X3Y30          FDRE                         0.000     0.000 r  pc_reg_reg[1]/C
+    SLICE_X3Y30          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  pc_reg_reg[1]/Q
+                         net (fo=22, routed)          1.482     1.938    rf/Q[0]
+    SLICE_X0Y26          LUT5 (Prop_lut5_I0_O)        0.124     2.062 r  rf/g0_b0__0/O
+                         net (fo=54, routed)          1.395     3.456    rf/registers_reg_0_15_2_2/A0
+    SLICE_X6Y31          RAMD32 (Prop_ramd32_RADR0_O)
+                                                      0.124     3.580 r  rf/registers_reg_0_15_2_2/SP/O
+                         net (fo=76, routed)          2.536     6.117    rf/reg1_contents[2]
+    SLICE_X7Y30          LUT6 (Prop_lut6_I3_O)        0.124     6.241 r  rf/result0_carry_i_2/O
+                         net (fo=1, routed)           0.000     6.241    alu/S[2]
+    SLICE_X7Y30          CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398     6.639 r  alu/result0_carry/CO[3]
+                         net (fo=1, routed)           0.000     6.639    alu/result0_carry_n_0
+    SLICE_X7Y31          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222     6.861 f  alu/result0_carry__0/O[0]
+                         net (fo=2, routed)           0.775     7.636    rf/data0[4]
+    SLICE_X10Y29         LUT6 (Prop_lut6_I5_O)        0.299     7.935 f  rf/rd_after_OBUF[4]_inst_i_4/O
+                         net (fo=1, routed)           0.659     8.594    alu/data_mem_reg[62][7]_4
+    SLICE_X10Y30         LUT6 (Prop_lut6_I2_O)        0.124     8.718 f  alu/rd_after_OBUF[4]_inst_i_2/O
+                         net (fo=125, routed)         5.891    14.608    alu/alu_result[1]
+    SLICE_X1Y49          LUT6 (Prop_lut6_I0_O)        0.124    14.732 r  alu/data_mem[15][7]_i_4/O
+                         net (fo=8, routed)           1.166    15.898    rf/data_mem_reg[15][7]
+    SLICE_X2Y52          LUT3 (Prop_lut3_I1_O)        0.148    16.046 r  rf/data_mem[15][1]_i_1/O
+                         net (fo=1, routed)           0.832    16.878    dm/data_mem_reg[15][7]_1[1]
+    SLICE_X0Y49          FDRE                                         r  dm/data_mem_reg[15][1]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 pc_reg_reg[2]/C
+  Source:                 pc_reg_reg[1]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            dm/data_mem_reg[60][1]/D
+  Destination:            dm/data_mem_reg[53][5]/CE
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        17.269ns  (logic 2.745ns (15.895%)  route 14.524ns (84.105%))
-  Logic Levels:           10  (FDRE=1 LUT2=1 LUT3=1 LUT4=2 LUT5=1 LUT6=3 RAMD32=1)
+  Data Path Delay:        16.700ns  (logic 2.090ns (12.515%)  route 14.610ns (87.485%))
+  Logic Levels:           9  (CARRY4=1 FDRE=1 LUT2=1 LUT5=1 LUT6=4 RAMD32=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X2Y18          FDRE                         0.000     0.000 r  pc_reg_reg[2]/C
-    SLICE_X2Y18          FDRE (Prop_fdre_C_Q)         0.478     0.478 r  pc_reg_reg[2]/Q
-                         net (fo=49, routed)          0.991     1.469    rf/Q[1]
-    SLICE_X0Y17          LUT4 (Prop_lut4_I2_O)        0.295     1.764 r  rf/current_instr_OBUF[7]_inst_i_1/O
-                         net (fo=19, routed)          1.728     3.491    rf/registers_reg_0_15_7_7/DPRA3
-    SLICE_X6Y18          RAMD32 (Prop_ramd32_RADR3_O)
-                                                      0.153     3.644 f  rf/registers_reg_0_15_7_7/DP/O
-                         net (fo=6, routed)           1.531     5.175    rf/pc_reg_reg[5]_0[7]
-    SLICE_X9Y19          LUT4 (Prop_lut4_I1_O)        0.359     5.534 f  rf/rd_after_OBUF[15]_inst_i_13/O
-                         net (fo=1, routed)           0.943     6.477    rf/rd_after_OBUF[15]_inst_i_13_n_1
-    SLICE_X9Y20          LUT6 (Prop_lut6_I4_O)        0.326     6.803 r  rf/rd_after_OBUF[15]_inst_i_10/O
-                         net (fo=20, routed)          1.502     8.306    rf/rd_after_OBUF[15]_inst_i_10_n_1
-    SLICE_X11Y17         LUT6 (Prop_lut6_I0_O)        0.124     8.430 r  rf/rd_after_OBUF[4]_inst_i_4/O
-                         net (fo=1, routed)           0.151     8.581    alu/data_mem_reg[48][7]_5
-    SLICE_X11Y17         LUT6 (Prop_lut6_I2_O)        0.124     8.705 r  alu/rd_after_OBUF[4]_inst_i_2/O
-                         net (fo=125, routed)         3.685    12.390    alu/pc_reg_reg[2][1]
-    SLICE_X5Y6           LUT2 (Prop_lut2_I0_O)        0.152    12.542 f  alu/data_mem[52][7]_i_4/O
-                         net (fo=33, routed)          2.614    15.156    rf/data_mem_reg[51][7]
-    SLICE_X12Y13         LUT5 (Prop_lut5_I2_O)        0.360    15.516 r  rf/data_mem[60][7]_i_4/O
-                         net (fo=8, routed)           0.887    16.403    rf/data_mem[60][7]_i_4_n_1
-    SLICE_X10Y13         LUT3 (Prop_lut3_I1_O)        0.374    16.777 r  rf/data_mem[60][1]_i_1/O
-                         net (fo=1, routed)           0.492    17.269    dm/data_mem_reg[60][7]_1[1]
-    SLICE_X9Y13          FDRE                                         r  dm/data_mem_reg[60][1]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 pc_reg_reg[2]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            dm/data_mem_reg[58][4]/D
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        17.229ns  (logic 2.727ns (15.828%)  route 14.502ns (84.172%))
-  Logic Levels:           10  (FDRE=1 LUT2=1 LUT3=1 LUT4=2 LUT5=1 LUT6=3 RAMD32=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X2Y18          FDRE                         0.000     0.000 r  pc_reg_reg[2]/C
-    SLICE_X2Y18          FDRE (Prop_fdre_C_Q)         0.478     0.478 r  pc_reg_reg[2]/Q
-                         net (fo=49, routed)          0.991     1.469    rf/Q[1]
-    SLICE_X0Y17          LUT4 (Prop_lut4_I2_O)        0.295     1.764 r  rf/current_instr_OBUF[7]_inst_i_1/O
-                         net (fo=19, routed)          1.728     3.491    rf/registers_reg_0_15_7_7/DPRA3
-    SLICE_X6Y18          RAMD32 (Prop_ramd32_RADR3_O)
-                                                      0.153     3.644 f  rf/registers_reg_0_15_7_7/DP/O
-                         net (fo=6, routed)           1.531     5.175    rf/pc_reg_reg[5]_0[7]
-    SLICE_X9Y19          LUT4 (Prop_lut4_I1_O)        0.359     5.534 f  rf/rd_after_OBUF[15]_inst_i_13/O
-                         net (fo=1, routed)           0.943     6.477    rf/rd_after_OBUF[15]_inst_i_13_n_1
-    SLICE_X9Y20          LUT6 (Prop_lut6_I4_O)        0.326     6.803 r  rf/rd_after_OBUF[15]_inst_i_10/O
-                         net (fo=20, routed)          1.502     8.306    rf/rd_after_OBUF[15]_inst_i_10_n_1
-    SLICE_X11Y17         LUT6 (Prop_lut6_I0_O)        0.124     8.430 r  rf/rd_after_OBUF[4]_inst_i_4/O
-                         net (fo=1, routed)           0.151     8.581    alu/data_mem_reg[48][7]_5
-    SLICE_X11Y17         LUT6 (Prop_lut6_I2_O)        0.124     8.705 r  alu/rd_after_OBUF[4]_inst_i_2/O
-                         net (fo=125, routed)         3.685    12.390    alu/pc_reg_reg[2][1]
-    SLICE_X5Y6           LUT2 (Prop_lut2_I0_O)        0.152    12.542 f  alu/data_mem[52][7]_i_4/O
-                         net (fo=33, routed)          2.630    15.172    rf/data_mem_reg[51][7]
-    SLICE_X13Y15         LUT5 (Prop_lut5_I2_O)        0.358    15.530 r  rf/data_mem[58][7]_i_4/O
-                         net (fo=8, routed)           0.849    16.379    rf/data_mem[58][7]_i_4_n_1
-    SLICE_X11Y12         LUT3 (Prop_lut3_I1_O)        0.358    16.737 r  rf/data_mem[58][4]_i_1/O
-                         net (fo=1, routed)           0.492    17.229    dm/data_mem_reg[58][7]_1[4]
-    SLICE_X9Y12          FDRE                                         r  dm/data_mem_reg[58][4]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 pc_reg_reg[2]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            dm/data_mem_reg[56][4]/D
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        17.166ns  (logic 2.754ns (16.043%)  route 14.412ns (83.957%))
-  Logic Levels:           10  (FDRE=1 LUT2=1 LUT3=1 LUT4=2 LUT5=1 LUT6=3 RAMD32=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X2Y18          FDRE                         0.000     0.000 r  pc_reg_reg[2]/C
-    SLICE_X2Y18          FDRE (Prop_fdre_C_Q)         0.478     0.478 r  pc_reg_reg[2]/Q
-                         net (fo=49, routed)          0.991     1.469    rf/Q[1]
-    SLICE_X0Y17          LUT4 (Prop_lut4_I2_O)        0.295     1.764 r  rf/current_instr_OBUF[7]_inst_i_1/O
-                         net (fo=19, routed)          1.728     3.491    rf/registers_reg_0_15_7_7/DPRA3
-    SLICE_X6Y18          RAMD32 (Prop_ramd32_RADR3_O)
-                                                      0.153     3.644 f  rf/registers_reg_0_15_7_7/DP/O
-                         net (fo=6, routed)           1.531     5.175    rf/pc_reg_reg[5]_0[7]
-    SLICE_X9Y19          LUT4 (Prop_lut4_I1_O)        0.359     5.534 f  rf/rd_after_OBUF[15]_inst_i_13/O
-                         net (fo=1, routed)           0.943     6.477    rf/rd_after_OBUF[15]_inst_i_13_n_1
-    SLICE_X9Y20          LUT6 (Prop_lut6_I4_O)        0.326     6.803 r  rf/rd_after_OBUF[15]_inst_i_10/O
-                         net (fo=20, routed)          1.502     8.306    rf/rd_after_OBUF[15]_inst_i_10_n_1
-    SLICE_X11Y17         LUT6 (Prop_lut6_I0_O)        0.124     8.430 r  rf/rd_after_OBUF[4]_inst_i_4/O
-                         net (fo=1, routed)           0.151     8.581    alu/data_mem_reg[48][7]_5
-    SLICE_X11Y17         LUT6 (Prop_lut6_I2_O)        0.124     8.705 r  alu/rd_after_OBUF[4]_inst_i_2/O
-                         net (fo=125, routed)         3.685    12.390    alu/pc_reg_reg[2][1]
-    SLICE_X5Y6           LUT2 (Prop_lut2_I0_O)        0.152    12.542 f  alu/data_mem[52][7]_i_4/O
-                         net (fo=33, routed)          2.215    14.757    rf/data_mem_reg[51][7]
-    SLICE_X14Y12         LUT5 (Prop_lut5_I2_O)        0.358    15.115 r  rf/data_mem[56][7]_i_5/O
-                         net (fo=8, routed)           1.167    16.282    rf/data_mem[56][7]_i_5_n_1
-    SLICE_X13Y9          LUT3 (Prop_lut3_I1_O)        0.385    16.667 r  rf/data_mem[56][4]_i_1/O
-                         net (fo=1, routed)           0.499    17.166    dm/data_mem_reg[56][7]_1[4]
-    SLICE_X10Y9          FDRE                                         r  dm/data_mem_reg[56][4]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 pc_reg_reg[2]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            dm/data_mem_reg[58][1]/D
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        17.164ns  (logic 2.729ns (15.899%)  route 14.435ns (84.101%))
-  Logic Levels:           10  (FDRE=1 LUT2=1 LUT3=1 LUT4=2 LUT5=1 LUT6=3 RAMD32=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X2Y18          FDRE                         0.000     0.000 r  pc_reg_reg[2]/C
-    SLICE_X2Y18          FDRE (Prop_fdre_C_Q)         0.478     0.478 r  pc_reg_reg[2]/Q
-                         net (fo=49, routed)          0.991     1.469    rf/Q[1]
-    SLICE_X0Y17          LUT4 (Prop_lut4_I2_O)        0.295     1.764 r  rf/current_instr_OBUF[7]_inst_i_1/O
-                         net (fo=19, routed)          1.728     3.491    rf/registers_reg_0_15_7_7/DPRA3
-    SLICE_X6Y18          RAMD32 (Prop_ramd32_RADR3_O)
-                                                      0.153     3.644 f  rf/registers_reg_0_15_7_7/DP/O
-                         net (fo=6, routed)           1.531     5.175    rf/pc_reg_reg[5]_0[7]
-    SLICE_X9Y19          LUT4 (Prop_lut4_I1_O)        0.359     5.534 f  rf/rd_after_OBUF[15]_inst_i_13/O
-                         net (fo=1, routed)           0.943     6.477    rf/rd_after_OBUF[15]_inst_i_13_n_1
-    SLICE_X9Y20          LUT6 (Prop_lut6_I4_O)        0.326     6.803 r  rf/rd_after_OBUF[15]_inst_i_10/O
-                         net (fo=20, routed)          1.502     8.306    rf/rd_after_OBUF[15]_inst_i_10_n_1
-    SLICE_X11Y17         LUT6 (Prop_lut6_I0_O)        0.124     8.430 r  rf/rd_after_OBUF[4]_inst_i_4/O
-                         net (fo=1, routed)           0.151     8.581    alu/data_mem_reg[48][7]_5
-    SLICE_X11Y17         LUT6 (Prop_lut6_I2_O)        0.124     8.705 r  alu/rd_after_OBUF[4]_inst_i_2/O
-                         net (fo=125, routed)         3.685    12.390    alu/pc_reg_reg[2][1]
-    SLICE_X5Y6           LUT2 (Prop_lut2_I0_O)        0.152    12.542 f  alu/data_mem[52][7]_i_4/O
-                         net (fo=33, routed)          2.630    15.172    rf/data_mem_reg[51][7]
-    SLICE_X13Y15         LUT5 (Prop_lut5_I2_O)        0.358    15.530 r  rf/data_mem[58][7]_i_4/O
-                         net (fo=8, routed)           0.892    16.422    rf/data_mem[58][7]_i_4_n_1
-    SLICE_X13Y13         LUT3 (Prop_lut3_I1_O)        0.360    16.782 r  rf/data_mem[58][1]_i_1/O
-                         net (fo=1, routed)           0.382    17.164    dm/data_mem_reg[58][7]_1[1]
-    SLICE_X12Y13         FDRE                                         r  dm/data_mem_reg[58][1]/D
+    SLICE_X3Y30          FDRE                         0.000     0.000 r  pc_reg_reg[1]/C
+    SLICE_X3Y30          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  pc_reg_reg[1]/Q
+                         net (fo=22, routed)          1.482     1.938    rf/Q[0]
+    SLICE_X0Y26          LUT5 (Prop_lut5_I0_O)        0.124     2.062 r  rf/g0_b0__0/O
+                         net (fo=54, routed)          1.395     3.456    rf/registers_reg_0_15_2_2/A0
+    SLICE_X6Y31          RAMD32 (Prop_ramd32_RADR0_O)
+                                                      0.124     3.580 r  rf/registers_reg_0_15_2_2/SP/O
+                         net (fo=76, routed)          2.536     6.117    rf/reg1_contents[2]
+    SLICE_X7Y30          LUT6 (Prop_lut6_I3_O)        0.124     6.241 r  rf/result0_carry_i_2/O
+                         net (fo=1, routed)           0.000     6.241    alu/S[2]
+    SLICE_X7Y30          CARRY4 (Prop_carry4_S[2]_O[3])
+                                                      0.352     6.593 f  alu/result0_carry/O[3]
+                         net (fo=1, routed)           1.001     7.594    rf/data0[3]
+    SLICE_X9Y30          LUT6 (Prop_lut6_I5_O)        0.306     7.900 f  rf/rd_after_OBUF[3]_inst_i_4/O
+                         net (fo=1, routed)           0.263     8.163    rf/rd_after_OBUF[3]_inst_i_4_n_0
+    SLICE_X9Y30          LUT6 (Prop_lut6_I2_O)        0.124     8.287 f  rf/rd_after_OBUF[3]_inst_i_2/O
+                         net (fo=176, routed)         5.241    13.528    rf/rd_after_OBUF[5]_inst_i_7_2[2]
+    SLICE_X13Y46         LUT2 (Prop_lut2_I0_O)        0.153    13.681 f  rf/data_mem[56][7]_i_3/O
+                         net (fo=7, routed)           1.265    14.946    rf/data_mem[56][7]_i_3_n_0
+    SLICE_X13Y38         LUT6 (Prop_lut6_I3_O)        0.327    15.273 r  rf/data_mem[53][7]_i_1/O
+                         net (fo=8, routed)           1.427    16.700    dm/data_mem_reg[53][7]_0[0]
+    SLICE_X7Y40          FDRE                                         r  dm/data_mem_reg[53][5]/CE
   -------------------------------------------------------------------    -------------------
 
 
@@ -597,136 +602,22 @@ Slack:                    inf
 Min Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 dm/outWord_reg[5]/G
-                            (positive level-sensitive latch)
-  Destination:            rf/registers_reg_0_15_5_5/DP/I
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.497ns  (logic 0.223ns (44.868%)  route 0.274ns (55.132%))
-  Logic Levels:           2  (LDCE=1 LUT3=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X6Y15          LDCE                         0.000     0.000 r  dm/outWord_reg[5]/G
-    SLICE_X6Y15          LDCE (EnToQ_ldce_G_Q)        0.178     0.178 r  dm/outWord_reg[5]/Q
-                         net (fo=2, routed)           0.155     0.333    dm/data_memory_output[5]
-    SLICE_X6Y15          LUT3 (Prop_lut3_I0_O)        0.045     0.378 r  dm/registers_reg_0_15_5_5_i_1/O
-                         net (fo=2, routed)           0.119     0.497    rf/registers_reg_0_15_5_5/D
-    SLICE_X6Y16          RAMD32                                       r  rf/registers_reg_0_15_5_5/DP/I
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 dm/outWord_reg[5]/G
-                            (positive level-sensitive latch)
-  Destination:            rf/registers_reg_0_15_5_5/SP/I
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.497ns  (logic 0.223ns (44.868%)  route 0.274ns (55.132%))
-  Logic Levels:           2  (LDCE=1 LUT3=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X6Y15          LDCE                         0.000     0.000 r  dm/outWord_reg[5]/G
-    SLICE_X6Y15          LDCE (EnToQ_ldce_G_Q)        0.178     0.178 r  dm/outWord_reg[5]/Q
-                         net (fo=2, routed)           0.155     0.333    dm/data_memory_output[5]
-    SLICE_X6Y15          LUT3 (Prop_lut3_I0_O)        0.045     0.378 r  dm/registers_reg_0_15_5_5_i_1/O
-                         net (fo=2, routed)           0.119     0.497    rf/registers_reg_0_15_5_5/D
-    SLICE_X6Y16          RAMD32                                       r  rf/registers_reg_0_15_5_5/SP/I
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 dm/outWord_reg[9]/G
-                            (positive level-sensitive latch)
-  Destination:            rf/registers_reg_0_15_9_9/DP/I
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.517ns  (logic 0.203ns (39.265%)  route 0.314ns (60.735%))
-  Logic Levels:           2  (LDCE=1 LUT3=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X5Y16          LDCE                         0.000     0.000 r  dm/outWord_reg[9]/G
-    SLICE_X5Y16          LDCE (EnToQ_ldce_G_Q)        0.158     0.158 r  dm/outWord_reg[9]/Q
-                         net (fo=2, routed)           0.110     0.268    dm/Q[5]
-    SLICE_X7Y16          LUT3 (Prop_lut3_I0_O)        0.045     0.313 r  dm/registers_reg_0_15_9_9_i_1/O
-                         net (fo=2, routed)           0.204     0.517    rf/registers_reg_0_15_9_9/D
-    SLICE_X6Y18          RAMD32                                       r  rf/registers_reg_0_15_9_9/DP/I
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 dm/outWord_reg[9]/G
-                            (positive level-sensitive latch)
-  Destination:            rf/registers_reg_0_15_9_9/SP/I
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.517ns  (logic 0.203ns (39.265%)  route 0.314ns (60.735%))
-  Logic Levels:           2  (LDCE=1 LUT3=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X5Y16          LDCE                         0.000     0.000 r  dm/outWord_reg[9]/G
-    SLICE_X5Y16          LDCE (EnToQ_ldce_G_Q)        0.158     0.158 r  dm/outWord_reg[9]/Q
-                         net (fo=2, routed)           0.110     0.268    dm/Q[5]
-    SLICE_X7Y16          LUT3 (Prop_lut3_I0_O)        0.045     0.313 r  dm/registers_reg_0_15_9_9_i_1/O
-                         net (fo=2, routed)           0.204     0.517    rf/registers_reg_0_15_9_9/D
-    SLICE_X6Y18          RAMD32                                       r  rf/registers_reg_0_15_9_9/SP/I
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 dm/outWord_reg[7]/G
-                            (positive level-sensitive latch)
-  Destination:            rf/registers_reg_0_15_7_7/DP/I
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.534ns  (logic 0.203ns (38.010%)  route 0.331ns (61.990%))
-  Logic Levels:           2  (LDCE=1 LUT3=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X5Y17          LDCE                         0.000     0.000 r  dm/outWord_reg[7]/G
-    SLICE_X5Y17          LDCE (EnToQ_ldce_G_Q)        0.158     0.158 r  dm/outWord_reg[7]/Q
-                         net (fo=2, routed)           0.231     0.389    dm/Q[3]
-    SLICE_X5Y17          LUT3 (Prop_lut3_I0_O)        0.045     0.434 r  dm/registers_reg_0_15_7_7_i_1/O
-                         net (fo=2, routed)           0.100     0.534    rf/registers_reg_0_15_7_7/D
-    SLICE_X6Y18          RAMD32                                       r  rf/registers_reg_0_15_7_7/DP/I
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 dm/outWord_reg[7]/G
-                            (positive level-sensitive latch)
-  Destination:            rf/registers_reg_0_15_7_7/SP/I
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.534ns  (logic 0.203ns (38.010%)  route 0.331ns (61.990%))
-  Logic Levels:           2  (LDCE=1 LUT3=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X5Y17          LDCE                         0.000     0.000 r  dm/outWord_reg[7]/G
-    SLICE_X5Y17          LDCE (EnToQ_ldce_G_Q)        0.158     0.158 r  dm/outWord_reg[7]/Q
-                         net (fo=2, routed)           0.231     0.389    dm/Q[3]
-    SLICE_X5Y17          LUT3 (Prop_lut3_I0_O)        0.045     0.434 r  dm/registers_reg_0_15_7_7_i_1/O
-                         net (fo=2, routed)           0.100     0.534    rf/registers_reg_0_15_7_7/D
-    SLICE_X6Y18          RAMD32                                       r  rf/registers_reg_0_15_7_7/SP/I
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
   Source:                 dm/outWord_reg[4]/G
                             (positive level-sensitive latch)
   Destination:            rf/registers_reg_0_15_4_4/DP/I
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.541ns  (logic 0.203ns (37.517%)  route 0.338ns (62.483%))
-  Logic Levels:           2  (LDCE=1 LUT3=1)
+  Data Path Delay:        0.484ns  (logic 0.223ns (46.053%)  route 0.261ns (53.947%))
+  Logic Levels:           2  (LDCE=1 LUT5=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X3Y15          LDCE                         0.000     0.000 r  dm/outWord_reg[4]/G
-    SLICE_X3Y15          LDCE (EnToQ_ldce_G_Q)        0.158     0.158 r  dm/outWord_reg[4]/Q
-                         net (fo=2, routed)           0.222     0.380    dm/data_memory_output[4]
-    SLICE_X3Y16          LUT3 (Prop_lut3_I0_O)        0.045     0.425 r  dm/registers_reg_0_15_4_4_i_1/O
-                         net (fo=2, routed)           0.116     0.541    rf/registers_reg_0_15_4_4/D
-    SLICE_X6Y16          RAMD32                                       r  rf/registers_reg_0_15_4_4/DP/I
+    SLICE_X6Y34          LDCE                         0.000     0.000 r  dm/outWord_reg[4]/G
+    SLICE_X6Y34          LDCE (EnToQ_ldce_G_Q)        0.178     0.178 r  dm/outWord_reg[4]/Q
+                         net (fo=2, routed)           0.162     0.340    dm/data_memory_output[4]
+    SLICE_X5Y32          LUT5 (Prop_lut5_I0_O)        0.045     0.385 r  dm/registers_reg_0_15_4_4_i_1/O
+                         net (fo=2, routed)           0.099     0.484    rf/registers_reg_0_15_4_4/D
+    SLICE_X6Y31          RAMD32                                       r  rf/registers_reg_0_15_4_4/DP/I
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
@@ -735,55 +626,171 @@ Slack:                    inf
   Destination:            rf/registers_reg_0_15_4_4/SP/I
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.541ns  (logic 0.203ns (37.517%)  route 0.338ns (62.483%))
-  Logic Levels:           2  (LDCE=1 LUT3=1)
+  Data Path Delay:        0.484ns  (logic 0.223ns (46.053%)  route 0.261ns (53.947%))
+  Logic Levels:           2  (LDCE=1 LUT5=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X3Y15          LDCE                         0.000     0.000 r  dm/outWord_reg[4]/G
-    SLICE_X3Y15          LDCE (EnToQ_ldce_G_Q)        0.158     0.158 r  dm/outWord_reg[4]/Q
-                         net (fo=2, routed)           0.222     0.380    dm/data_memory_output[4]
-    SLICE_X3Y16          LUT3 (Prop_lut3_I0_O)        0.045     0.425 r  dm/registers_reg_0_15_4_4_i_1/O
-                         net (fo=2, routed)           0.116     0.541    rf/registers_reg_0_15_4_4/D
-    SLICE_X6Y16          RAMD32                                       r  rf/registers_reg_0_15_4_4/SP/I
+    SLICE_X6Y34          LDCE                         0.000     0.000 r  dm/outWord_reg[4]/G
+    SLICE_X6Y34          LDCE (EnToQ_ldce_G_Q)        0.178     0.178 r  dm/outWord_reg[4]/Q
+                         net (fo=2, routed)           0.162     0.340    dm/data_memory_output[4]
+    SLICE_X5Y32          LUT5 (Prop_lut5_I0_O)        0.045     0.385 r  dm/registers_reg_0_15_4_4_i_1/O
+                         net (fo=2, routed)           0.099     0.484    rf/registers_reg_0_15_4_4/D
+    SLICE_X6Y31          RAMD32                                       r  rf/registers_reg_0_15_4_4/SP/I
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 dm/outWord_reg[12]/G
+                            (positive level-sensitive latch)
+  Destination:            rf/registers_reg_0_15_12_12/SP/I
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.511ns  (logic 0.223ns (43.621%)  route 0.288ns (56.379%))
+  Logic Levels:           2  (LDCE=1 LUT5=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X6Y34          LDCE                         0.000     0.000 r  dm/outWord_reg[12]/G
+    SLICE_X6Y34          LDCE (EnToQ_ldce_G_Q)        0.178     0.178 r  dm/outWord_reg[12]/Q
+                         net (fo=1, routed)           0.163     0.341    dm/data_memory_output[12]
+    SLICE_X6Y34          LUT5 (Prop_lut5_I0_O)        0.045     0.386 r  dm/registers_reg_0_15_12_12_i_1/O
+                         net (fo=3, routed)           0.125     0.511    rf/registers_reg_0_15_12_12/D
+    SLICE_X6Y32          RAMD32                                       r  rf/registers_reg_0_15_12_12/SP/I
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 dm/outWord_reg[0]/G
+                            (positive level-sensitive latch)
+  Destination:            rf/registers_reg_0_15_0_0/DP/I
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.533ns  (logic 0.203ns (38.066%)  route 0.330ns (61.934%))
+  Logic Levels:           2  (LDCE=1 LUT5=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X5Y34          LDCE                         0.000     0.000 r  dm/outWord_reg[0]/G
+    SLICE_X5Y34          LDCE (EnToQ_ldce_G_Q)        0.158     0.158 r  dm/outWord_reg[0]/Q
+                         net (fo=2, routed)           0.221     0.379    dm/Q[0]
+    SLICE_X5Y33          LUT5 (Prop_lut5_I0_O)        0.045     0.424 r  dm/registers_reg_0_15_0_0_i_1/O
+                         net (fo=2, routed)           0.109     0.533    rf/registers_reg_0_15_0_0/D
+    SLICE_X6Y32          RAMD32                                       r  rf/registers_reg_0_15_0_0/DP/I
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 dm/outWord_reg[0]/G
+                            (positive level-sensitive latch)
+  Destination:            rf/registers_reg_0_15_0_0/SP/I
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.533ns  (logic 0.203ns (38.066%)  route 0.330ns (61.934%))
+  Logic Levels:           2  (LDCE=1 LUT5=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X5Y34          LDCE                         0.000     0.000 r  dm/outWord_reg[0]/G
+    SLICE_X5Y34          LDCE (EnToQ_ldce_G_Q)        0.158     0.158 r  dm/outWord_reg[0]/Q
+                         net (fo=2, routed)           0.221     0.379    dm/Q[0]
+    SLICE_X5Y33          LUT5 (Prop_lut5_I0_O)        0.045     0.424 r  dm/registers_reg_0_15_0_0_i_1/O
+                         net (fo=2, routed)           0.109     0.533    rf/registers_reg_0_15_0_0/D
+    SLICE_X6Y32          RAMD32                                       r  rf/registers_reg_0_15_0_0/SP/I
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 dm/outWord_reg[1]/G
+                            (positive level-sensitive latch)
+  Destination:            rf/registers_reg_0_15_1_1/SP/I
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.544ns  (logic 0.203ns (37.330%)  route 0.341ns (62.670%))
+  Logic Levels:           2  (LDCE=1 LUT5=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X7Y34          LDCE                         0.000     0.000 r  dm/outWord_reg[1]/G
+    SLICE_X7Y34          LDCE (EnToQ_ldce_G_Q)        0.158     0.158 r  dm/outWord_reg[1]/Q
+                         net (fo=2, routed)           0.134     0.292    dm/data_memory_output[1]
+    SLICE_X6Y34          LUT5 (Prop_lut5_I0_O)        0.045     0.337 r  dm/registers_reg_0_15_1_1_i_1/O
+                         net (fo=2, routed)           0.207     0.544    rf/registers_reg_0_15_1_1/D
+    SLICE_X6Y33          RAMD32                                       r  rf/registers_reg_0_15_1_1/SP/I
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 dm/outWord_reg[2]/G
+                            (positive level-sensitive latch)
+  Destination:            rf/registers_reg_0_15_2_2/DP/I
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.558ns  (logic 0.223ns (39.956%)  route 0.335ns (60.044%))
+  Logic Levels:           2  (LDCE=1 LUT5=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X6Y34          LDCE                         0.000     0.000 r  dm/outWord_reg[2]/G
+    SLICE_X6Y34          LDCE (EnToQ_ldce_G_Q)        0.178     0.178 r  dm/outWord_reg[2]/Q
+                         net (fo=2, routed)           0.226     0.404    dm/Q[1]
+    SLICE_X5Y32          LUT5 (Prop_lut5_I0_O)        0.045     0.449 r  dm/registers_reg_0_15_2_2_i_1/O
+                         net (fo=2, routed)           0.109     0.558    rf/registers_reg_0_15_2_2/D
+    SLICE_X6Y31          RAMD32                                       r  rf/registers_reg_0_15_2_2/DP/I
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 dm/outWord_reg[2]/G
+                            (positive level-sensitive latch)
+  Destination:            rf/registers_reg_0_15_2_2/SP/I
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.558ns  (logic 0.223ns (39.956%)  route 0.335ns (60.044%))
+  Logic Levels:           2  (LDCE=1 LUT5=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X6Y34          LDCE                         0.000     0.000 r  dm/outWord_reg[2]/G
+    SLICE_X6Y34          LDCE (EnToQ_ldce_G_Q)        0.178     0.178 r  dm/outWord_reg[2]/Q
+                         net (fo=2, routed)           0.226     0.404    dm/Q[1]
+    SLICE_X5Y32          LUT5 (Prop_lut5_I0_O)        0.045     0.449 r  dm/registers_reg_0_15_2_2_i_1/O
+                         net (fo=2, routed)           0.109     0.558    rf/registers_reg_0_15_2_2/D
+    SLICE_X6Y31          RAMD32                                       r  rf/registers_reg_0_15_2_2/SP/I
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
   Source:                 pc_reg_reg[3]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            rf/registers_reg_0_15_0_0/DP/WE
+  Destination:            pc_reg_reg[3]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.577ns  (logic 0.209ns (36.209%)  route 0.368ns (63.791%))
-  Logic Levels:           2  (FDRE=1 LUT5=1)
+  Data Path Delay:        0.566ns  (logic 0.231ns (40.821%)  route 0.335ns (59.179%))
+  Logic Levels:           3  (FDRE=1 LUT5=2)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X2Y18          FDRE                         0.000     0.000 r  pc_reg_reg[3]/C
-    SLICE_X2Y18          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  pc_reg_reg[3]/Q
-                         net (fo=49, routed)          0.255     0.419    rf/Q[2]
-    SLICE_X5Y18          LUT5 (Prop_lut5_I3_O)        0.045     0.464 r  rf/registers_reg_0_15_0_0_i_2/O
-                         net (fo=32, routed)          0.113     0.577    rf/registers_reg_0_15_0_0/WE
-    SLICE_X6Y19          RAMD32                                       r  rf/registers_reg_0_15_0_0/DP/WE
+    SLICE_X1Y29          FDRE                         0.000     0.000 r  pc_reg_reg[3]/C
+    SLICE_X1Y29          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  pc_reg_reg[3]/Q
+                         net (fo=22, routed)          0.132     0.273    rf/Q[2]
+    SLICE_X0Y29          LUT5 (Prop_lut5_I2_O)        0.045     0.318 r  rf/g0_b6__0/O
+                         net (fo=57, routed)          0.203     0.521    pc/pc_reg_reg[1]_1[11]
+    SLICE_X1Y29          LUT5 (Prop_lut5_I3_O)        0.045     0.566 r  pc/pc_reg[3]_i_1/O
+                         net (fo=1, routed)           0.000     0.566    next_instr_address[3]
+    SLICE_X1Y29          FDRE                                         r  pc_reg_reg[3]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 pc_reg_reg[3]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            rf/registers_reg_0_15_0_0/SP/WE
+  Source:                 dm/outWord_reg[5]/G
+                            (positive level-sensitive latch)
+  Destination:            rf/registers_reg_0_15_5_5/DP/I
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.577ns  (logic 0.209ns (36.209%)  route 0.368ns (63.791%))
-  Logic Levels:           2  (FDRE=1 LUT5=1)
+  Data Path Delay:        0.571ns  (logic 0.203ns (35.526%)  route 0.368ns (64.474%))
+  Logic Levels:           2  (LDCE=1 LUT5=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X2Y18          FDRE                         0.000     0.000 r  pc_reg_reg[3]/C
-    SLICE_X2Y18          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  pc_reg_reg[3]/Q
-                         net (fo=49, routed)          0.255     0.419    rf/Q[2]
-    SLICE_X5Y18          LUT5 (Prop_lut5_I3_O)        0.045     0.464 r  rf/registers_reg_0_15_0_0_i_2/O
-                         net (fo=32, routed)          0.113     0.577    rf/registers_reg_0_15_0_0/WE
-    SLICE_X6Y19          RAMD32                                       r  rf/registers_reg_0_15_0_0/SP/WE
+    SLICE_X5Y34          LDCE                         0.000     0.000 r  dm/outWord_reg[5]/G
+    SLICE_X5Y34          LDCE (EnToQ_ldce_G_Q)        0.158     0.158 r  dm/outWord_reg[5]/Q
+                         net (fo=2, routed)           0.258     0.416    dm/data_memory_output[5]
+    SLICE_X5Y31          LUT5 (Prop_lut5_I0_O)        0.045     0.461 r  dm/registers_reg_0_15_5_5_i_1/O
+                         net (fo=2, routed)           0.110     0.571    rf/registers_reg_0_15_5_5/D
+    SLICE_X6Y31          RAMD32                                       r  rf/registers_reg_0_15_5_5/DP/I
   -------------------------------------------------------------------    -------------------
 
 

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
-| Date         : Tue Apr 15 20:56:15 2025
+| Date         : Wed Apr 16 23:46:34 2025
 | Host         : penacony running 64-bit unknown
 | Command      : report_control_sets -verbose -file cpu_control_sets_placed.rpt
 | Design       : cpu
@@ -58,10 +58,10 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              31 |           16 |
+| No           | No                    | No                     |              31 |           12 |
 | No           | No                    | Yes                    |               0 |            0 |
 | No           | Yes                   | No                     |               0 |            0 |
-| Yes          | No                    | No                     |             512 |          218 |
+| Yes          | No                    | No                     |             512 |          211 |
 | Yes          | No                    | Yes                    |               0 |            0 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
@@ -70,76 +70,76 @@ Table of Contents
 4. Detailed Control Set Information
 -----------------------------------
 
-+------------------+-------------------------+------------------+------------------+----------------+--------------+
-|   Clock Signal   |      Enable Signal      | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
-+------------------+-------------------------+------------------+------------------+----------------+--------------+
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_0[0]  |                  |                7 |              8 |         1.14 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_34[0] |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_31[0] |                  |                2 |              8 |         4.00 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_3[0]  |                  |                5 |              8 |         1.60 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_29[0] |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_1[0]  |                  |                2 |              8 |         4.00 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_28[0] |                  |                2 |              8 |         4.00 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_25[0] |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_24[0] |                  |                2 |              8 |         4.00 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_32[0] |                  |                6 |              8 |         1.33 |
-|  clock_IBUF_BUFG | alu/E[0]                |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_10[0] |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_13[0] |                  |                5 |              8 |         1.60 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_14[0] |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_11[0] |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_12[0] |                  |                4 |              8 |         2.00 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_9[0]   |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_21[0] |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_30[0] |                  |                4 |              8 |         2.00 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_33[0] |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_4[0]  |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_35[0] |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_7[0]  |                  |                5 |              8 |         1.60 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_6[0]  |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_5[0]  |                  |                5 |              8 |         1.60 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_8[0]  |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_9[0]  |                  |                4 |              8 |         2.00 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_27[0] |                  |                4 |              8 |         2.00 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1][0]    |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_15[0] |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_18[0] |                  |                4 |              8 |         2.00 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_23[0] |                  |                4 |              8 |         2.00 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_26[0] |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_7[0]   |                  |                5 |              8 |         1.60 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_16[0] |                  |                4 |              8 |         2.00 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_17[0] |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_19[0] |                  |                2 |              8 |         4.00 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_2[0]  |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_20[0] |                  |                4 |              8 |         2.00 |
-|  clock_IBUF_BUFG | alu/pc_reg_reg[1]_22[0] |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1][0]     |                  |                2 |              8 |         4.00 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_0[0]   |                  |                2 |              8 |         4.00 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_1[0]   |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_10[0]  |                  |                6 |              8 |         1.33 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_11[0]  |                  |                5 |              8 |         1.60 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_12[0]  |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_13[0]  |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_14[0]  |                  |                2 |              8 |         4.00 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_15[0]  |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_17[0]  |                  |                2 |              8 |         4.00 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_8[0]   |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_6[0]   |                  |                5 |              8 |         1.60 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_5[0]   |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_4[0]   |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_3[0]   |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_24[0]  |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_16[0]  |                  |                4 |              8 |         2.00 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_23[0]  |                  |                2 |              8 |         4.00 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_22[0]  |                  |                4 |              8 |         2.00 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_21[0]  |                  |                4 |              8 |         2.00 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_20[0]  |                  |                4 |              8 |         2.00 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_2[0]   |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_19[0]  |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG | rf/pc_reg_reg[1]_18[0]  |                  |                3 |              8 |         2.67 |
-|  clock_IBUF_BUFG |                         |                  |                5 |             15 |         3.00 |
-|  n_0_1224_BUFG   |                         |                  |               11 |             16 |         1.45 |
-|  clock_IBUF_BUFG | rf/p_0_in               |                  |                4 |             32 |         8.00 |
-+------------------+-------------------------+------------------+------------------+----------------+--------------+
++---------------------+-------------------------------+------------------+------------------+----------------+--------------+
+|     Clock Signal    |         Enable Signal         | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
++---------------------+-------------------------------+------------------+------------------+----------------+--------------+
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4[0]     |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4_16[0]  |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4_15[0]  |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4_14[0]  |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4_13[0]  |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4_12[0]  |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4_11[0]  |                  |                4 |              8 |         2.00 |
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4_10[0]  |                  |                8 |              8 |         1.00 |
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4_1[0]   |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4_17[0]  |                  |                4 |              8 |         2.00 |
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4_0[0]   |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_31[0] |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_30[0] |                  |                1 |              8 |         8.00 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_3[0]  |                  |                6 |              8 |         1.33 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_28[0] |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_27[0] |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_14[0] |                  |                4 |              8 |         2.00 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_24[0] |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4_18[0]  |                  |                4 |              8 |         2.00 |
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4_19[0]  |                  |                4 |              8 |         2.00 |
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4_2[0]   |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4_20[0]  |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4_21[0]  |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4_22[0]  |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4_23[0]  |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4_24[0]  |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4_3[0]   |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4_4[0]   |                  |                4 |              8 |         2.00 |
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4_5[0]   |                  |                5 |              8 |         1.60 |
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4_6[0]   |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4_7[0]   |                  |                7 |              8 |         1.14 |
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4_8[0]   |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | rf/data_mem[63][7]_i_4_9[0]   |                  |                5 |              8 |         1.60 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_12[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_25[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_23[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | alu/E[0]                      |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_22[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_5[0]  |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_17[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_18[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_16[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_21[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_2[0]  |                  |                6 |              8 |         1.33 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_4[0]  |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_35[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4[0]    |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_7[0]  |                  |                4 |              8 |         2.00 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_20[0] |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_8[0]  |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_13[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_11[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_10[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_0[0]  |                  |                4 |              8 |         2.00 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_32[0] |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_33[0] |                  |                7 |              8 |         1.14 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_26[0] |                  |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_1[0]  |                  |                4 |              8 |         2.00 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_15[0] |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_19[0] |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_34[0] |                  |                7 |              8 |         1.14 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_29[0] |                  |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_9[0]  |                  |                7 |              8 |         1.14 |
+|  clock_IBUF_BUFG    | alu/data_mem[63][7]_i_4_6[0]  |                  |                1 |              8 |         8.00 |
+|  clock_IBUF_BUFG    |                               |                  |                7 |             15 |         2.14 |
+|  dm/pc_reg_reg[1]_0 |                               |                  |                5 |             16 |         3.20 |
+|  clock_IBUF_BUFG    | rf/p_0_in                     |                  |                4 |             32 |         8.00 |
++---------------------+-------------------------------+------------------+------------------+----------------+--------------+
 
 

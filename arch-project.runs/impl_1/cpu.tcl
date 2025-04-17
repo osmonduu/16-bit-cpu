@@ -109,9 +109,6 @@ set ACTIVE_STEP write_bitstream
 set rc [catch {
   create_msg_db write_bitstream.pb
   set_param chipscope.maxJobs 4
-  set_param iopl.placeRegionalClockInstsInIOPlacer 0
-  set_param xicom.use_bs_reader 1
-  set_param iopl.placeGlobalClockInstsInIOPlacer 0
   set_param runs.launchOptions { -jobs 12  }
   open_checkpoint cpu_routed.dcp
   set_property webtalk.parent_dir /home/nfox/Documents/School/ComputerArchitecture/cse490-vivado/arch-project.cache/wt [current_project]

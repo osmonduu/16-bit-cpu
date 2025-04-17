@@ -1,75 +1,10 @@
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="nfox" Host="penacony" Pid="27053" HostCore="16" HostMemory="98793892">
+    <Process Command="vivado" Owner="nfox" Host="penacony" Pid="621" HostCore="16" HostMemory="98793900">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="nfox" Host="penacony" Pid="28649" HostCore="16" HostMemory="98793892">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="nfox" Host="penacony" Pid="40128" HostCore="16" HostMemory="98793892">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="nfox" Host="penacony" Pid="52982" HostCore="16" HostMemory="98793892">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="nfox" Host="penacony" Pid="72842" HostCore="16" HostMemory="98793892">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="nfox" Host="penacony" Pid="85481" HostCore="16" HostMemory="98793892">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="nfox" Host="penacony" Pid="87028" HostCore="16" HostMemory="98793892">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="nfox" Host="penacony" Pid="99598" HostCore="16" HostMemory="98793892">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="nfox" Host="penacony" Pid="101985" HostCore="16" HostMemory="98793892">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="nfox" Host="penacony" Pid="103497" HostCore="16" HostMemory="98793892">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="nfox" Host="penacony" Pid="116173" HostCore="16" HostMemory="98793892">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="nfox" Host="penacony" Pid="118810" HostCore="16" HostMemory="98793892">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="nfox" Host="penacony" Pid="131738" HostCore="16" HostMemory="98793892">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="nfox" Host="penacony" Pid="132223" HostCore="16" HostMemory="98793892">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="nfox" Host="penacony" Pid="145135" HostCore="16" HostMemory="98793892">
+    <Process Command="vivado" Owner="nfox" Host="penacony" Pid="12875" HostCore="16" HostMemory="98793900">
     </Process>
 </ProcessHandle>
