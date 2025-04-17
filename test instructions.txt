@@ -30,6 +30,23 @@ add r1, r0
 #1. 0x0000 -> NOP (r0 = r0 + r0)
 add r0, r0
 
+# set r1 = 1, r2 = 2, ... , r15 = 15
+addi r1, r0, 1
+addi r2, r0, 2
+addi r3, r0, 3
+addi r4, r0, 4
+addi r5, r0, 5
+addi r6, r0, 6
+addi r7, r0, 7
+addi r8, r7, 1
+addi r9, r8, 1
+addi r10, r9, 1
+addi r11, r10, 1
+addi r12, r11, 1
+addi r13, r12, 1
+addi r14, r13, 1
+addi r15, r14, 1
+
 #2. 0x0120 -> output r1 = 1+2 = 3 [rd_before = 1, rd_after = 3]
 add r1, r2
 
